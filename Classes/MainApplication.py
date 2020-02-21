@@ -11,7 +11,7 @@ class MainApplication:
 
     univBackColor = "#012e20"
     univForColor = "white"
-
+    univActiveFgColor = "blue"
 
     #Class Variables <------------------------------------->!
 
@@ -23,8 +23,10 @@ class MainApplication:
         self.master.title(title)
         self.master.iconbitmap(icon)
         self.master.config(bg = color)
+
         self.universalBackgroundColor = MainApplication.univBackColor
         self.universalForegroundColor = MainApplication.univForColor
+        self.universalActiveForegroundColor = MainApplication.univActiveFgColor
 
         self.buttons = []
         self.labels = []
@@ -88,7 +90,7 @@ class MainApplication:
         drop = OptionMenu(self.master, clicked, *options)
 
         drop.config(bg=self.universalBackgroundColor,fg=self.universalForegroundColor,activebackground = self.universalBackgroundColor, activeforeground = self.universalForegroundColor)
-        drop['menu'].config(bg=self.universalBackgroundColor,fg=self.universalForegroundColor,activebackground = self.universalBackgroundColor, activeforeground = self.universalForegroundColor)
+        drop['menu'].config(bg=self.universalBackgroundColor,fg=self.universalForegroundColor,activebackground = self.universalBackgroundColor, activeforeground = self.universalActiveForegroundColor)
 
         if backgroundColor != None:
             drop['menu'].config(bg = backgroundColor)
@@ -117,30 +119,24 @@ class MainApplication:
 
 
 
-    def getTextFromEntry(self,index=0):
+    def getTextFromEntry(self,index=0): #Returns the text from entry 'index'
         text = self.entries[index].get()
         self.entries[index].delete(0)
         return text
 
 
-
-    def addNormalCommandToButton(self,index,command):
+    def addNormalCommandToButton(self,index,command): #Adds a simple command to button
         self.buttons[index].config(command = command)
 
 
-
-    def addLambdaCommandToButton(self,index,lambda_command,*args):
+    def addLambdaCommandToButton(self,index,lambda_command,*args): #Adds a command with specifiable parameters to button
         self.buttons[index].config(command = lambda : lambda_command(*args))
-
-
-
-    def showWorks(self,text):
-        print(text.upper())
 
 
     def showSelection(self,index):
         text = self.ddmenus_clicked[index].get()
         print(text)
+
 
     def getSelection(self,index):
         text = self.ddmenus_clicked[index].get()
@@ -173,6 +169,8 @@ class MainApplication:
         cls.univForColor = color
 
 
-
+    @classmethod
+    def changeUnivActiveForColor(cls,color):
+        cls.univActiveFgColor = color
     #Class Methods <------------------------------------->!
 
