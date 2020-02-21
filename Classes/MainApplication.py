@@ -1,4 +1,5 @@
 import tkinter as tk
+import os
 from tkinter import *
 
 class MainApplication:
@@ -7,11 +8,10 @@ class MainApplication:
 
     #Class Variables <------------------------------------->
 
-
-
     univBackColor = "#012e20"
     univForColor = "white"
     univActiveFgColor = "blue"
+    univPath = os.getcwd()
 
     #Class Variables <------------------------------------->!
 
@@ -117,7 +117,8 @@ class MainApplication:
 
     #Widget Management Methods <------------------------------------->
 
-
+    def destroySelf(self):
+        self.master.destroy()
 
     def getTextFromEntry(self,index=0): #Returns the text from entry 'index'
         text = self.entries[index].get()
@@ -136,7 +137,6 @@ class MainApplication:
     def showSelection(self,index):
         text = self.ddmenus_clicked[index].get()
         print(text)
-
 
     def getSelection(self,index):
         text = self.ddmenus_clicked[index].get()
@@ -163,7 +163,6 @@ class MainApplication:
         cls.univBackColor = color
 
 
-
     @classmethod
     def changeUnivForColor(cls,color):
         cls.univForColor = color
@@ -172,5 +171,10 @@ class MainApplication:
     @classmethod
     def changeUnivActiveForColor(cls,color):
         cls.univActiveFgColor = color
+
+
+    @classmethod
+    def printPath(cls):
+        print(cls.univPath)
     #Class Methods <------------------------------------->!
 
