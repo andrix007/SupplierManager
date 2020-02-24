@@ -1,0 +1,11 @@
+{
+    "suppliers" :[{
+        "title": "Sony",
+        "catalogue"  : "C:\\Users\\Andrei Bancila\\Desktop\\SupplierProject\\FurnizoriClean\\Fisiere\\Sony\\Catalog",
+        "price"  : "null",
+        "save"  : "C:\\Users\\Andrei Bancila\\Desktop\\Save your files here",
+        "barcode_column" : 4,
+        "price_column": 6,
+        "start_line": 2
+    }]
+}

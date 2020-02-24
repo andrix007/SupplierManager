@@ -1,8 +1,6 @@
 from Classes.MainApplication import *
-from Classes.Supplier import *
 import tkinter as tk
 import os
-
 
 supplierTitles = [
 "Sony",
@@ -16,14 +14,15 @@ supplierTitles = [
 "Kpop",
 "Noutati_Kpop"]
 
-
-root = tk.Tk()
-
+MainApplication.initPath(os.getcwd())
 MainApplication.changeUnivBackColor("black")
 MainApplication.changeUnivForColor("white")
 MainApplication.changeUnivActiveForColor("green") #for ex. the dropdown menu elements
 
-MainApplication.printPath()
+from Classes.Supplier import *
+
+
+root = tk.Tk()
 
 app = MainApplication(root,"SupplierListManagement - NICHE RECORDS S.R.L.©",400,60,r"Icons/nichelogo.ico",MainApplication.univBackColor)
 app.createLabelAtPosition(0,0,"Supplier: ",50,20)
@@ -44,3 +43,4 @@ supplier = Supplier(root,name,400,60,r"Icons/nichelogo.ico",MainApplication.univ
 
 
 root.mainloop()
+

@@ -1,5 +1,6 @@
 import tkinter as tk
 import os
+import json
 from tkinter import *
 
 class MainApplication:
@@ -11,7 +12,7 @@ class MainApplication:
     univBackColor = "#012e20"
     univForColor = "white"
     univActiveFgColor = "blue"
-    univPath = os.getcwd()
+    univPath = "yello"
 
     #Class Variables <------------------------------------->!
 
@@ -176,5 +177,10 @@ class MainApplication:
     @classmethod
     def printPath(cls):
         print(cls.univPath)
+
+    @classmethod
+    def initPath(cls,path):
+        cls.univPath = path
+
     #Class Methods <------------------------------------->!
 
