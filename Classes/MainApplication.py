@@ -1,6 +1,12 @@
 import tkinter as tk
 import os
 import json
+import xlsxwriter
+import xlrd
+from openpyxl.workbook import Workbook as openpyxlWorkbook
+from openpyxl.reader.excel import load_workbook, InvalidFileException
+import shutil
+
 from tkinter import *
 
 class MainApplication:
@@ -13,6 +19,7 @@ class MainApplication:
     univForColor = "white"
     univActiveFgColor = "blue"
     univPath = "yello"
+    jsonFilePath = "yello"
 
     #Class Variables <------------------------------------->!
 
@@ -147,11 +154,7 @@ class MainApplication:
 
 
 
-    #Just Stuff Methods <------------------------------------->
 
-
-
-    #Just Stuff Methods <------------------------------------->
 
 
 
@@ -182,5 +185,114 @@ class MainApplication:
     def initPath(cls,path):
         cls.univPath = path
 
+    @classmethod
+    def initJsonPath(cls,path):
+        cls.jsonFilePath = path
+        cls.jsonFilePath = cls.jsonFilePath + "\\Resources\\paths.json"
+
     #Class Methods <------------------------------------->!
 
+#File Management Methods Methods <------------------------------------->
+
+
+
+#xlrd (for useless very old fcking piece of garbage xls files) OK BOOMER <------------------------------------->
+
+#xlrd (for useless very old fcking piece of garbage xls files) OK BOOMER<------------------------------------->!
+
+#openpyxl (for the modern-ish xlsx files)<------------------------------------->
+
+#openpyxl (for the modern-ish xlsx files)<------------------------------------->!
+
+
+#other stuff<------------------------------------->
+
+def correctName(name):
+    nr = ""
+    namae = ""
+    for ch in name:
+        if ch >= '0' and ch <= '9':
+            nr = nr + str(ch)
+        else:
+            namae = namae + str(ch)
+
+    nr = nr.zfill(2)
+    print(namae+nr)
+    return namae+nr
+
+def isfloat(value):
+  try:
+    float(value)
+    return True
+  except ValueError:
+    return False
+
+def getFileXFromPath(path,x):
+    files = []
+
+    orig = os.getcwd()
+    """
+    os.chdir(path)
+
+    for r,d,f in os.walk("."):
+        for file in f:
+            if '.xls' in file:
+                files.append(os.path.join(r, file))
+            elif '.xlsx' in file:
+                files.append(os.path.join(r, file))
+
+    cnt = 0
+
+    for f in files:
+        cnt = cnt + 1
+        if cnt == x:
+            os.chdir(orig)
+            return f
+    """
+
+def exist(path):
+    orig = os.getcwd()
+
+    os.chdir(path)
+    lst = os.listdir(path)
+    os.chdir(orig)
+
+    if not lst:
+        return False
+    else:
+        return True
+
+def eraseContent(path):
+
+    for root, dirs, files in os.walk(path):
+        for f in files:
+            os.unlink(os.path.join(root, f))
+        for d in dirs:
+            shutil.rmtree(os.path.join(root, d))
+
+def eraseDirectory(path):
+    shutil.rmtree(path)
+
+
+def convertXlsToXlsx(file):
+
+    f = xlrd.open_workbook(file)
+    os.remove(file)
+
+    sheet = f.sheet_by_index(0)
+    nrows = sheet.nrows
+    ncols = sheet.ncols
+
+    new_f = Workbook()
+    sheet1 = new_f.get_active_sheet()
+
+    for row in xrange(0, nrows):
+        for col in xrange(0, ncols):
+            sheet1.cell(row=row, column=col).value = sheet.cell_value(row, col)
+
+    new_f.save(file)
+
+
+#other stuff<------------------------------------->!
+
+#File Management Methods Methods <------------------------------------->!

@@ -1,4 +1,5 @@
 from Classes.MainApplication import *
+from Classes.sony import *
 import tkinter as tk
 import os
 
@@ -14,13 +15,13 @@ supplierTitles = [
 "Kpop",
 "Noutati_Kpop"]
 
+##########################################################################################################################################################################################################
+
 MainApplication.initPath(os.getcwd())
+MainApplication.initJsonPath(os.getcwd())
 MainApplication.changeUnivBackColor("black")
 MainApplication.changeUnivForColor("white")
 MainApplication.changeUnivActiveForColor("green") #for ex. the dropdown menu elements
-
-from Classes.Supplier import *
-
 
 root = tk.Tk()
 
@@ -34,13 +35,14 @@ app.addNormalCommandToButton(0,app.destroySelf)
 
 root.mainloop()
 
-
+##########################################################################################################################################################################################################
 
 root = tk.Tk()
 
 name = app.getSelection(0)
-supplier = Supplier(root,name,400,60,r"Icons/nichelogo.ico",MainApplication.univBackColor)
 
+supplier = Sony(root,name,400,60,r"Icons/nichelogo.ico",MainApplication.univBackColor)
+supplier.solve()
 
 root.mainloop()
 
