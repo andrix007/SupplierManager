@@ -41,7 +41,15 @@ class Sony(MainApplication):
                 self.supplierInfo = state
                 break
 
-        print(self.supplierInfo)
+        #print(self.supplierInfo)
 
     def solve(self):
-        convertXlsToXlsx(getFileXFromPath('C:\\Users\\Andrei Bancila\\Desktop\\Furnizori\\Plaseaza_fisierele_aici\\Catalog',1))
+
+        #print(getFileXFromPath('C:\\Users\\Andrei Bancila\\Desktop\\Furnizori\\Plaseaza_fisierele_aici\\Catalog',1))
+       # convertXlsToXlsx(getFileXFromPath('C:\\Users\\Andrei Bancila\\Desktop\\Furnizori\\Plaseaza_fisierele_aici\\Catalog',1))
+        #print(getExtension(getFileXFromPath('C:\\Users\\Andrei Bancila\\Desktop\\Furnizori\\Plaseaza_fisierele_aici\\Catalog',1)))
+
+        #mergeFiles('C:\\Users\\Andrei Bancila\\Desktop\\Furnizori\\Plaseaza_fisierele_aici\\Catalog','C:\\Users\\Andrei Bancila\\Desktop\\Furnizori\\Plaseaza_fisierele_aici\\Catalog',1,1)
+
+        addFileToOtherFile(getFileXFromPath('C:\\Users\\Andrei Bancila\\Desktop\\Furnizori\\Plaseaza_fisierele_aici\\Catalog',1),getFileXFromPath('C:\\Users\\Andrei Bancila\\Desktop\\Furnizori\\Plaseaza_fisierele_aici\\Catalog',2),1,1)
+        self.master.destroy()

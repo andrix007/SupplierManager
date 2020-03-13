@@ -6,6 +6,7 @@ import xlrd
 from openpyxl.workbook import Workbook as openpyxlWorkbook
 from openpyxl.reader.excel import load_workbook, InvalidFileException
 import shutil
+import pprint
 
 from tkinter import *
 
@@ -231,7 +232,7 @@ def getFileXFromPath(path,x):
     files = []
 
     orig = os.getcwd()
-    """
+
     os.chdir(path)
 
     for r,d,f in os.walk("."):
@@ -247,8 +248,8 @@ def getFileXFromPath(path,x):
         cnt = cnt + 1
         if cnt == x:
             os.chdir(orig)
-            return f
-    """
+            return path+'\\'+f[2:]
+
 
 def exist(path):
     orig = os.getcwd()
@@ -276,21 +277,87 @@ def eraseDirectory(path):
 
 def convertXlsToXlsx(file):
 
+    if getExtension(file) != "xls":
+        return
+
     f = xlrd.open_workbook(file)
-    os.remove(file)
 
     sheet = f.sheet_by_index(0)
     nrows = sheet.nrows
     ncols = sheet.ncols
 
-    new_f = Workbook()
+    new_f = openpyxlWorkbook()
     sheet1 = new_f.get_active_sheet()
 
-    for row in xrange(0, nrows):
-        for col in xrange(0, ncols):
-            sheet1.cell(row=row, column=col).value = sheet.cell_value(row, col)
+    for row in range(0, nrows):
+        for col in range(0, ncols):
+            sheet1.cell(row=row+1, column=col+1).value = sheet.cell_value(row, col)
 
-    new_f.save(file)
+    new_f.save(file+'x')
+
+def getExtension(file):
+
+    extension = os.path.splitext(file)[1][1:]
+    return extension
+
+def convertAll(path):
+
+    files = []
+
+    for folder, subs, filees in os.walk(path):
+        for filename in filees:
+            files.append(os.path.abspath(os.path.join(folder, filename)))
+
+    for f in files:
+        convertXlsToXlsx(f)
+
+def iter_rows(ws):
+    for row in ws.iter_rows():
+        yield [cell.value for cell in row]
+
+
+def addFileToOtherFile(file,other_file,coloanaBarcode,randInceput = 2,randTitluri = 1): #aceasta functie presupune ca ambele au aceeasi extensie (.xls/.xlsx) asa ca trebuie apelata mai intai functia de conversie
+
+    orig = os.getcwd()
+
+
+    other_file_workbook = load_workbook(other_file)
+    other_file_sheet = other_file_workbook.active
+
+    file_workbook = load_workbook(file)
+    file_sheet = file_workbook.active
+
+    for row in list(iter_rows(other_file_sheet)):
+        file_sheet.append(row)
+
+    file_workbook.save(filename = file)
+
+    #os.remove(other_file)
+
+    os.chdir(orig)
+
+
+
+
+def mergeFiles(pathInitial,pathSalvare,coloanaBarcode,randInceput = 2,randInceputTitluri = 1):
+
+    #delete files after using them
+
+    orig = os.getcwd()
+
+    os.chdir(pathInitial)
+
+    files = []
+
+    #TO DO verifica cu getExtension(file) daca fisierele la care formezi path-ul absolut sunt doar de tipurile xls si xlsx
+
+    for folder, subs, filees in os.walk(pathInitial):
+        for filename in filees:
+            files.append(os.path.abspath(os.path.join(folder, filename)))
+
+    #print(files) aici in files avem path-urile absolute ale tuturor fisierelor dintr-un directoriu (ar trebuie sa fie toate xls si xlsx, dar trebuie o verificare in plus)
+
+    os.chdir(orig)
 
 
 #other stuff<------------------------------------->!
