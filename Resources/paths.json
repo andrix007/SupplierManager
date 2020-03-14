@@ -1,11 +1,11 @@
 {
     "suppliers" :[{
         "title": "Sony",
-        "catalogue"  : "C:\\Users\\Andrei Bancila\\Desktop\\SupplierProject\\FurnizoriClean\\Fisiere\\Sony\\Catalog",
-        "save"  : "C:\\Users\\Andrei Bancila\\Desktop\\Save your files here",
+        "catalogue_path"  : "C:\\Users\\Andrei Bancila\\Desktop\\SupplierListManagerProject\\Test\\BagaAici\\Catalog",
+        "save_path"  : "C:\\Users\\Andrei Bancila\\Desktop\\SupplierListManagerProject\\Test\\Void",
         "barcode_column" : 4,
-        "price_column": 6,
-        "start_line": 2
+        "price_column": 11,
+        "start_row": 2
     }
     ]
 }
