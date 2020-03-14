@@ -2,6 +2,10 @@ if __name__ == "__main__":
     from MainApplication import *
 else:
     from Classes.MainApplication import *
+if __name__ == "__main__":
+    from functions import *
+else:
+    from Classes.functions import *
 
 import os
 import json
@@ -45,11 +49,11 @@ class Sony(MainApplication):
 
     def solve(self):
 
-        #print(getFileXFromPath('C:\\Users\\Andrei Bancila\\Desktop\\Furnizori\\Plaseaza_fisierele_aici\\Catalog',1))
-       # convertXlsToXlsx(getFileXFromPath('C:\\Users\\Andrei Bancila\\Desktop\\Furnizori\\Plaseaza_fisierele_aici\\Catalog',1))
-        #print(getExtension(getFileXFromPath('C:\\Users\\Andrei Bancila\\Desktop\\Furnizori\\Plaseaza_fisierele_aici\\Catalog',1)))
+        print(getFileXFromPath('C:\\Users\\Andrei Bancila\\Desktop\\Furnizori\\Plaseaza_fisierele_aici\\Catalog',1))
+        convertXlsToXlsx(getFileXFromPath('C:\\Users\\Andrei Bancila\\Desktop\\Furnizori\\Plaseaza_fisierele_aici\\Catalog',1))
+        print(getExtension(getFileXFromPath('C:\\Users\\Andrei Bancila\\Desktop\\Furnizori\\Plaseaza_fisierele_aici\\Catalog',1)))
 
         #mergeFiles('C:\\Users\\Andrei Bancila\\Desktop\\Furnizori\\Plaseaza_fisierele_aici\\Catalog','C:\\Users\\Andrei Bancila\\Desktop\\Furnizori\\Plaseaza_fisierele_aici\\Catalog',1,1)
 
-        addFileToOtherFile(getFileXFromPath('C:\\Users\\Andrei Bancila\\Desktop\\Furnizori\\Plaseaza_fisierele_aici\\Catalog',1),getFileXFromPath('C:\\Users\\Andrei Bancila\\Desktop\\Furnizori\\Plaseaza_fisierele_aici\\Catalog',2),1,1)
+        addFileToOtherFile(getFileXFromPath('C:\\Users\\Andrei Bancila\\Desktop\\Furnizori\\Plaseaza_fisierele_aici\\Catalog',1),getFileXFromPath('C:\\Users\\Andrei Bancila\\Desktop\\Furnizori\\Plaseaza_fisierele_aici\\Catalog',2),4)
         self.master.destroy()
