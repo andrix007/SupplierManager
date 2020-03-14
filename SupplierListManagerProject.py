@@ -29,7 +29,7 @@ app = MainApplication(root,"SupplierListManagement - NICHE RECORDS S.R.L.©",400
 app.createLabelAtPosition(0,0,"Supplier: ",50,20)
 
 app.createDropdownMenuAtPosition(supplierTitles,0,1)
-app.createLabelAtPosition(0,2,"           ")
+app.createLabelAtPosition(0,2,"                   ")
 app.createButtonAtPosition(0,3)
 app.addNormalCommandToButton(0,app.destroySelf)
 
@@ -41,8 +41,10 @@ root = tk.Tk()
 
 name = app.getSelection(0)
 
-supplier = Sony(root,name,400,60,r"Icons/nichelogo.ico",MainApplication.univBackColor)
-supplier.solve()
+if name == "Sony":
+    supplier = Sony(root,name,835,120,r"Icons/nichelogo.ico",MainApplication.univBackColor)
+else:
+    print("BOI")
 
 root.mainloop()
 

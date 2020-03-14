@@ -31,12 +31,16 @@ def correctName(name):
     print(namae+nr)
     return namae+nr
 
+
+
 def isfloat(value):
   try:
     float(value)
     return True
   except ValueError:
     return False
+
+
 
 def getFileXFromPath(path,x):
     files = []
@@ -61,6 +65,7 @@ def getFileXFromPath(path,x):
             return path+'\\'+f[2:]
 
 
+
 def exist(path):
     orig = os.getcwd()
 
@@ -73,6 +78,8 @@ def exist(path):
     else:
         return True
 
+
+
 def eraseContent(path):
 
     for root, dirs, files in os.walk(path):
@@ -81,8 +88,11 @@ def eraseContent(path):
         for d in dirs:
             shutil.rmtree(os.path.join(root, d))
 
+
+
 def eraseDirectory(path):
     shutil.rmtree(path)
+
 
 
 def convertXlsToXlsx(file):
@@ -107,10 +117,14 @@ def convertXlsToXlsx(file):
 
     os.remove(file)
 
+
+
 def getExtension(file):
 
     extension = os.path.splitext(file)[1][1:]
     return extension
+
+
 
 def convertAll(path):
 
@@ -128,6 +142,7 @@ def convertAll(path):
 def iter_rows(ws):
     for row in ws.iter_rows():
         yield [cell.value for cell in row]
+
 
 
 def addFileToOtherFile(file,other_file,coloanaBarcode,randInceput = 2,randTitluri = 1): #aceasta functie presupune ca ambele au aceeasi extensie (.xls/.xlsx) asa ca trebuie apelata mai intai functia de conversie
@@ -181,6 +196,32 @@ def mergeFiles(pathInitial,pathSalvare,coloanaBarcode,randInceput = 2,randIncepu
     #print(files) aici in files avem path-urile absolute ale tuturor fisierelor dintr-un directoriu (ar trebuie sa fie toate xls si xlsx, dar trebuie o verificare in plus)
 
     os.chdir(orig)
+
+
+
+def modifyJson(supplierName,element,value):
+    supplierInfo = {}
+
+    with open(MainApplication.jsonFilePath) as f:
+        data = json.load(f)
+    i = 0
+
+    print(data)
+
+
+    for state in data["suppliers"]:
+        if state.get('title') == supplierName:
+            data["suppliers"][i].update({element:value})
+            break
+        i = i + 1
+
+    json_object = json.dumps(data, indent = 4)
+
+    with open(MainApplication.jsonFilePath, "w") as outfile:
+        outfile.write(json_object)
+
+
+
 
 
 #other stuff<------------------------------------->!

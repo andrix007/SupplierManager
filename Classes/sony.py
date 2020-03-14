@@ -45,7 +45,23 @@ class Sony(MainApplication):
                 self.supplierInfo = state
                 break
 
+        self.createLabelAtPosition(0,0,"Path Catalog: ",50,20)
+        self.createLabelAtPosition(0,1,self.supplierInfo['catalogue_path'])
+        self.createLabelAtPosition(0,2,"         ")
+        self.createButtonAtPosition(0,3,"Browse")
+        self.addNormalCommandToButton(0,self.browseFunction)
+
+        self.createLabelAtPosition(1,0,"                    ")
+        self.createButtonAtPosition(1,1,"Solve")
+        self.addNormalCommandToButton(1,self.solve)
+        self.createLabelAtPosition(1,2,"                    ")
         #print(self.supplierInfo)
+
+    def browseFunction(self):
+
+        self.master.filename  = filedialog.askdirectory(initialdir=os.getcwd(), title="Select File")
+        modifyJson("Sony","catalogue_path",self.master.filename.replace('/','\\'))
+        self.changeLabelText(1,self.master.filename)
 
     def solve(self):
 

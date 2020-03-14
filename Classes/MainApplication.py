@@ -1,4 +1,5 @@
 import tkinter as tk
+from tkinter import filedialog
 import os
 import json
 import xlsxwriter
@@ -6,6 +7,7 @@ import xlrd
 from openpyxl.workbook import Workbook as openpyxlWorkbook
 from openpyxl.reader.excel import load_workbook, InvalidFileException
 import shutil
+import time
 
 from tkinter import *
 
@@ -141,6 +143,8 @@ class MainApplication:
     def addLambdaCommandToButton(self,index,lambda_command,*args): #Adds a command with specifiable parameters to button
         self.buttons[index].config(command = lambda : lambda_command(*args))
 
+    def changeLabelText(self,index,new_text):
+        self.labels[index].config(text = new_text)
 
     def showSelection(self,index):
         text = self.ddmenus_clicked[index].get()
