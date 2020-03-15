@@ -117,7 +117,20 @@ def convertXlsToXlsx(file):
 
     os.remove(file)
 
+def qualityConvertXlsToXlsx(file):
 
+    if getExtension(file) != "xls":
+        return
+
+    excel = win32.gencache.EnsureDispatch('Excel.Application')
+    wb = excel.Workbooks.Open(file)
+
+    wb.SaveAs(file+"x", FileFormat = 51)
+    wb.Close()
+
+    os.remove(file)
+
+    excel.Application.Quit()
 
 def getExtension(file):
 
@@ -135,7 +148,10 @@ def convertAll(path):
             files.append(os.path.abspath(os.path.join(folder, filename)))
 
     for f in files:
-        convertXlsToXlsx(f)
+        try:
+            qualityConvertXlsToXlsx(f)
+        except:
+            convertXlsToXlsx(f)
 
 
 
@@ -206,8 +222,6 @@ def modifyJson(supplierName,element,value):
         data = json.load(f)
     i = 0
 
-    print(data)
-
 
     for state in data["suppliers"]:
         if state.get('title') == supplierName:
@@ -222,8 +236,31 @@ def modifyJson(supplierName,element,value):
 
 
 
+def getPriceDict(file,pricecode_column,pricevalue_column,price_start_row):
+    dictPreturi = {}
+    i = 0
 
+    file_workbook = openpyxlWorkbook(file)
+    file_sheet = file_workbook.active
 
+    for row in list(iter_rows(file_sheet)):
+        i = i + 1
+
+        if i < price_start_row:
+            continue
+
+        pricecode = row[pricecode_column-1]
+        pricevalue = row[pricevalue_column-1]
+
+        if pricecode not in dictPreturi:
+            dictPreturi.update({pricecode:pricevalue})
+
+    return dictPreturi
+
+def getFormulaForRowX(formula,x): #WORK IN PROGRESS
+    sx = str(x)
+    new_formula = formula.replace("F2","F"+sx).replace("E2","E"+sx)
+    return new_formula
 #other stuff<------------------------------------->!
 
 #File Management Methods Methods <------------------------------------->!

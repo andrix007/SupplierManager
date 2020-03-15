@@ -10,7 +10,7 @@ else:
 import os
 import json
 
-class Sony(MainApplication):
+class Nuclear(MainApplication):
 
     def __init__(self, master,title, width, height, icon=None, color=None):
         self.master = master
@@ -50,12 +50,18 @@ class Sony(MainApplication):
         self.createLabelAtPosition(0,1,self.supplierInfo['catalogue_path'])
         self.createLabelAtPosition(0,2,"         ")
         self.createButtonAtPosition(0,3,"Browse")
-        self.addNormalCommandToButton(0,self.browseFunction)
+        self.addNormalCommandToButton(0,self.browseCatalogFunction)
 
-        self.createLabelAtPosition(1,0,"                    ")
-        self.createButtonAtPosition(1,1,"Solve")
-        self.addNormalCommandToButton(1,self.solve)
-        self.createLabelAtPosition(1,2,"                    ")
+        self.createLabelAtPosition(1,0,"Path Preturi: ",50,20)
+        self.createLabelAtPosition(1,1,self.supplierInfo['price_path'])
+        self.createLabelAtPosition(1,2,"         ")
+        self.createButtonAtPosition(1,3,"Browse")
+        self.addNormalCommandToButton(1,self.browsePriceFunction)
+
+        self.createLabelAtPosition(2,0,"                    ")
+        self.createButtonAtPosition(2,1,"Solve")
+        self.addNormalCommandToButton(2,self.solve)
+        self.createLabelAtPosition(2,2,"                    ")
         #print(self.supplierInfo)
 
     def initJsonStuff(self):
@@ -69,7 +75,7 @@ class Sony(MainApplication):
                 self.supplierInfo = state
                 break
 
-    def browseFunction(self):
+    def browseCatalogFunction(self):
 
         self.master.filename  = filedialog.askdirectory(initialdir=os.getcwd(), title="Select File")
         if self.master.filename == "":
@@ -77,18 +83,36 @@ class Sony(MainApplication):
         modifyJson("Sony","catalogue_path",self.master.filename.replace('/','\\'))
         self.changeLabelText(1,self.master.filename)
 
+    def browsePriceFunction(self):
+
+        self.master.filename  = filedialog.askdirectory(initialdir=os.getcwd(), title="Select File")
+        if self.master.filename == "":
+            return
+        modifyJson("Sony","price_path",self.master.filename.replace('/','\\'))
+        self.changeLabelText(4,self.master.filename)
+
     def solve(self):
         self.initJsonStuff()
 
         error = open(MainApplication.univPath+"\\Resources"+"\\error.txt","w")
 
-        file = self.supplierInfo['catalogue_path']
-        convertAll(file)
+        catalogue_path = self.supplierInfo['catalogue_path']
+        convertAll(catalogue_path)
+
+        price_path = self.supplierInfo['price_path']
+        convertAll(price_path)
 
         save_path = self.supplierInfo['save_path']
         start_row = self.supplierInfo['start_row']
 
-        file_workbook =  load_workbook(getFileXFromPath(file,1))
+        price_file_path = getFileXFromPath(price_path,1)
+        print(price_file_path)
+
+
+        dictPreturi = getPriceDict(price_file_path,self.supplierInfo['pricecode_column'],self.supplierInfo['rounded_price_column'],self.supplierInfo['price_start_row'])
+        print(dictPreturi)
+        """
+        file_workbook =  load_workbook(getFileXFromPath(catalogue_path,1))
         file_sheet = file_workbook.active
 
         barcode_column = self.supplierInfo['barcode_column']
@@ -128,3 +152,4 @@ class Sony(MainApplication):
         void_workbook.save(save_path+"\\void - cat.xlsx")
 
         self.master.destroy()
+        """
