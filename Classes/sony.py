@@ -6,6 +6,10 @@ if __name__ == "__main__":
     from functions import *
 else:
     from Classes.functions import *
+if __name__ == "__main__":
+    from SupplierFile import *
+else:
+    from Classes.SupplierFile import *
 
 import os
 import json
@@ -82,14 +86,15 @@ class Sony(MainApplication):
 
         error = open(MainApplication.univPath+"\\Resources"+"\\error.txt","w")
 
-        file = self.supplierInfo['catalogue_path']
-        convertAll(file)
+        catalog_path = self.supplierInfo['catalogue_path']
 
         save_path = self.supplierInfo['save_path']
         start_row = self.supplierInfo['start_row']
 
-        file_workbook =  load_workbook(getFileXFromPath(file,1))
-        file_sheet = file_workbook.active
+        file = getFileXFromPath(catalog_path,1)
+        extension = getExtension(file)
+
+        sonyCatalog = SupplierFile(file,extension,start_row)
 
         barcode_column = self.supplierInfo['barcode_column']
         price_column = self.supplierInfo['price_column']
@@ -100,12 +105,11 @@ class Sony(MainApplication):
         void_sheet.cell(row = 1,column = 6).value = "Price"
 
         currentRow = 1
-        i = 0
+        i = start_row-1
 
-        for row in list(iter_rows(file_sheet)):
+        for row in (sonyCatalog.data):
             i = i + 1
-            if i < start_row:
-                continue
+
             barcode = str(row[barcode_column-1])
             price = row[price_column-1]
 

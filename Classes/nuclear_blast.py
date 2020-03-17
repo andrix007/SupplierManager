@@ -6,6 +6,10 @@ if __name__ == "__main__":
     from functions import *
 else:
     from Classes.functions import *
+if __name__ == "__main__":
+    from SupplierFile import *
+else:
+    from Classes.SupplierFile import *
 
 import os
 import json
@@ -95,45 +99,66 @@ class Nuclear(MainApplication):
         self.initJsonStuff()
 
         error = open(MainApplication.univPath+"\\Resources"+"\\error.txt","w")
+        PRICE_ERROR = 696969696969
+        BARCODE_ERROR = 797979797979
 
-        catalogue_path = self.supplierInfo['catalogue_path']
-        convertAll(catalogue_path)
-
+        catalog_path = self.supplierInfo['catalogue_path']
         price_path = self.supplierInfo['price_path']
-        convertAll(price_path)
-
         save_path = self.supplierInfo['save_path']
         start_row = self.supplierInfo['start_row']
-
-        price_file_path = getFileXFromPath(price_path,1)
-        print(price_file_path)
-
-
-        dictPreturi = getPriceDict(price_file_path,self.supplierInfo['pricecode_column'],self.supplierInfo['rounded_price_column'],self.supplierInfo['price_start_row'])
-        print(dictPreturi)
-        """
-        file_workbook =  load_workbook(getFileXFromPath(catalogue_path,1))
-        file_sheet = file_workbook.active
-
+        price_start_row = self.supplierInfo['price_start_row']
         barcode_column = self.supplierInfo['barcode_column']
         price_column = self.supplierInfo['price_column']
+        pricecode_column = self.supplierInfo['pricecode_column']
+        rounded_price_column = self.supplierInfo['rounded_price_column']
+
+        file_catalog = getFileXFromPath(catalog_path,1)
+        catalogExt = getExtension(file_catalog)
+        file_price = getFileXFromPath(price_path,1)
+        priceExt = getExtension(file_price)
+
+        nbCatalog = SupplierFile(file_catalog,catalogExt,start_row)
+        nbPrices = SupplierFile(file_price,priceExt,price_start_row)
+
+
+        dictPreturi = nbPrices.getDictionary(pricecode_column,rounded_price_column)
+
 
         void_workbook = openpyxlWorkbook()
         void_sheet = void_workbook.active
         void_sheet.cell(row = 1,column = 1).value = "Barcode"
         void_sheet.cell(row = 1,column = 6).value = "Price"
 
+
         currentRow = 1
-        i = 0
+        i = start_row-1
 
-        for row in list(iter_rows(file_sheet)):
+        for row in (nbCatalog.data):
             i = i + 1
-            if i < start_row:
-                continue
-            barcode = str(row[barcode_column-1])
-            price = row[price_column-1]
 
-            if barcode.isdigit() and isfloat(str(price)):
+            barcode = str(row[barcode_column-1])
+
+            correct_price_name = correctName(str(row[price_column-1]))
+            if correct_price_name in dictPreturi:
+                price = dictPreturi[correct_price_name]
+            else:
+                price = PRICE_ERROR
+
+            barcode = normalizeBarcode(barcode)
+
+            if barcode == None:
+                barcode = BARCODE_ERROR
+            else:
+                if not barcode.isdigit():
+                    barcode = BARCODE_ERROR
+
+            if str(price) == None:
+                price = PRICE_ERROR
+            else:
+                if not isfloat(str(price)):
+                    price = PRICE_ERROR
+
+            if barcode != BARCODE_ERROR and price != PRICE_ERROR:
 
                 currentRow = currentRow + 1
 
@@ -145,11 +170,23 @@ class Nuclear(MainApplication):
 
             else:
 
-                errorText = "Line " + str(i) + ":   " + barcode + " " + str(price) + "\n"
+                errorText = "Line " + str(i) + ":   "
+                if barcode == BARCODE_ERROR:
+                    errorText = errorText + "BARCODE_ERROR "
+                else:
+                    errorText = errorText + barcode + " "
+
+                if price == PRICE_ERROR:
+                    errorText = errorText + "PRICE_ERROR "
+                else:
+                    errorText = errorText + str(price)
+
+                errorText = errorText + "\n"
+
                 error.write(errorText)
 
+
         error.close()
-        void_workbook.save(save_path+"\\void - cat.xlsx")
+        void_workbook.save(save_path+"\\void - nuclear.xlsx")
 
         self.master.destroy()
-        """

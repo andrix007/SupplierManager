@@ -28,7 +28,6 @@ def correctName(name):
             namae = namae + str(ch)
 
     nr = nr.zfill(2)
-    print(namae+nr)
     return namae+nr
 
 
@@ -261,6 +260,18 @@ def getFormulaForRowX(formula,x): #WORK IN PROGRESS
     sx = str(x)
     new_formula = formula.replace("F2","F"+sx).replace("E2","E"+sx)
     return new_formula
+
+
+def normalizeBarcode(barcode):
+
+    barcode = str(barcode)
+    if '.' not in barcode:
+        return
+    try:
+        a,b = barcode.split('.')
+        return a
+    except:
+        print("BOI YU IDIOT")
 #other stuff<------------------------------------->!
 
 #File Management Methods Methods <------------------------------------->!
