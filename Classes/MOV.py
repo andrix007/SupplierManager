@@ -14,7 +14,7 @@ else:
 import os
 import json
 
-class Pias(MainApplication):
+class MOV(MainApplication):
 
     def __init__(self, master,title, width, height, icon=None, color=None):
         self.master = master
@@ -56,16 +56,10 @@ class Pias(MainApplication):
         self.createButtonAtPosition(0,3,"Browse")
         self.addNormalCommandToButton(0,self.browseCatalogFunction)
 
-        self.createLabelAtPosition(1,0,"Path Preturi: ",50,20)
-        self.createLabelAtPosition(1,1,self.supplierInfo['price_path'])
-        self.createLabelAtPosition(1,2,"         ")
-        self.createButtonAtPosition(1,3,"Browse")
-        self.addNormalCommandToButton(1,self.browsePriceFunction)
-
-        self.createLabelAtPosition(2,0,"                    ")
-        self.createButtonAtPosition(2,1,"Solve")
-        self.addNormalCommandToButton(2,self.solve)
-        self.createLabelAtPosition(2,2,"                    ")
+        self.createLabelAtPosition(1,0,"                    ")
+        self.createButtonAtPosition(1,1,"Solve")
+        self.addNormalCommandToButton(1,self.solve)
+        self.createLabelAtPosition(1,2,"                    ")
         #print(self.supplierInfo)
 
     def initJsonStuff(self):
@@ -84,16 +78,8 @@ class Pias(MainApplication):
         self.master.filename  = filedialog.askdirectory(initialdir=os.getcwd(), title="Select File")
         if self.master.filename == "":
             return
-        modifyJson("Pias","catalogue_path",self.master.filename.replace('/','\\'))
+        modifyJson("Nuclear Blast","catalogue_path",self.master.filename.replace('/','\\'))
         self.changeLabelText(1,self.master.filename)
-
-    def browsePriceFunction(self):
-
-        self.master.filename  = filedialog.askdirectory(initialdir=os.getcwd(), title="Select File")
-        if self.master.filename == "":
-            return
-        modifyJson("Pias","price_path",self.master.filename.replace('/','\\'))
-        self.changeLabelText(4,self.master.filename)
 
     def solve(self):
         self.initJsonStuff()
@@ -103,27 +89,16 @@ class Pias(MainApplication):
         BARCODE_ERROR = 797979797979
 
         catalog_path = self.supplierInfo['catalogue_path']
-        price_path = self.supplierInfo['price_path']
         save_path = self.supplierInfo['save_path']
         start_row = self.supplierInfo['start_row']
-        price_start_row = self.supplierInfo['price_start_row']
         barcode_column = self.supplierInfo['barcode_column']
         price_column = self.supplierInfo['price_column']
-        pricecode_column = self.supplierInfo['pricecode_column']
-        rounded_price_column = self.supplierInfo['rounded_price_column']
         save_name = self.supplierInfo['save_name']
 
         file_catalog = getFileXFromPath(catalog_path,1)
         catalogExt = getExtension(file_catalog)
-        file_price = getFileXFromPath(price_path,1)
-        priceExt = getExtension(file_price)
 
-        piasCatalog = SupplierFile(file_catalog,catalogExt,start_row)
-        piasPrices = SupplierFile(file_price,priceExt,price_start_row)
-
-        print(file_catalog)
-
-        dictPreturi = piasPrices.getDictionary(pricecode_column,rounded_price_column)
+        movCatalog = SupplierFile(file_catalog,catalogExt,start_row)
 
         void_workbook = openpyxlWorkbook()
         void_sheet = void_workbook.active
@@ -134,16 +109,11 @@ class Pias(MainApplication):
         currentRow = 1
         i = start_row-1
 
-        for row in (piasCatalog.data):
+        for row in (movCatalog.data):
             i = i + 1
 
             barcode = str(row[barcode_column-1])
-            catalog_price = row[price_column-1]
-
-            if catalog_price in dictPreturi:
-                price = dictPreturi[catalog_price]
-            else:
-                price = PRICE_ERROR
+            price = row[price_column-1]
 
             barcode = normalizeBarcode(barcode)
 
@@ -164,9 +134,10 @@ class Pias(MainApplication):
                 currentRow = currentRow + 1
 
                 barcode = barcode.zfill(13)
+                newPrice = price*4.455
 
                 void_sheet.cell(row = currentRow,column = 1).value = barcode
-                void_sheet.cell(row = currentRow,column = 6).value = round(price,2)
+                void_sheet.cell(row = currentRow,column = 6).value = round(newPrice,2)
 
             else:
 

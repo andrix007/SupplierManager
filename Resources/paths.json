@@ -2,6 +2,7 @@
     "suppliers": [
         {
             "title": "Sony",
+            "save_name": "void - cat_music.xlsx",
             "catalogue_path": "C:\\Users\\Andrei Bancila\\Desktop\\SupplierListManagerProject\\Test\\BagaAici\\Catalog",
             "save_path": "C:\\Users\\Andrei Bancila\\Desktop\\SupplierListManagerProject\\Test\\Void",
             "barcode_column": 4,
@@ -10,6 +11,7 @@
         },
         {
             "title": "Nuclear Blast",
+            "save_name": "void - nuclear.xlsx",
             "catalogue_path": "C:\\Users\\Andrei Bancila\\Desktop\\SupplierListManagerProject\\Test\\BagaAici\\Catalog",
             "price_path": "C:\\Users\\Andrei Bancila\\Desktop\\SupplierListManagerProject\\Test\\BagaAici\\Preturi",
             "pricecode_column": 2,
@@ -22,6 +24,7 @@
         },
         {
             "title": "Pias",
+            "save_name": "void - pias.xlsx",
             "catalogue_path": "C:\\Users\\Andrei Bancila\\Desktop\\SupplierListManagerProject\\Test\\BagaAici\\Catalog",
             "price_path": "C:\\Users\\Andrei Bancila\\Desktop\\SupplierListManagerProject\\Test\\BagaAici\\Preturi",
             "pricecode_column": 1,
@@ -31,6 +34,29 @@
             "barcode_column": 4,
             "price_column": 6,
             "start_row": 1
+        },
+        {
+            "title": "Pias_Classical",
+            "save_name": "void - pias_classical.xlsx",
+            "catalogue_path": "C:\\Users\\Andrei Bancila\\Desktop\\SupplierListManagerProject\\Test\\BagaAici\\Catalog",
+            "price_path": "C:\\Users\\Andrei Bancila\\Desktop\\SupplierListManagerProject\\Test\\BagaAici\\Preturi",
+            "pricecode_column": 1,
+            "rounded_price_column": 5,
+            "price_start_row": 2,
+            "save_path": "C:\\Users\\Andrei Bancila\\Desktop\\SupplierListManagerProject\\Test\\Void",
+            "barcode_column": 4,
+            "price_column": 6,
+            "quantity_column": 3,
+            "start_row": 1
+        },
+        {
+            "title": "Music On Vinyl",
+            "save_name": "void - Music On Vinyl.xlsx",
+            "catalogue_path": "C:\\Users\\Andrei Bancila\\Desktop\\SupplierListManagerProject\\Test\\BagaAici\\Catalog",
+            "save_path": "C:\\Users\\Andrei Bancila\\Desktop\\SupplierListManagerProject\\Test\\Void",
+            "barcode_column": 15,
+            "price_column": 6,
+            "start_row": 2
         }
     ]
 }

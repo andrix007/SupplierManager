@@ -14,7 +14,7 @@ else:
 import os
 import json
 
-class Pias(MainApplication):
+class Pias_Classical(MainApplication):
 
     def __init__(self, master,title, width, height, icon=None, color=None):
         self.master = master
@@ -84,7 +84,7 @@ class Pias(MainApplication):
         self.master.filename  = filedialog.askdirectory(initialdir=os.getcwd(), title="Select File")
         if self.master.filename == "":
             return
-        modifyJson("Pias","catalogue_path",self.master.filename.replace('/','\\'))
+        modifyJson("Pias_Classical","catalogue_path",self.master.filename.replace('/','\\'))
         self.changeLabelText(1,self.master.filename)
 
     def browsePriceFunction(self):
@@ -92,7 +92,7 @@ class Pias(MainApplication):
         self.master.filename  = filedialog.askdirectory(initialdir=os.getcwd(), title="Select File")
         if self.master.filename == "":
             return
-        modifyJson("Pias","price_path",self.master.filename.replace('/','\\'))
+        modifyJson("Pias_Classical","price_path",self.master.filename.replace('/','\\'))
         self.changeLabelText(4,self.master.filename)
 
     def solve(self):
@@ -101,6 +101,7 @@ class Pias(MainApplication):
         error = open(MainApplication.univPath+"\\Resources"+"\\error.txt","w")
         PRICE_ERROR = 696969696969
         BARCODE_ERROR = 797979797979
+        EMPTY_QUANTITY = 898989898989
 
         catalog_path = self.supplierInfo['catalogue_path']
         price_path = self.supplierInfo['price_path']
@@ -111,6 +112,7 @@ class Pias(MainApplication):
         price_column = self.supplierInfo['price_column']
         pricecode_column = self.supplierInfo['pricecode_column']
         rounded_price_column = self.supplierInfo['rounded_price_column']
+        quantity_column = self.supplierInfo['quantity_column']
         save_name = self.supplierInfo['save_name']
 
         file_catalog = getFileXFromPath(catalog_path,1)
@@ -120,8 +122,6 @@ class Pias(MainApplication):
 
         piasCatalog = SupplierFile(file_catalog,catalogExt,start_row)
         piasPrices = SupplierFile(file_price,priceExt,price_start_row)
-
-        print(file_catalog)
 
         dictPreturi = piasPrices.getDictionary(pricecode_column,rounded_price_column)
 
@@ -139,6 +139,10 @@ class Pias(MainApplication):
 
             barcode = str(row[barcode_column-1])
             catalog_price = row[price_column-1]
+            quantity = row[quantity_column-1]
+
+            if quantity == 0:
+                quantity = EMPTY_QUANTITY
 
             if catalog_price in dictPreturi:
                 price = dictPreturi[catalog_price]
@@ -159,7 +163,7 @@ class Pias(MainApplication):
                 if not isfloat(str(price)):
                     price = PRICE_ERROR
 
-            if barcode != BARCODE_ERROR and price != PRICE_ERROR:
+            if barcode != BARCODE_ERROR and price != PRICE_ERROR and quantity != EMPTY_QUANTITY:
 
                 currentRow = currentRow + 1
 
@@ -179,7 +183,12 @@ class Pias(MainApplication):
                 if price == PRICE_ERROR:
                     errorText = errorText + "PRICE_ERROR "
                 else:
-                    errorText = errorText + str(price)
+                    errorText = errorText + str(price) + " "
+
+                if quantity == EMPTY_QUANTITY:
+                    errorText = errorText + "EMPTY_QUANTITY "
+                else:
+                    errorText = errorText + str(quantity)
 
                 errorText = errorText + "\n"
 

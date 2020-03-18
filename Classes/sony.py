@@ -90,6 +90,7 @@ class Sony(MainApplication):
 
         save_path = self.supplierInfo['save_path']
         start_row = self.supplierInfo['start_row']
+        save_name = self.supplierInfo['save_name']
 
         file = getFileXFromPath(catalog_path,1)
         extension = getExtension(file)
@@ -129,6 +130,6 @@ class Sony(MainApplication):
                 error.write(errorText)
 
         error.close()
-        void_workbook.save(save_path+"\\void - cat.xlsx")
+        void_workbook.save(save_path+"\\" + save_name)
 
         self.master.destroy()

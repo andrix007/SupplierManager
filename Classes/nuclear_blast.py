@@ -111,6 +111,7 @@ class Nuclear(MainApplication):
         price_column = self.supplierInfo['price_column']
         pricecode_column = self.supplierInfo['pricecode_column']
         rounded_price_column = self.supplierInfo['rounded_price_column']
+        save_name = self.supplierInfo['save_name']
 
         file_catalog = getFileXFromPath(catalog_path,1)
         catalogExt = getExtension(file_catalog)
@@ -187,6 +188,6 @@ class Nuclear(MainApplication):
 
 
         error.close()
-        void_workbook.save(save_path+"\\void - nuclear.xlsx")
+        void_workbook.save(save_path+"\\" + save_name)
 
         self.master.destroy()

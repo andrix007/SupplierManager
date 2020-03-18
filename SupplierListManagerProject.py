@@ -2,6 +2,8 @@ from Classes.MainApplication import *
 from Classes.sony import *
 from Classes.nuclear_blast import *
 from Classes.pias import *
+from Classes.Pias_Classical import *
+from Classes.MOV import *
 import tkinter as tk
 import os
 
@@ -10,7 +12,7 @@ supplierTitles = [
 "Nuclear Blast",
 "Pias",
 "Pias_Classical",
-"Music On Vynil",
+"Music On Vinyl",
 "Sperakers Corner",
 "Mystic",
 "Sincron",
@@ -49,6 +51,10 @@ elif name == "Nuclear Blast":
     supplier = Nuclear(root,name,835,180,r"Icons/nichelogo.ico",MainApplication.univBackColor)
 elif name == "Pias":
     supplier = Pias(root,name,835,180,r"Icons/nichelogo.ico",MainApplication.univBackColor)
+elif name == "Pias_Classical":
+    supplier = Pias_Classical(root,name,835,180,r"Icons/nichelogo.ico",MainApplication.univBackColor)
+elif name == "Music On Vinyl":
+    supplier = MOV(root,name,835,120,r"Icons/nichelogo.ico",MainApplication.univBackColor)
 else:
     print("BOI")
 
