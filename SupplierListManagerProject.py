@@ -1,6 +1,7 @@
 from Classes.MainApplication import *
 from Classes.sony import *
 from Classes.nuclear_blast import *
+from Classes.pias import *
 import tkinter as tk
 import os
 
@@ -46,6 +47,8 @@ if name == "Sony":
     supplier = Sony(root,name,835,120,r"Icons/nichelogo.ico",MainApplication.univBackColor)
 elif name == "Nuclear Blast":
     supplier = Nuclear(root,name,835,180,r"Icons/nichelogo.ico",MainApplication.univBackColor)
+elif name == "Pias":
+    supplier = Pias(root,name,835,180,r"Icons/nichelogo.ico",MainApplication.univBackColor)
 else:
     print("BOI")
 

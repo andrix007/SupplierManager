@@ -14,7 +14,7 @@ else:
 import os
 import json
 
-class Nuclear(MainApplication):
+class Pias(MainApplication):
 
     def __init__(self, master,title, width, height, icon=None, color=None):
         self.master = master
@@ -84,7 +84,7 @@ class Nuclear(MainApplication):
         self.master.filename  = filedialog.askdirectory(initialdir=os.getcwd(), title="Select File")
         if self.master.filename == "":
             return
-        modifyJson("Nuclear Blast","catalogue_path",self.master.filename.replace('/','\\'))
+        modifyJson("Pias","catalogue_path",self.master.filename.replace('/','\\'))
         self.changeLabelText(1,self.master.filename)
 
     def browsePriceFunction(self):
@@ -92,7 +92,7 @@ class Nuclear(MainApplication):
         self.master.filename  = filedialog.askdirectory(initialdir=os.getcwd(), title="Select File")
         if self.master.filename == "":
             return
-        modifyJson("Nuclear Blast","price_path",self.master.filename.replace('/','\\'))
+        modifyJson("Pias","price_path",self.master.filename.replace('/','\\'))
         self.changeLabelText(4,self.master.filename)
 
     def solve(self):
@@ -117,12 +117,12 @@ class Nuclear(MainApplication):
         file_price = getFileXFromPath(price_path,1)
         priceExt = getExtension(file_price)
 
-        nbCatalog = SupplierFile(file_catalog,catalogExt,start_row)
-        nbPrices = SupplierFile(file_price,priceExt,price_start_row)
+        piasCatalog = SupplierFile(file_catalog,catalogExt,start_row)
+        piasPrices = SupplierFile(file_price,priceExt,price_start_row)
 
+        print(file_catalog)
 
-        dictPreturi = nbPrices.getDictionary(pricecode_column,rounded_price_column)
-
+        dictPreturi = piasPrices.getDictionary(pricecode_column,rounded_price_column)
 
         void_workbook = openpyxlWorkbook()
         void_sheet = void_workbook.active
@@ -133,19 +133,19 @@ class Nuclear(MainApplication):
         currentRow = 1
         i = start_row-1
 
-        for row in (nbCatalog.data):
+        for row in (piasCatalog.data):
             i = i + 1
 
             barcode = str(row[barcode_column-1])
+            catalog_price = row[price_column-1]
 
-            correct_price_name = correctName(str(row[price_column-1]))
-            if correct_price_name in dictPreturi:
-                price = dictPreturi[correct_price_name]
+            if catalog_price in dictPreturi:
+                price = dictPreturi[catalog_price]
             else:
                 price = PRICE_ERROR
 
             barcode = normalizeBarcode(barcode)
-
+            print("barcode = ",barcode)
             if barcode == None:
                 barcode = BARCODE_ERROR
             else:
@@ -163,10 +163,9 @@ class Nuclear(MainApplication):
                 currentRow = currentRow + 1
 
                 barcode = barcode.zfill(13)
-                newPrice = price/1.19*0.6
 
                 void_sheet.cell(row = currentRow,column = 1).value = barcode
-                void_sheet.cell(row = currentRow,column = 6).value = round(newPrice,2)
+                void_sheet.cell(row = currentRow,column = 6).value = round(price,2)
 
             else:
 
@@ -187,6 +186,6 @@ class Nuclear(MainApplication):
 
 
         error.close()
-        void_workbook.save(save_path+"\\void - nuclear.xlsx")
+        void_workbook.save(save_path+"\\void - pias.xlsx")
 
         self.master.destroy()

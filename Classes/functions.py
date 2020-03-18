@@ -266,7 +266,7 @@ def normalizeBarcode(barcode):
 
     barcode = str(barcode)
     if '.' not in barcode:
-        return
+        return barcode
     try:
         a,b = barcode.split('.')
         return a
