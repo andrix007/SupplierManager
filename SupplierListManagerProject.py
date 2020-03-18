@@ -1,9 +1,10 @@
 from Classes.MainApplication import *
 from Classes.sony import *
-from Classes.nuclear_blast import *
+from Classes.nuke import *
 from Classes.pias import *
 from Classes.Pias_Classical import *
 from Classes.MOV import *
+from Classes.SCR import *
 import tkinter as tk
 import os
 
@@ -46,15 +47,17 @@ root = tk.Tk()
 name = app.getSelection(0)
 
 if name == "Sony":
-    supplier = Sony(root,name,835,120,r"Icons/nichelogo.ico",MainApplication.univBackColor)
+    supplier = Sony(root,name,1035,180,r"Icons/nichelogo.ico",MainApplication.univBackColor)
 elif name == "Nuclear Blast":
-    supplier = Nuclear(root,name,835,180,r"Icons/nichelogo.ico",MainApplication.univBackColor)
+    supplier = Nuke(root,name,1100,240,r"Icons/nichelogo.ico",MainApplication.univBackColor)
 elif name == "Pias":
-    supplier = Pias(root,name,835,180,r"Icons/nichelogo.ico",MainApplication.univBackColor)
+    supplier = Pias(root,name,1035,240,r"Icons/nichelogo.ico",MainApplication.univBackColor)
 elif name == "Pias_Classical":
-    supplier = Pias_Classical(root,name,835,180,r"Icons/nichelogo.ico",MainApplication.univBackColor)
+    supplier = Pias_Classical(root,name,1035,240,r"Icons/nichelogo.ico",MainApplication.univBackColor)
 elif name == "Music On Vinyl":
-    supplier = MOV(root,name,835,120,r"Icons/nichelogo.ico",MainApplication.univBackColor)
+    supplier = MOV(root,name,1035,180,r"Icons/nichelogo.ico",MainApplication.univBackColor)
+elif name == "Speakers Corner":
+    supplier = SCR(root,name,1035,360,r"Icons/nichelogo.ico",MainApplication.univBackColor)
 else:
     print("BOI")
 

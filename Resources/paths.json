@@ -3,7 +3,7 @@
         {
             "title": "Sony",
             "save_name": "void - cat_music.xlsx",
-            "catalogue_path": "C:\\Users\\Andrei Bancila\\Desktop\\SupplierListManagerProject\\Test\\BagaAici\\Catalog",
+            "catalogue_path": "C:\\Users\\Andrei Bancila\\Desktop\\SupplierListManagerProject\\Test\\BagaAici\\Catalog\\Catalog_extins_sony_ianuarie2020.xlsx",
             "save_path": "C:\\Users\\Andrei Bancila\\Desktop\\SupplierListManagerProject\\Test\\Void",
             "barcode_column": 4,
             "price_column": 11,
@@ -12,8 +12,8 @@
         {
             "title": "Nuclear Blast",
             "save_name": "void - nuclear.xlsx",
-            "catalogue_path": "C:\\Users\\Andrei Bancila\\Desktop\\SupplierListManagerProject\\Test\\BagaAici\\Catalog",
-            "price_path": "C:\\Users\\Andrei Bancila\\Desktop\\SupplierListManagerProject\\Test\\BagaAici\\Preturi",
+            "catalogue_path": "C:\\Users\\Andrei Bancila\\Desktop\\SupplierListManagerProject\\Test\\BagaAici\\dane\\aaaaNB labelcatalogue complete update week 39-2019.xls",
+            "price_path": "C:\\Users\\Andrei Bancila\\Desktop\\SupplierListManagerProject\\Test\\BagaAici\\dane\\Preturi Nuclear Blast 2018.xlsx",
             "pricecode_column": 2,
             "rounded_price_column": 6,
             "price_start_row": 2,
@@ -25,8 +25,8 @@
         {
             "title": "Pias",
             "save_name": "void - pias.xlsx",
-            "catalogue_path": "C:\\Users\\Andrei Bancila\\Desktop\\SupplierListManagerProject\\Test\\BagaAici\\Catalog",
-            "price_path": "C:\\Users\\Andrei Bancila\\Desktop\\SupplierListManagerProject\\Test\\BagaAici\\Preturi",
+            "catalogue_path": "C:\\Users\\Andrei Bancila\\Desktop\\SupplierListManagerProject\\Test\\BagaAici\\dane\\[PIAS] Stocklist 30-09-2019.xlsx",
+            "price_path": "C:\\Users\\Andrei Bancila\\Desktop\\SupplierListManagerProject\\Test\\BagaAici\\dane\\Preturi PIAS 2018.xlsx",
             "pricecode_column": 1,
             "rounded_price_column": 5,
             "price_start_row": 2,
@@ -38,8 +38,8 @@
         {
             "title": "Pias_Classical",
             "save_name": "void - pias_classical.xlsx",
-            "catalogue_path": "C:\\Users\\Andrei Bancila\\Desktop\\SupplierListManagerProject\\Test\\BagaAici\\Catalog",
-            "price_path": "C:\\Users\\Andrei Bancila\\Desktop\\SupplierListManagerProject\\Test\\BagaAici\\Preturi",
+            "catalogue_path": "C:\\Users\\Andrei Bancila\\Desktop\\SupplierListManagerProject\\Test\\BagaAici\\dane\\Classical Stocklist 23-09-2019.xlsx",
+            "price_path": "C:\\Users\\Andrei Bancila\\Desktop\\SupplierListManagerProject\\Test\\BagaAici\\dane\\Preturi PIAS 2018.xlsx",
             "pricecode_column": 1,
             "rounded_price_column": 5,
             "price_start_row": 2,
@@ -52,10 +52,23 @@
         {
             "title": "Music On Vinyl",
             "save_name": "void - Music On Vinyl.xlsx",
-            "catalogue_path": "C:\\Users\\Andrei Bancila\\Desktop\\SupplierListManagerProject\\Test\\BagaAici\\Catalog",
+            "catalogue_path": "C:\\Users\\Andrei Bancila\\Desktop\\SupplierListManagerProject\\Test\\BagaAici\\dane\\mov (1).xlsx",
             "save_path": "C:\\Users\\Andrei Bancila\\Desktop\\SupplierListManagerProject\\Test\\Void",
             "barcode_column": 15,
             "price_column": 6,
+            "start_row": 2
+        },
+        {
+            "title": "Speakers Corner",
+            "save_name": "void - Speakers Corner.xlsx",
+            "catalogue_path": "C:\\Users\\Andrei Bancila\\Desktop\\SupplierListManagerProject\\Test\\BagaAici\\Catalog",
+            "price_path": "C:\\Users\\Andrei Bancila\\Desktop\\SupplierListManagerProject\\Test\\BagaAici\\Preturi",
+            "pricecode_column": 3,
+            "rounded_price_column": 6,
+            "price_start_row": 2,
+            "save_path": "C:\\Users\\Andrei Bancila\\Desktop\\SupplierListManagerProject\\Test\\Void",
+            "barcode_column": 5,
+            "price_column": 8,
             "start_row": 2
         }
     ]

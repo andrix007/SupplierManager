@@ -56,10 +56,16 @@ class Sony(MainApplication):
         self.createButtonAtPosition(0,3,"Browse")
         self.addNormalCommandToButton(0,self.browseFunction)
 
-        self.createLabelAtPosition(1,0,"                    ")
-        self.createButtonAtPosition(1,1,"Solve")
-        self.addNormalCommandToButton(1,self.solve)
-        self.createLabelAtPosition(1,2,"                    ")
+        self.createLabelAtPosition(1,0,"Path Salvare: ",50,20)
+        self.createLabelAtPosition(1,1,self.supplierInfo['save_path'])
+        self.createLabelAtPosition(1,2,"         ")
+        self.createButtonAtPosition(1,3,"Browse")
+        self.addNormalCommandToButton(1,self.browseFolderFunction)
+
+        self.createLabelAtPosition(2,0,"                    ")
+        self.createButtonAtPosition(2,1,"Solve")
+        self.addNormalCommandToButton(2,self.solve)
+        self.createLabelAtPosition(2,2,"                    ")
         #print(self.supplierInfo)
 
     def initJsonStuff(self):
@@ -75,24 +81,31 @@ class Sony(MainApplication):
 
     def browseFunction(self):
 
-        self.master.filename  = filedialog.askdirectory(initialdir=os.getcwd(), title="Select File")
+        self.master.filename  = filedialog.askopenfilename(initialdir=self.supplierInfo['catalogue_path'].split('\\')[:-1], title="Select File", filetypes = (("all files","*.*"),("xlsx files","*.xlsx"),("xls files","*.xls")))
         if self.master.filename == "":
             return
         modifyJson("Sony","catalogue_path",self.master.filename.replace('/','\\'))
-        self.changeLabelText(1,self.master.filename)
+        self.changeLabelText(1,self.master.filename.replace('/','\\'))
+
+    def browseFolderFunction(self):
+
+        self.master.filename  = filedialog.askdirectory(initialdir=self.supplierInfo['save_path'], title="Select File")
+        if self.master.filename == "":
+            return
+        modifyJson("Sony","save_path",self.master.filename.replace('/','\\'))
+        self.changeLabelText(4,self.master.filename.replace('/','\\'))
 
     def solve(self):
         self.initJsonStuff()
 
         error = open(MainApplication.univPath+"\\Resources"+"\\error.txt","w")
 
-        catalog_path = self.supplierInfo['catalogue_path']
+        file = self.supplierInfo['catalogue_path']
 
         save_path = self.supplierInfo['save_path']
         start_row = self.supplierInfo['start_row']
         save_name = self.supplierInfo['save_name']
 
-        file = getFileXFromPath(catalog_path,1)
         extension = getExtension(file)
 
         sonyCatalog = SupplierFile(file,extension,start_row)

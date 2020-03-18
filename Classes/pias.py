@@ -62,10 +62,16 @@ class Pias(MainApplication):
         self.createButtonAtPosition(1,3,"Browse")
         self.addNormalCommandToButton(1,self.browsePriceFunction)
 
-        self.createLabelAtPosition(2,0,"                    ")
-        self.createButtonAtPosition(2,1,"Solve")
-        self.addNormalCommandToButton(2,self.solve)
-        self.createLabelAtPosition(2,2,"                    ")
+        self.createLabelAtPosition(2,0,"Path Salvare: ",50,20)
+        self.createLabelAtPosition(2,1,self.supplierInfo['save_path'])
+        self.createLabelAtPosition(2,2,"         ")
+        self.createButtonAtPosition(2,3,"Browse")
+        self.addNormalCommandToButton(2,self.browseFolderFunction)
+
+        self.createLabelAtPosition(3,0,"                    ")
+        self.createButtonAtPosition(3,1,"Solve")
+        self.addNormalCommandToButton(3,self.solve)
+        self.createLabelAtPosition(3,2,"                    ")
         #print(self.supplierInfo)
 
     def initJsonStuff(self):
@@ -81,19 +87,27 @@ class Pias(MainApplication):
 
     def browseCatalogFunction(self):
 
-        self.master.filename  = filedialog.askdirectory(initialdir=os.getcwd(), title="Select File")
+        self.master.filename  = filedialog.askopenfilename(initialdir=self.supplierInfo['catalogue_path'].split('\\')[:-1], title="Select File", filetypes = (("all files","*.*"),("xlsx files","*.xlsx"),("xls files","*.xls")))
         if self.master.filename == "":
             return
         modifyJson("Pias","catalogue_path",self.master.filename.replace('/','\\'))
-        self.changeLabelText(1,self.master.filename)
+        self.changeLabelText(1,self.master.filename.replace('/','\\'))
 
     def browsePriceFunction(self):
 
-        self.master.filename  = filedialog.askdirectory(initialdir=os.getcwd(), title="Select File")
+        self.master.filename  = filedialog.askopenfilename(initialdir=self.supplierInfo['price_path'].split('\\')[:-1], title="Select File", filetypes = (("all files","*.*"),("xlsx files","*.xlsx"),("xls files","*.xls")))
         if self.master.filename == "":
             return
         modifyJson("Pias","price_path",self.master.filename.replace('/','\\'))
-        self.changeLabelText(4,self.master.filename)
+        self.changeLabelText(4,self.master.filename.replace('/','\\'))
+
+    def browseFolderFunction(self):
+
+        self.master.filename  = filedialog.askdirectory(initialdir=self.supplierInfo['save_path'], title="Select File")
+        if self.master.filename == "":
+            return
+        modifyJson("Pias","save_path",self.master.filename.replace('/','\\'))
+        self.changeLabelText(7,self.master.filename.replace('/','\\'))
 
     def solve(self):
         self.initJsonStuff()
@@ -102,8 +116,8 @@ class Pias(MainApplication):
         PRICE_ERROR = 696969696969
         BARCODE_ERROR = 797979797979
 
-        catalog_path = self.supplierInfo['catalogue_path']
-        price_path = self.supplierInfo['price_path']
+        file_catalog = self.supplierInfo['catalogue_path']
+        file_price = self.supplierInfo['price_path']
         save_path = self.supplierInfo['save_path']
         start_row = self.supplierInfo['start_row']
         price_start_row = self.supplierInfo['price_start_row']
@@ -113,15 +127,11 @@ class Pias(MainApplication):
         rounded_price_column = self.supplierInfo['rounded_price_column']
         save_name = self.supplierInfo['save_name']
 
-        file_catalog = getFileXFromPath(catalog_path,1)
         catalogExt = getExtension(file_catalog)
-        file_price = getFileXFromPath(price_path,1)
         priceExt = getExtension(file_price)
 
         piasCatalog = SupplierFile(file_catalog,catalogExt,start_row)
         piasPrices = SupplierFile(file_price,priceExt,price_start_row)
-
-        print(file_catalog)
 
         dictPreturi = piasPrices.getDictionary(pricecode_column,rounded_price_column)
 
