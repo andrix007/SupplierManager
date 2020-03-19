@@ -20,6 +20,28 @@ supplierTitles = [
 "Kpop",
 "Noutati_Kpop"]
 
+def solve():
+    root = tk.Tk()
+
+    name = app.getSelection(0)
+
+    if name == "Sony":
+        supplier = Sony(root,name,1035,180,r"Icons/nichelogo.ico",MainApplication.univBackColor)
+    elif name == "Nuclear Blast":
+        supplier = Nuke(root,name,1100,240,r"Icons/nichelogo.ico",MainApplication.univBackColor)
+    elif name == "Pias":
+        supplier = Pias(root,name,1035,240,r"Icons/nichelogo.ico",MainApplication.univBackColor)
+    elif name == "Pias_Classical":
+        supplier = Pias_Classical(root,name,1035,240,r"Icons/nichelogo.ico",MainApplication.univBackColor)
+    elif name == "Music On Vinyl":
+        supplier = MOV(root,name,1035,180,r"Icons/nichelogo.ico",MainApplication.univBackColor)
+    elif name == "Speakers Corner":
+        supplier = SCR(root,name,1035,360,r"Icons/nichelogo.ico",MainApplication.univBackColor)
+    else:
+        print("BOI")
+
+    root.mainloop()
+
 ##########################################################################################################################################################################################################
 
 MainApplication.initPath(os.getcwd())
@@ -36,30 +58,10 @@ app.createLabelAtPosition(0,0,"Supplier: ",50,20)
 app.createDropdownMenuAtPosition(supplierTitles,0,1)
 app.createLabelAtPosition(0,2,"                   ")
 app.createButtonAtPosition(0,3)
-app.addNormalCommandToButton(0,app.destroySelf)
+app.addNormalCommandToButton(0,solve)
 
 root.mainloop()
 
 ##########################################################################################################################################################################################################
 
-root = tk.Tk()
-
-name = app.getSelection(0)
-
-if name == "Sony":
-    supplier = Sony(root,name,1035,180,r"Icons/nichelogo.ico",MainApplication.univBackColor)
-elif name == "Nuclear Blast":
-    supplier = Nuke(root,name,1100,240,r"Icons/nichelogo.ico",MainApplication.univBackColor)
-elif name == "Pias":
-    supplier = Pias(root,name,1035,240,r"Icons/nichelogo.ico",MainApplication.univBackColor)
-elif name == "Pias_Classical":
-    supplier = Pias_Classical(root,name,1035,240,r"Icons/nichelogo.ico",MainApplication.univBackColor)
-elif name == "Music On Vinyl":
-    supplier = MOV(root,name,1035,180,r"Icons/nichelogo.ico",MainApplication.univBackColor)
-elif name == "Speakers Corner":
-    supplier = SCR(root,name,1035,360,r"Icons/nichelogo.ico",MainApplication.univBackColor)
-else:
-    print("BOI")
-
-root.mainloop()
 
