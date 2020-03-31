@@ -17,6 +17,8 @@ else:
 
 
 #other stuff<------------------------------------->
+def decode_utf8(string):
+    return string.decode('utf-8','replace')
 
 def correctName(name):
     nr = ""

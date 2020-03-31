@@ -14,7 +14,7 @@ else:
 import os
 import json
 
-class Nuclear(MainApplication):
+class SCR(MainApplication):
 
     def __init__(self, master,title, width, height, icon=None, color=None):
         self.master = master
@@ -62,10 +62,34 @@ class Nuclear(MainApplication):
         self.createButtonAtPosition(1,3,"Browse")
         self.addNormalCommandToButton(1,self.browsePriceFunction)
 
-        self.createLabelAtPosition(2,0,"                    ")
-        self.createButtonAtPosition(2,1,"Solve")
-        self.addNormalCommandToButton(2,self.solve)
-        self.createLabelAtPosition(2,2,"                    ")
+        self.createLabelAtPosition(2,0,"Path New: ",50,20)
+        self.createLabelAtPosition(2,1,self.supplierInfo['new_path'])
+        self.createLabelAtPosition(2,2,"         ")
+        self.createButtonAtPosition(2,3,"Browse")
+        self.addNormalCommandToButton(2,self.browseNewFunction)
+
+        self.createLabelAtPosition(3,0,"Path Release: ",50,20)
+        self.createLabelAtPosition(3,1,self.supplierInfo['release_path'])
+        self.createLabelAtPosition(3,2,"         ")
+        self.createButtonAtPosition(3,3,"Browse")
+        self.addNormalCommandToButton(3,self.browseReleaseFunction)
+
+        self.createLabelAtPosition(4,0,"Path Repress: ",50,20)
+        self.createLabelAtPosition(4,1,self.supplierInfo['repress_path'])
+        self.createLabelAtPosition(4,2,"         ")
+        self.createButtonAtPosition(4,3,"Browse")
+        self.addNormalCommandToButton(4,self.browseRepressFunction)
+
+        self.createLabelAtPosition(5,0,"Path Salvare: ",50,20)
+        self.createLabelAtPosition(5,1,self.supplierInfo['save_path'])
+        self.createLabelAtPosition(5,2,"         ")
+        self.createButtonAtPosition(5,3,"Browse")
+        self.addNormalCommandToButton(5,self.browseFolderFunction)
+
+        self.createLabelAtPosition(6,0,"                    ")
+        self.createButtonAtPosition(6,1,"Solve")
+        self.addNormalCommandToButton(6,self.solve)
+        self.createLabelAtPosition(6,2,"                    ")
         #print(self.supplierInfo)
 
     def initJsonStuff(self):
@@ -81,19 +105,51 @@ class Nuclear(MainApplication):
 
     def browseCatalogFunction(self):
 
-        self.master.filename  = filedialog.askdirectory(initialdir=os.getcwd(), title="Select File")
+        self.master.filename  = filedialog.askopenfilename(initialdir=self.supplierInfo['catalogue_path'].split('\\')[:-1], title="Select File", filetypes = (("all files","*.*"),("xlsx files","*.xlsx"),("xls files","*.xls")))
         if self.master.filename == "":
             return
-        modifyJson("Nuclear Blast","catalogue_path",self.master.filename.replace('/','\\'))
-        self.changeLabelText(1,self.master.filename)
+        modifyJson("Speakers Corner","catalogue_path",self.master.filename.replace('/','\\'))
+        self.changeLabelText(1,self.master.filename.replace('/','\\'))
 
     def browsePriceFunction(self):
 
-        self.master.filename  = filedialog.askdirectory(initialdir=os.getcwd(), title="Select File")
+        self.master.filename  = filedialog.askopenfilename(initialdir=self.supplierInfo['price_path'].split('\\')[:-1], title="Select File", filetypes = (("all files","*.*"),("xlsx files","*.xlsx"),("xls files","*.xls")))
         if self.master.filename == "":
             return
-        modifyJson("Nuclear Blast","price_path",self.master.filename.replace('/','\\'))
-        self.changeLabelText(4,self.master.filename)
+        modifyJson("Speakers Corner","price_path",self.master.filename.replace('/','\\'))
+        self.changeLabelText(4,self.master.filename.replace('/','\\'))
+
+    def browseNewFunction(self):
+
+        self.master.filename  = filedialog.askopenfilename(initialdir=self.supplierInfo['new_path'].split('\\')[:-1], title="Select File", filetypes = (("all files","*.*"),("xlsx files","*.xlsx"),("xls files","*.xls")))
+        if self.master.filename == "":
+            return
+        modifyJson("Speakers Corner","new_path",self.master.filename.replace('/','\\'))
+        self.changeLabelText(7,self.master.filename.replace('/','\\'))
+
+    def browseReleaseFunction(self):
+
+        self.master.filename  = filedialog.askopenfilename(initialdir=self.supplierInfo['release_path'].split('\\')[:-1], title="Select File", filetypes = (("all files","*.*"),("xlsx files","*.xlsx"),("xls files","*.xls")))
+        if self.master.filename == "":
+            return
+        modifyJson("Speakers Corner","release_path",self.master.filename.replace('/','\\'))
+        self.changeLabelText(10,self.master.filename.replace('/','\\'))
+
+    def browseRepressFunction(self):
+
+        self.master.filename  = filedialog.askopenfilename(initialdir=self.supplierInfo['repress_path'].split('\\')[:-1], title="Select File", filetypes = (("all files","*.*"),("xlsx files","*.xlsx"),("xls files","*.xls")))
+        if self.master.filename == "":
+            return
+        modifyJson("Speakers Corner","repress_path",self.master.filename.replace('/','\\'))
+        self.changeLabelText(13,self.master.filename.replace('/','\\'))
+
+    def browseFolderFunction(self):
+
+        self.master.filename  = filedialog.askdirectory(initialdir=self.supplierInfo['save_path'], title="Select File")
+        if self.master.filename == "":
+            return
+        modifyJson("Pias","save_path",self.master.filename.replace('/','\\'))
+        self.changeLabelText(16,self.master.filename.replace('/','\\'))
 
     def solve(self):
         self.initJsonStuff()
@@ -102,8 +158,11 @@ class Nuclear(MainApplication):
         PRICE_ERROR = 696969696969
         BARCODE_ERROR = 797979797979
 
-        catalog_path = self.supplierInfo['catalogue_path']
-        price_path = self.supplierInfo['price_path']
+        file_catalog = self.supplierInfo['catalogue_path']
+        file_price = self.supplierInfo['price_path']
+        file_new = self.supplierInfo['new_path']
+        file_release = self.supplierInfo['release_path']
+        file_repress = self.supplierInfo['repress_path']
         save_path = self.supplierInfo['save_path']
         start_row = self.supplierInfo['start_row']
         price_start_row = self.supplierInfo['price_start_row']
@@ -112,18 +171,46 @@ class Nuclear(MainApplication):
         pricecode_column = self.supplierInfo['pricecode_column']
         rounded_price_column = self.supplierInfo['rounded_price_column']
         save_name = self.supplierInfo['save_name']
+        your_reference_column = self.supplierInfo['your_reference_column']
 
-        file_catalog = getFileXFromPath(catalog_path,1)
         catalogExt = getExtension(file_catalog)
-        file_price = getFileXFromPath(price_path,1)
         priceExt = getExtension(file_price)
+        newExt = getExtension(file_new)
+        releaseExt = getExtension(file_release)
+        repressExt = getExtension(file_repress)
 
-        nbCatalog = SupplierFile(file_catalog,catalogExt,start_row)
-        nbPrices = SupplierFile(file_price,priceExt,price_start_row)
+        scrCatalog = SupplierFile(file_catalog,catalogExt,start_row)
+        scrPrices = SupplierFile(file_price,priceExt,price_start_row)
+        scrNew = SupplierFile(file_new,newExt,start_row)
+        scrRelease = SupplierFile(file_release,releaseExt,start_row)
+        scrRepress = SupplierFile(file_repress,repressExt,start_row)
+
+        mergeContainerFile = SupplierFile()
+        mergeContainerFile.addOtherSupplierFile(scrNew, your_reference_column-1)
+        mergeContainerFile.addOtherSupplierFile(scrRelease, your_reference_column-1)
+        mergeContainerFile.addOtherSupplierFile(scrRepress, your_reference_column-1)
+
+        dictProductCode = mergeContainerFile.getDictionary(barcode_column, price_column)
+
+        i = 0
+
+        for row in scrCatalog.data:
+
+            barcode = str(normalizeBarcode(row[barcode_column-1]))
+            pricecode = row[price_column-1]
+
+            if barcode in dictProductCode:
+                if dictProductCode[barcode] != pricecode:
+                    scrCatalog.data[i][price_column-1] = dictProductCode[barcode]
+
+            i = i + 1
+
+        scrCatalog.addOtherSupplierFile(mergeContainerFile)
+        scrCatalog.addContentToWorkbook(file_catalog, start_row)
 
 
-        dictPreturi = nbPrices.getDictionary(pricecode_column,rounded_price_column)
 
+        dictPreturi = scrPrices.getDictionary(pricecode_column, rounded_price_column)
 
         void_workbook = openpyxlWorkbook()
         void_sheet = void_workbook.active
@@ -134,14 +221,14 @@ class Nuclear(MainApplication):
         currentRow = 1
         i = start_row-1
 
-        for row in (nbCatalog.data):
+        for row in (scrCatalog.data):
             i = i + 1
 
             barcode = str(row[barcode_column-1])
+            catalog_price = row[price_column-1]
 
-            correct_price_name = correctName(str(row[price_column-1]))
-            if correct_price_name in dictPreturi:
-                price = dictPreturi[correct_price_name]
+            if catalog_price in dictPreturi:
+                price = dictPreturi[catalog_price]
             else:
                 price = PRICE_ERROR
 
@@ -164,10 +251,9 @@ class Nuclear(MainApplication):
                 currentRow = currentRow + 1
 
                 barcode = barcode.zfill(13)
-                newPrice = price/1.19*0.6
 
                 void_sheet.cell(row = currentRow,column = 1).value = barcode
-                void_sheet.cell(row = currentRow,column = 6).value = round(newPrice,2)
+                void_sheet.cell(row = currentRow,column = 6).value = round(price,2)
 
             else:
 

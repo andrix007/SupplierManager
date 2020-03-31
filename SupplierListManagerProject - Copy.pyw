@@ -14,13 +14,16 @@ supplierTitles = [
 "Pias",
 "Pias_Classical",
 "Music On Vinyl",
-"Sperakers Corner",
+"Speakers Corner",
 "Mystic",
 "Sincron",
 "Kpop",
 "Noutati_Kpop"]
 
+
+
 def solve():
+
     root = tk.Tk()
 
     name = app.getSelection(0)
@@ -36,13 +39,11 @@ def solve():
     elif name == "Music On Vinyl":
         supplier = MOV(root,name,1035,180,r"Icons/nichelogo.ico",MainApplication.univBackColor)
     elif name == "Speakers Corner":
-        supplier = SCR(root,name,1035,360,r"Icons/nichelogo.ico",MainApplication.univBackColor)
+        supplier = SCR(root,name,1035,420,r"Icons/nichelogo.ico",MainApplication.univBackColor)
     else:
         print("BOI")
 
     root.mainloop()
-
-##########################################################################################################################################################################################################
 
 MainApplication.initPath(os.getcwd())
 MainApplication.initJsonPath(os.getcwd())
@@ -52,7 +53,7 @@ MainApplication.changeUnivActiveForColor("green") #for ex. the dropdown menu ele
 
 root = tk.Tk()
 
-app = MainApplication(root,"SupplierListManagement - NICHE RECORDS S.R.L.©",400,60,r"Icons/nichelogo.ico",MainApplication.univBackColor)
+app = MainApplication(root,"SupplierListManagement - NICHE RECORDS S.R.L.©",420,60,r"Icons/nichelogo.ico",MainApplication.univBackColor)
 app.createLabelAtPosition(0,0,"Supplier: ",50,20)
 
 app.createDropdownMenuAtPosition(supplierTitles,0,1)
@@ -61,7 +62,5 @@ app.createButtonAtPosition(0,3)
 app.addNormalCommandToButton(0,solve)
 
 root.mainloop()
-
-##########################################################################################################################################################################################################
 
 
