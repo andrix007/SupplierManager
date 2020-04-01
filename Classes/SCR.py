@@ -148,7 +148,7 @@ class SCR(MainApplication):
         self.master.filename  = filedialog.askdirectory(initialdir=self.supplierInfo['save_path'], title="Select File")
         if self.master.filename == "":
             return
-        modifyJson("Pias","save_path",self.master.filename.replace('/','\\'))
+        modifyJson("Speakers Corner","save_path",self.master.filename.replace('/','\\'))
         self.changeLabelText(16,self.master.filename.replace('/','\\'))
 
     def solve(self):
@@ -186,9 +186,19 @@ class SCR(MainApplication):
         scrRepress = SupplierFile(file_repress,repressExt,start_row)
 
         mergeContainerFile = SupplierFile()
-        mergeContainerFile.addOtherSupplierFile(scrNew, your_reference_column-1)
-        mergeContainerFile.addOtherSupplierFile(scrRelease, your_reference_column-1)
-        mergeContainerFile.addOtherSupplierFile(scrRepress, your_reference_column-1)
+
+        if not scrNew.isColumnEmpty(your_reference_column):
+            mergeContainerFile.addOtherSupplierFile(scrNew)
+        else:
+            mergeContainerFile.addOtherSupplierFile(scrNew, your_reference_column-1)
+        if not scrRelease.isColumnEmpty(your_reference_column):
+            mergeContainerFile.addOtherSupplierFile(scrRelease)
+        else:
+            mergeContainerFile.addOtherSupplierFile(scrRelease, your_reference_column-1)
+        if not scrRepress.isColumnEmpty(your_reference_column):
+            mergeContainerFile.addOtherSupplierFile(scrRepress)
+        else:
+            mergeContainerFile.addOtherSupplierFile(scrRepress, your_reference_column-1)
 
         dictProductCode = mergeContainerFile.getDictionary(barcode_column, price_column)
 
@@ -205,12 +215,13 @@ class SCR(MainApplication):
 
             i = i + 1
 
-        scrCatalog.addOtherSupplierFile(mergeContainerFile)
+
+        dictBarcode = scrCatalog.getBarcodeDictionary(barcode_column)
+        dictPreturi = scrPrices.getDictionary(pricecode_column, rounded_price_column)
+
+        scrCatalog.addOtherSupplierFileInRegardToDictionary(mergeContainerFile, dictBarcode, barcode_column)
         scrCatalog.addContentToWorkbook(file_catalog, start_row)
 
-
-
-        dictPreturi = scrPrices.getDictionary(pricecode_column, rounded_price_column)
 
         void_workbook = openpyxlWorkbook()
         void_sheet = void_workbook.active
@@ -220,6 +231,8 @@ class SCR(MainApplication):
 
         currentRow = 1
         i = start_row-1
+
+        dictBarcode = {}
 
         for row in (scrCatalog.data):
             i = i + 1
@@ -238,7 +251,14 @@ class SCR(MainApplication):
                 barcode = BARCODE_ERROR
             else:
                 if not barcode.isdigit():
+                    print("At line",i,"there is a problem with the barcode",barcode)
+                    print(barcode.isdigit())
                     barcode = BARCODE_ERROR
+                else:
+                    if barcode in dictBarcode:
+                        print("At line",i,"barcode",barcode,"is already in dictionary")
+                    else:
+                        dictBarcode.update({barcode:"1"})
 
             if str(price) == None:
                 price = PRICE_ERROR

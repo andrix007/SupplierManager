@@ -5,33 +5,181 @@
    'c:\\users\\andrei '
    'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\pkg_resources\\__init__.py',
    'PYMODULE'),
-  ('pkg_resources._vendor.pyparsing',
+  ('pkg_resources._vendor.packaging.specifiers',
    'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\pkg_resources\\_vendor\\pyparsing.py',
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\specifiers.py',
    'PYMODULE'),
-  ('uuid',
+  ('pkg_resources._vendor.appdirs',
    'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\uuid.py',
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\pkg_resources\\_vendor\\appdirs.py',
    'PYMODULE'),
-  ('hashlib',
+  ('ctypes',
    'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\hashlib.py',
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\ctypes\\__init__.py',
    'PYMODULE'),
-  ('logging',
+  ('ctypes.wintypes',
    'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\logging\\__init__.py',
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\ctypes\\wintypes.py',
    'PYMODULE'),
-  ('pickle',
+  ('ctypes._endian',
    'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\pickle.py',
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\ctypes\\_endian.py',
+   'PYMODULE'),
+  ('struct',
+   'c:\\users\\andrei '
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\struct.py',
+   'PYMODULE'),
+  ('win32com.shell.shellcon',
+   'c:\\users\\andrei '
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\win32comext\\shell\\shellcon.py',
+   'PYMODULE'),
+  ('win32com.shell',
+   'c:\\users\\andrei '
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\win32comext\\shell\\__init__.py',
+   'PYMODULE'),
+  ('win32com',
+   'c:\\users\\andrei '
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\win32com\\__init__.py',
+   'PYMODULE'),
+  ('win32com.server.util',
+   'c:\\users\\andrei '
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\win32com\\server\\util.py',
+   'PYMODULE'),
+  ('win32com.server.dispatcher',
+   'c:\\users\\andrei '
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\win32com\\server\\dispatcher.py',
+   'PYMODULE'),
+  ('win32traceutil',
+   'c:\\users\\andrei '
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\win32\\lib\\win32traceutil.py',
+   'PYMODULE'),
+  ('win32com.util',
+   'c:\\users\\andrei '
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\win32com\\util.py',
+   'PYMODULE'),
+  ('win32con',
+   'c:\\users\\andrei '
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\win32\\lib\\win32con.py',
+   'PYMODULE'),
+  ('win32com.server.exception',
+   'c:\\users\\andrei '
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\win32com\\server\\exception.py',
+   'PYMODULE'),
+  ('winerror',
+   'c:\\users\\andrei '
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\win32\\lib\\winerror.py',
+   'PYMODULE'),
+  ('win32com.server.policy',
+   'c:\\users\\andrei '
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\win32com\\server\\policy.py',
+   'PYMODULE'),
+  ('win32com.client',
+   'c:\\users\\andrei '
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\win32com\\client\\__init__.py',
+   'PYMODULE'),
+  ('win32com.client.makepy',
+   'c:\\users\\andrei '
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\win32com\\client\\makepy.py',
+   'PYMODULE'),
+  ('getopt',
+   'c:\\users\\andrei '
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\getopt.py',
+   'PYMODULE'),
+  ('gettext',
+   'c:\\users\\andrei '
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\gettext.py',
+   'PYMODULE'),
+  ('copy',
+   'c:\\users\\andrei '
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\copy.py',
+   'PYMODULE'),
+  ('pywin.dialogs.status',
+   'c:\\users\\andrei '
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\Pythonwin\\pywin\\dialogs\\status.py',
+   'PYMODULE'),
+  ('threading',
+   'c:\\users\\andrei '
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\threading.py',
+   'PYMODULE'),
+  ('_threading_local',
+   'c:\\users\\andrei '
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\_threading_local.py',
+   'PYMODULE'),
+  ('contextlib',
+   'c:\\users\\andrei '
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\contextlib.py',
+   'PYMODULE'),
+  ('pywin.mfc.thread',
+   'c:\\users\\andrei '
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\Pythonwin\\pywin\\mfc\\thread.py',
+   'PYMODULE'),
+  ('pywin.mfc.object',
+   'c:\\users\\andrei '
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\Pythonwin\\pywin\\mfc\\object.py',
+   'PYMODULE'),
+  ('pywin.mfc.dialog',
+   'c:\\users\\andrei '
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\Pythonwin\\pywin\\mfc\\dialog.py',
+   'PYMODULE'),
+  ('pywin.mfc.window',
+   'c:\\users\\andrei '
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\Pythonwin\\pywin\\mfc\\window.py',
+   'PYMODULE'),
+  ('pywin.mfc',
+   'c:\\users\\andrei '
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\Pythonwin\\pywin\\mfc\\__init__.py',
+   'PYMODULE'),
+  ('pywin.dialogs',
+   'c:\\users\\andrei '
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\Pythonwin\\pywin\\dialogs\\__init__.py',
+   'PYMODULE'),
+  ('pywin',
+   'c:\\users\\andrei '
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\Pythonwin\\pywin\\__init__.py',
+   'PYMODULE'),
+  ('win32com.client.gencache',
+   'c:\\users\\andrei '
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\win32com\\client\\gencache.py',
+   'PYMODULE'),
+  ('shutil',
+   'c:\\users\\andrei '
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\shutil.py',
+   'PYMODULE'),
+  ('tarfile',
+   'c:\\users\\andrei '
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\tarfile.py',
    'PYMODULE'),
   ('argparse',
    'c:\\users\\andrei '
    'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\argparse.py',
    'PYMODULE'),
-  ('gettext',
+  ('gzip',
    'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\gettext.py',
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\gzip.py',
+   'PYMODULE'),
+  ('_compression',
+   'c:\\users\\andrei '
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\_compression.py',
+   'PYMODULE'),
+  ('lzma',
+   'c:\\users\\andrei '
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\lzma.py',
+   'PYMODULE'),
+  ('bz2',
+   'c:\\users\\andrei '
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\bz2.py',
+   'PYMODULE'),
+  ('fnmatch',
+   'c:\\users\\andrei '
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\fnmatch.py',
+   'PYMODULE'),
+  ('pickle',
+   'c:\\users\\andrei '
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\pickle.py',
+   'PYMODULE'),
+  ('pprint',
+   'c:\\users\\andrei '
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\pprint.py',
    'PYMODULE'),
   ('doctest',
    'c:\\users\\andrei '
@@ -61,10 +209,6 @@
    'c:\\users\\andrei '
    'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\unittest\\loader.py',
    'PYMODULE'),
-  ('fnmatch',
-   'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\fnmatch.py',
-   'PYMODULE'),
   ('unittest.suite',
    'c:\\users\\andrei '
    'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\unittest\\suite.py',
@@ -73,9 +217,13 @@
    'c:\\users\\andrei '
    'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\unittest\\case.py',
    'PYMODULE'),
-  ('contextlib',
+  ('logging',
    'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\contextlib.py',
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\logging\\__init__.py',
+   'PYMODULE'),
+  ('string',
+   'c:\\users\\andrei '
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\string.py',
    'PYMODULE'),
   ('unittest.async_case',
    'c:\\users\\andrei '
@@ -92,6 +240,14 @@
   ('asyncio.log',
    'c:\\users\\andrei '
    'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\asyncio\\log.py',
+   'PYMODULE'),
+  ('subprocess',
+   'c:\\users\\andrei '
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\subprocess.py',
+   'PYMODULE'),
+  ('socket',
+   'c:\\users\\andrei '
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\socket.py',
    'PYMODULE'),
   ('selectors',
    'c:\\users\\andrei '
@@ -117,13 +273,17 @@
    'c:\\users\\andrei '
    'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\calendar.py',
    'PYMODULE'),
+  ('datetime',
+   'c:\\users\\andrei '
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\datetime.py',
+   'PYMODULE'),
+  ('_strptime',
+   'c:\\users\\andrei '
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\_strptime.py',
+   'PYMODULE'),
   ('base64',
    'c:\\users\\andrei '
    'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\base64.py',
-   'PYMODULE'),
-  ('getopt',
-   'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\getopt.py',
    'PYMODULE'),
   ('asyncio.proactor_events',
    'c:\\users\\andrei '
@@ -256,6 +416,14 @@
   ('email._parseaddr',
    'c:\\users\\andrei '
    'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\email\\_parseaddr.py',
+   'PYMODULE'),
+  ('random',
+   'c:\\users\\andrei '
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\random.py',
+   'PYMODULE'),
+  ('hashlib',
+   'c:\\users\\andrei '
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\hashlib.py',
    'PYMODULE'),
   ('email._encoded_words',
    'c:\\users\\andrei '
@@ -396,14 +564,6 @@
   ('xmlrpc',
    'c:\\users\\andrei '
    'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\xmlrpc\\__init__.py',
-   'PYMODULE'),
-  ('gzip',
-   'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\gzip.py',
-   'PYMODULE'),
-  ('_compression',
-   'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\_compression.py',
    'PYMODULE'),
   ('xml.parsers.expat',
    'c:\\users\\andrei '
@@ -609,86 +769,6 @@
    'c:\\users\\andrei '
    'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\unittest\\util.py',
    'PYMODULE'),
-  ('difflib',
-   'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\difflib.py',
-   'PYMODULE'),
-  ('_compat_pickle',
-   'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\_compat_pickle.py',
-   'PYMODULE'),
-  ('struct',
-   'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\struct.py',
-   'PYMODULE'),
-  ('random',
-   'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\random.py',
-   'PYMODULE'),
-  ('ctypes.util',
-   'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\ctypes\\util.py',
-   'PYMODULE'),
-  ('ctypes._aix',
-   'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\ctypes\\_aix.py',
-   'PYMODULE'),
-  ('ctypes.macholib.dyld',
-   'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\ctypes\\macholib\\dyld.py',
-   'PYMODULE'),
-  ('ctypes.macholib',
-   'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\ctypes\\macholib\\__init__.py',
-   'PYMODULE'),
-  ('ctypes.macholib.dylib',
-   'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\ctypes\\macholib\\dylib.py',
-   'PYMODULE'),
-  ('ctypes.macholib.framework',
-   'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\ctypes\\macholib\\framework.py',
-   'PYMODULE'),
-  ('netbios',
-   'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\win32\\lib\\netbios.py',
-   'PYMODULE'),
-  ('ctypes',
-   'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\ctypes\\__init__.py',
-   'PYMODULE'),
-  ('ctypes.wintypes',
-   'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\ctypes\\wintypes.py',
-   'PYMODULE'),
-  ('ctypes._endian',
-   'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\ctypes\\_endian.py',
-   'PYMODULE'),
-  ('socket',
-   'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\socket.py',
-   'PYMODULE'),
-  ('subprocess',
-   'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\subprocess.py',
-   'PYMODULE'),
-  ('shutil',
-   'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\shutil.py',
-   'PYMODULE'),
-  ('tarfile',
-   'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\tarfile.py',
-   'PYMODULE'),
-  ('lzma',
-   'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\lzma.py',
-   'PYMODULE'),
-  ('bz2',
-   'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\bz2.py',
-   'PYMODULE'),
   ('pdb',
    'c:\\users\\andrei '
    'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\pdb.py',
@@ -729,10 +809,6 @@
    'c:\\users\\andrei '
    'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\tty.py',
    'PYMODULE'),
-  ('glob',
-   'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\glob.py',
-   'PYMODULE'),
   ('code',
    'c:\\users\\andrei '
    'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\code.py',
@@ -757,125 +833,17 @@
    'c:\\users\\andrei '
    'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\cmd.py',
    'PYMODULE'),
-  ('threading',
+  ('difflib',
    'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\threading.py',
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\difflib.py',
    'PYMODULE'),
-  ('_threading_local',
+  ('_compat_pickle',
    'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\_threading_local.py',
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\_compat_pickle.py',
    'PYMODULE'),
-  ('datetime',
+  ('glob',
    'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\datetime.py',
-   'PYMODULE'),
-  ('_strptime',
-   'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\_strptime.py',
-   'PYMODULE'),
-  ('pprint',
-   'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\pprint.py',
-   'PYMODULE'),
-  ('copy',
-   'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\copy.py',
-   'PYMODULE'),
-  ('string',
-   'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\string.py',
-   'PYMODULE'),
-  ('pkg_resources._vendor.appdirs',
-   'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\pkg_resources\\_vendor\\appdirs.py',
-   'PYMODULE'),
-  ('win32com.shell.shellcon',
-   'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\win32comext\\shell\\shellcon.py',
-   'PYMODULE'),
-  ('win32com.shell',
-   'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\win32comext\\shell\\__init__.py',
-   'PYMODULE'),
-  ('win32com',
-   'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\win32com\\__init__.py',
-   'PYMODULE'),
-  ('win32com.server.util',
-   'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\win32com\\server\\util.py',
-   'PYMODULE'),
-  ('win32com.server.dispatcher',
-   'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\win32com\\server\\dispatcher.py',
-   'PYMODULE'),
-  ('win32traceutil',
-   'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\win32\\lib\\win32traceutil.py',
-   'PYMODULE'),
-  ('win32com.util',
-   'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\win32com\\util.py',
-   'PYMODULE'),
-  ('win32con',
-   'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\win32\\lib\\win32con.py',
-   'PYMODULE'),
-  ('win32com.server.exception',
-   'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\win32com\\server\\exception.py',
-   'PYMODULE'),
-  ('winerror',
-   'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\win32\\lib\\winerror.py',
-   'PYMODULE'),
-  ('win32com.server.policy',
-   'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\win32com\\server\\policy.py',
-   'PYMODULE'),
-  ('win32com.client',
-   'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\win32com\\client\\__init__.py',
-   'PYMODULE'),
-  ('win32com.client.makepy',
-   'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\win32com\\client\\makepy.py',
-   'PYMODULE'),
-  ('pywin.dialogs.status',
-   'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\Pythonwin\\pywin\\dialogs\\status.py',
-   'PYMODULE'),
-  ('pywin.mfc.thread',
-   'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\Pythonwin\\pywin\\mfc\\thread.py',
-   'PYMODULE'),
-  ('pywin.mfc.object',
-   'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\Pythonwin\\pywin\\mfc\\object.py',
-   'PYMODULE'),
-  ('pywin.mfc.dialog',
-   'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\Pythonwin\\pywin\\mfc\\dialog.py',
-   'PYMODULE'),
-  ('pywin.mfc.window',
-   'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\Pythonwin\\pywin\\mfc\\window.py',
-   'PYMODULE'),
-  ('pywin.mfc',
-   'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\Pythonwin\\pywin\\mfc\\__init__.py',
-   'PYMODULE'),
-  ('pywin.dialogs',
-   'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\Pythonwin\\pywin\\dialogs\\__init__.py',
-   'PYMODULE'),
-  ('pywin',
-   'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\Pythonwin\\pywin\\__init__.py',
-   'PYMODULE'),
-  ('win32com.client.gencache',
-   'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\win32com\\client\\gencache.py',
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\glob.py',
    'PYMODULE'),
   ('win32com.client.selecttlb',
    'c:\\users\\andrei '
@@ -1057,13 +1025,73 @@
    'c:\\users\\andrei '
    'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\pythoncom.py',
    'PYMODULE'),
-  ('pkg_resources._vendor.packaging.utils',
+  ('pkg_resources._vendor.packaging.requirements',
    'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\utils.py',
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\requirements.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor.packaging._structures',
+   'c:\\users\\andrei '
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\_structures.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor',
+   'c:\\users\\andrei '
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\pkg_resources\\_vendor\\__init__.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor.pyparsing',
+   'c:\\users\\andrei '
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\pkg_resources\\_vendor\\pyparsing.py',
+   'PYMODULE'),
+  ('uuid',
+   'c:\\users\\andrei '
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\uuid.py',
+   'PYMODULE'),
+  ('ctypes.util',
+   'c:\\users\\andrei '
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\ctypes\\util.py',
+   'PYMODULE'),
+  ('ctypes._aix',
+   'c:\\users\\andrei '
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\ctypes\\_aix.py',
+   'PYMODULE'),
+  ('ctypes.macholib.dyld',
+   'c:\\users\\andrei '
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\ctypes\\macholib\\dyld.py',
+   'PYMODULE'),
+  ('ctypes.macholib',
+   'c:\\users\\andrei '
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\ctypes\\macholib\\__init__.py',
+   'PYMODULE'),
+  ('ctypes.macholib.dylib',
+   'c:\\users\\andrei '
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\ctypes\\macholib\\dylib.py',
+   'PYMODULE'),
+  ('ctypes.macholib.framework',
+   'c:\\users\\andrei '
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\ctypes\\macholib\\framework.py',
+   'PYMODULE'),
+  ('netbios',
+   'c:\\users\\andrei '
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\win32\\lib\\netbios.py',
    'PYMODULE'),
   ('pkg_resources._vendor.six',
    'c:\\users\\andrei '
    'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\pkg_resources\\_vendor\\six.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor.packaging.version',
+   'c:\\users\\andrei '
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\version.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor.packaging.markers',
+   'c:\\users\\andrei '
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\markers.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor.packaging.utils',
+   'c:\\users\\andrei '
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\utils.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor.packaging.__about__',
+   'c:\\users\\andrei '
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\__about__.py',
    'PYMODULE'),
   ('pkg_resources._vendor.packaging._compat',
    'c:\\users\\andrei '
@@ -1072,34 +1100,6 @@
   ('pkg_resources._vendor.packaging',
    'c:\\users\\andrei '
    'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\__init__.py',
-   'PYMODULE'),
-  ('pkg_resources._vendor.packaging._structures',
-   'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\_structures.py',
-   'PYMODULE'),
-  ('pkg_resources._vendor.packaging.markers',
-   'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\markers.py',
-   'PYMODULE'),
-  ('pkg_resources._vendor.packaging.version',
-   'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\version.py',
-   'PYMODULE'),
-  ('pkg_resources._vendor.packaging.specifiers',
-   'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\specifiers.py',
-   'PYMODULE'),
-  ('pkg_resources._vendor.packaging.requirements',
-   'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\requirements.py',
-   'PYMODULE'),
-  ('pkg_resources._vendor.packaging.__about__',
-   'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\__about__.py',
-   'PYMODULE'),
-  ('pkg_resources._vendor',
-   'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\pkg_resources\\_vendor\\__init__.py',
    'PYMODULE'),
   ('sysconfig',
    'c:\\users\\andrei '
@@ -1185,6 +1185,10 @@
    'c:\\users\\andrei '
    'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\__future__.py',
    'PYMODULE'),
+  ('tracemalloc',
+   'c:\\users\\andrei '
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\tracemalloc.py',
+   'PYMODULE'),
   ('_py_abc',
    'c:\\users\\andrei '
    'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\_py_abc.py',
@@ -1192,10 +1196,6 @@
   ('stringprep',
    'c:\\users\\andrei '
    'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\stringprep.py',
-   'PYMODULE'),
-  ('tracemalloc',
-   'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\tracemalloc.py',
    'PYMODULE'),
   ('os',
    'c:\\users\\andrei '
@@ -1742,37 +1742,17 @@
    'c:\\users\\andrei '
    'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\setuptools\\__init__.py',
    'PYMODULE'),
-  ('setuptools._vendor.packaging._compat',
-   'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\setuptools\\_vendor\\packaging\\_compat.py',
-   'PYMODULE'),
-  ('setuptools._vendor.packaging.version',
-   'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\setuptools\\_vendor\\packaging\\version.py',
-   'PYMODULE'),
   ('setuptools._vendor',
    'c:\\users\\andrei '
    'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\setuptools\\_vendor\\__init__.py',
    'PYMODULE'),
-  ('setuptools._vendor.packaging.markers',
-   'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\setuptools\\_vendor\\packaging\\markers.py',
-   'PYMODULE'),
-  ('setuptools._vendor.packaging.utils',
-   'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\setuptools\\_vendor\\packaging\\utils.py',
-   'PYMODULE'),
-  ('setuptools._vendor.packaging',
-   'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\setuptools\\_vendor\\packaging\\__init__.py',
-   'PYMODULE'),
-  ('setuptools._vendor.packaging._structures',
-   'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\setuptools\\_vendor\\packaging\\_structures.py',
-   'PYMODULE'),
   ('setuptools._vendor.six',
    'c:\\users\\andrei '
    'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\setuptools\\_vendor\\six.py',
+   'PYMODULE'),
+  ('setuptools._vendor.packaging.version',
+   'c:\\users\\andrei '
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\setuptools\\_vendor\\packaging\\version.py',
    'PYMODULE'),
   ('setuptools._vendor.packaging.requirements',
    'c:\\users\\andrei '
@@ -1786,9 +1766,29 @@
    'c:\\users\\andrei '
    'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\setuptools\\_vendor\\packaging\\specifiers.py',
    'PYMODULE'),
+  ('setuptools._vendor.packaging.utils',
+   'c:\\users\\andrei '
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\setuptools\\_vendor\\packaging\\utils.py',
+   'PYMODULE'),
+  ('setuptools._vendor.packaging._compat',
+   'c:\\users\\andrei '
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\setuptools\\_vendor\\packaging\\_compat.py',
+   'PYMODULE'),
   ('setuptools._vendor.pyparsing',
    'c:\\users\\andrei '
    'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\setuptools\\_vendor\\pyparsing.py',
+   'PYMODULE'),
+  ('setuptools._vendor.packaging._structures',
+   'c:\\users\\andrei '
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\setuptools\\_vendor\\packaging\\_structures.py',
+   'PYMODULE'),
+  ('setuptools._vendor.packaging',
+   'c:\\users\\andrei '
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\setuptools\\_vendor\\packaging\\__init__.py',
+   'PYMODULE'),
+  ('setuptools._vendor.packaging.markers',
+   'c:\\users\\andrei '
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\setuptools\\_vendor\\packaging\\markers.py',
    'PYMODULE'),
   ('setuptools.msvc',
    'c:\\users\\andrei '

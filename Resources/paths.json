@@ -30,7 +30,7 @@
             "pricecode_column": 1,
             "rounded_price_column": 5,
             "price_start_row": 2,
-            "save_path": "C:\\Users\\Andrei Bancila\\Desktop\\SupplierListManagerProject\\Test\\Void",
+            "save_path": "C:\\Users\\Andrei Bancila\\Desktop",
             "barcode_column": 4,
             "price_column": 6,
             "start_row": 1
@@ -62,7 +62,7 @@
             "title": "Speakers Corner",
             "your_reference_column": 13,
             "save_name": "void - speakers Corner.xlsx",
-            "catalogue_path": "C:\\Users\\Andrei Bancila\\Desktop\\SupplierListManagerProject\\Test\\BagaAici\\Catalog\\Catalog actualizat Speakers (1).xlsx",
+            "catalogue_path": "C:\\Users\\Andrei Bancila\\Desktop\\SupplierListManagerProject\\Test\\BagaAici\\Catalog\\Catalog actualizat Speakers (2).xlsx",
             "price_path": "C:\\Users\\Andrei Bancila\\Desktop\\SupplierListManagerProject\\Test\\BagaAici\\Preturi\\Preturi_Speakers_2019.xlsx",
             "new_path": "C:\\Users\\Andrei Bancila\\Desktop\\SupplierListManagerProject\\Test\\BagaAici\\Catalog\\SCR_new_201910.xlsx",
             "release_path": "C:\\Users\\Andrei Bancila\\Desktop\\SupplierListManagerProject\\Test\\BagaAici\\Catalog\\SCR_releases_201909.xlsx",

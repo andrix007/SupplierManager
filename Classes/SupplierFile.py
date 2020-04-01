@@ -54,7 +54,7 @@ class SupplierFile(MainApplication):
         for row in self.data:
 
             value = row[barcodeColumn]
-
+            value = normalizeBarcode(value)
             if value not in dictBar:
                 dictBar.update({value:"1"})
 
@@ -75,6 +75,14 @@ class SupplierFile(MainApplication):
                 dictValues.update({key:value})
 
         return dictValues
+
+    def addOtherSupplierFileInRegardToDictionary(self,otherFile,dictionary,column):
+
+        for row in otherFile.data:
+            value = row[column-1]
+            if value not in dictionary:
+                self.data.append(row)
+                dictionary.update({value:"1"})
 
     def addOtherSupplierFile(self,otherFile,*ignoreColumns):
 
@@ -125,4 +133,13 @@ class SupplierFile(MainApplication):
 
         wb.save(workbook_path)
 
+    def isColumnEmpty(self, column):
+
+        for row in self.data:
+
+            value = row[column-1]
+            if value != '':
+                return False
+
+        return True
 

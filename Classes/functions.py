@@ -267,8 +267,14 @@ def getFormulaForRowX(formula,x): #WORK IN PROGRESS
 def normalizeBarcode(barcode):
 
     barcode = str(barcode)
+
+    string = ""
+    for i in range(len(barcode)):
+        if str(barcode[i]).isdigit():
+            string = string + str(barcode[i])
+
     if '.' not in barcode:
-        return barcode
+        return string
     try:
         a,b = barcode.split('.')
         return a
