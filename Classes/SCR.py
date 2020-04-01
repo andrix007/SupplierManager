@@ -187,6 +187,10 @@ class SCR(MainApplication):
 
         mergeContainerFile = SupplierFile()
 
+        scrNew.printColumn(your_reference_column)
+        scrRelease.printColumn(your_reference_column)
+        scrRepress.printColumn(your_reference_column)
+
         if not scrNew.isColumnEmpty(your_reference_column):
             mergeContainerFile.addOtherSupplierFile(scrNew)
         else:

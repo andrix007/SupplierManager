@@ -117,6 +117,12 @@ class SupplierFile(MainApplication):
         for row in self.data:
             print(row)
 
+    def printColumn(self, column):
+
+        column = column - 1
+        for row in self.data:
+            print(row[column-1])
+
 
     def addContentToWorkbook(self,workbook_path,start_row):
 
@@ -138,7 +144,7 @@ class SupplierFile(MainApplication):
         for row in self.data:
 
             value = row[column-1]
-            if value != '':
+            if str(value).isalpha() or str(value).isdigit():
                 return False
 
         return True
