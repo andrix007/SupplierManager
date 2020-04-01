@@ -5,6 +5,8 @@ from Classes.pias import *
 from Classes.Pias_Classical import *
 from Classes.MOV import *
 from Classes.SCR import *
+from Classes.mystic import *
+from Classes.sincron import *
 import tkinter as tk
 import os
 
@@ -18,7 +20,8 @@ supplierTitles = [
 "Mystic",
 "Sincron",
 "Kpop",
-"Noutati_Kpop"]
+"Noutati_Kpop"
+]
 
 
 
@@ -40,6 +43,10 @@ def solve():
         supplier = MOV(root,name,1035,180,r"Icons/nichelogo.ico",MainApplication.univBackColor)
     elif name == "Speakers Corner":
         supplier = SCR(root,name,1035,420,r"Icons/nichelogo.ico",MainApplication.univBackColor)
+    elif name == "Mystic":
+        supplier = Mystic(root,name,1135,240,r"Icons/nichelogo.ico",MainApplication.univBackColor)
+    elif name == "Sincron":
+        supplier = Sincron(root,name,1055,180,r"Icons/nichelogo.ico",MainApplication.univBackColor)
     else:
         print("BOI")
 

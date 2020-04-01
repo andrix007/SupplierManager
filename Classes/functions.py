@@ -258,9 +258,8 @@ def getPriceDict(file,pricecode_column,pricevalue_column,price_start_row):
 
     return dictPreturi
 
-def getFormulaForRowX(formula,x): #WORK IN PROGRESS
-    sx = str(x)
-    new_formula = formula.replace("F2","F"+sx).replace("E2","E"+sx)
+def getFormulaForRowX(formula, formula_row, x):
+    new_formula = formula.replace("F"+str(formula_row),"F"+str(x)).replace("E"+str(formula_row),"E"+str(x))
     return new_formula
 
 

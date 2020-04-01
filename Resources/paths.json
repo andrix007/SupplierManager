@@ -74,6 +74,28 @@
             "barcode_column": 5,
             "price_column": 8,
             "start_row": 2
+        },
+        {
+            "title": "Mystic",
+            "save_name": "void - mystic.xlsx",
+            "catalogue_path": "C:\\Users\\Andrei Bancila\\Desktop\\SupplierListManagerProject\\Test\\BagaAici\\Catalog\\Zeszyt1 (1).xlsx",
+            "formula_file_path": "C:\\Users\\Andrei Bancila\\Desktop\\SupplierListManagerProject\\Test\\BagaAici\\Catalog\\mystic DE PRELUCRAT.xlsx",
+            "records_column": 6,
+            "formula_column": 8,
+            "formula_file_start_row": 2,
+            "save_path": "C:\\Users\\Andrei Bancila\\Desktop",
+            "barcode_column": 3,
+            "price_column": 8,
+            "start_row": 3
+        },
+        {
+            "title": "Sincron",
+            "save_name": "void - sincron.xlsx",
+            "catalogue_path": "C:\\Users\\Andrei Bancila\\Desktop\\SupplierListManagerProject\\Test\\BagaAici\\Catalog\\Catalog Warner luna OCTOMBRIE 2019-1.xlsx",
+            "save_path": "C:\\Users\\Andrei Bancila\\Desktop\\SupplierListManagerProject\\Test\\BagaAici\\Catalog",
+            "barcode_column": 1,
+            "price_column": 10,
+            "start_row": 2
         }
     ]
 }
