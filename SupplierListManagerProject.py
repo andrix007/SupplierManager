@@ -7,6 +7,7 @@ from Classes.MOV import *
 from Classes.SCR import *
 from Classes.mystic import *
 from Classes.sincron import *
+from Classes.kpop import *
 import tkinter as tk
 import os
 
@@ -47,6 +48,8 @@ def solve():
         supplier = Mystic(root,name,1135,240,r"Icons/nichelogo.ico",MainApplication.univBackColor)
     elif name == "Sincron":
         supplier = Sincron(root,name,1055,180,r"Icons/nichelogo.ico",MainApplication.univBackColor)
+    elif name == "Kpop":
+        supplier = Kpop(root,name,1055,240,r"Icons/nichelogo.ico",MainApplication.univBackColor)
     else:
         print("BOI")
 
