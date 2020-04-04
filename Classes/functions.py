@@ -133,6 +133,18 @@ def qualityConvertXlsToXlsx(file):
 
     excel.Application.Quit()
 
+def uncorruptFile(file):
+
+    excel = win32.gencache.EnsureDispatch('Excel.Application')
+    wb = excel.Workbooks.Open(file)
+
+    wb.SaveAs(file, FileFormat = 51)
+    wb.Close()
+
+    os.remove(file)
+
+    excel.Application.Quit()
+
 def getExtension(file):
 
     extension = os.path.splitext(file)[1][1:]
@@ -291,3 +303,15 @@ def newest(path):
 def getName(path):
     return os.path.basename(path)
 #File Management Methods Methods <------------------------------------->!
+
+def getCorrectPrice(price):
+    price = str(price)
+    string = ""
+    for i in range(len(price)):
+        if str(price[i]).isdigit():
+            string = string + str(price[i])
+    return int(string)
+
+def getCorrectFormat(f):
+    f = str(f)
+    return f.replace(' ','')

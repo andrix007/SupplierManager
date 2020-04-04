@@ -49,7 +49,7 @@ def solve():
     elif name == "Sincron":
         supplier = Sincron(root,name,1055,180,r"Icons/nichelogo.ico",MainApplication.univBackColor)
     elif name == "Kpop":
-        supplier = Kpop(root,name,1055,240,r"Icons/nichelogo.ico",MainApplication.univBackColor)
+        supplier = Kpop(root,name,1055,300,r"Icons/nichelogo.ico",MainApplication.univBackColor)
     else:
         print("BOI")
 
