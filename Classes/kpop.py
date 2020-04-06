@@ -106,7 +106,7 @@ class Kpop(MainApplication):
 
     def browsePreturiFunction(self):
 
-        self.master.filename  = filedialog.askopenfilename(initialdir=self.supplierInfo['catalogue_path'].split('\\')[:-1], title="Select Catalog", filetypes = (("all files","*.*"),("xlsx files","*.xlsx"),("xls files","*.xls")))
+        self.master.filename  = filedialog.askopenfilename(initialdir=self.supplierInfo['price_path'].split('\\')[:-1], title="Select Price", filetypes = (("all files","*.*"),("xlsx files","*.xlsx"),("xls files","*.xls")))
         if self.master.filename == "":
             return
         modifyJson("Kpop","price_path",self.master.filename.replace('/','\\'))
@@ -115,16 +115,16 @@ class Kpop(MainApplication):
 
     def browseFolderFunction(self):
 
-        self.master.filename  = filedialog.askdirectory(initialdir=self.supplierInfo['save_path'], title="Select Save Folder")
+        self.master.filename  = filedialog.askdirectory(initialdir=self.supplierInfo['save_path'], title="Select Save Path")
         if self.master.filename == "":
             return
         modifyJson("Kpop","save_path",self.master.filename.replace('/','\\'))
-        self.changeLabelText(11,self.master.filename.replace('/','\\'))
+        self.changeLabelText(10,self.master.filename.replace('/','\\'))
 
 
     def browseDownloadFunction(self):
 
-        self.master.filename  = filedialog.askdirectory(initialdir=self.supplierInfo['download_path'], title="Select Download Folder")
+        self.master.filename  = filedialog.askdirectory(initialdir=self.supplierInfo['download_path'], title="Select Downloads Folder")
         if self.master.filename == "":
             return
         modifyJson("Kpop","download_path",self.master.filename.replace('/','\\'))
@@ -163,6 +163,8 @@ class Kpop(MainApplication):
 
         self.supplierInfo['temp_path'] = MainApplication.univPath+"\\temp\\"+getName(file)
         shutil.move(file, self.supplierInfo['temp_path'])
+
+        print(self.supplierInfo['temp_path'])
 
         qualityConvertXlsToXlsx(self.supplierInfo['temp_path'])
         self.supplierInfo['temp_path'] = self.supplierInfo['temp_path']+'x'
@@ -418,7 +420,7 @@ class Kpop(MainApplication):
 
 
         error.close()
-        void_workbook.save(save_path+"\\" + save_name)
+        void_workbook.save(os.path.join(save_path, save_name))
 
         self.master.destroy()
 
