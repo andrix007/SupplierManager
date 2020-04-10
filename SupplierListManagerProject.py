@@ -41,7 +41,7 @@ def solve():
     elif name == "Pias_Classical":
         supplier = Pias_Classical(root,name,1035,240,r"Icons/nichelogo.ico",MainApplication.univBackColor)
     elif name == "Music On Vinyl":
-        supplier = MOV(root,name,1035,180,r"Icons/nichelogo.ico",MainApplication.univBackColor)
+        supplier = MOV(root,name,1135,180,r"Icons/nichelogo.ico",MainApplication.univBackColor)
     elif name == "Speakers Corner":
         supplier = SCR(root,name,1035,420,r"Icons/nichelogo.ico",MainApplication.univBackColor)
     elif name == "Mystic":

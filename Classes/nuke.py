@@ -137,7 +137,6 @@ class Nuke(MainApplication):
 
         dictPreturi = nbPrices.getDictionary(pricecode_column,rounded_price_column)
 
-
         void_workbook = openpyxlWorkbook()
         void_sheet = void_workbook.active
         void_sheet.cell(row = 1,column = 1).value = "Barcode"
@@ -177,7 +176,7 @@ class Nuke(MainApplication):
                 currentRow = currentRow + 1
 
                 barcode = barcode.zfill(13)
-                newPrice = price/1.19*0.6
+                newPrice = price
 
                 void_sheet.cell(row = currentRow,column = 1).value = barcode
                 void_sheet.cell(row = currentRow,column = 6).value = round(newPrice,2)

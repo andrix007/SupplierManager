@@ -12,12 +12,12 @@
         {
             "title": "Nuclear Blast",
             "save_name": "void - nuclear.xlsx",
-            "catalogue_path": "C:\\Users\\Andrei Bancila\\Desktop\\SupplierListManagerProject\\Test\\BagaAici\\dane\\aaaaNB labelcatalogue complete update week 39-2019.xls",
-            "price_path": "C:\\Users\\Andrei Bancila\\Desktop\\SupplierListManagerProject\\Test\\BagaAici\\dane\\Preturi Nuclear Blast 2018.xlsx",
+            "catalogue_path": "C:\\Users\\Andrei Bancila\\Desktop\\Folders\\SupplierListManagerProject\\Test\\BagaAici\\Catalog\\NB labelcatalogue complete update week 15-2020.xls",
+            "price_path": "C:\\Users\\Andrei Bancila\\Desktop\\Folders\\SupplierListManagerProject\\Test\\BagaAici\\Catalog\\Preturi Nuclear Blast 2018.xls",
             "pricecode_column": 2,
             "rounded_price_column": 6,
             "price_start_row": 2,
-            "save_path": "C:\\Users\\Andrei Bancila\\Desktop\\SupplierListManagerProject\\Test\\Void",
+            "save_path": "C:\\Users\\Andrei Bancila\\Desktop",
             "barcode_column": 6,
             "price_column": 7,
             "start_row": 13
@@ -52,7 +52,7 @@
         {
             "title": "Music On Vinyl",
             "save_name": "void - Music On Vinyl.xlsx",
-            "catalogue_path": "C:\\Users\\Andrei Bancila\\Desktop\\SupplierListManagerProject\\Test\\BagaAici\\dane\\mov (1).xlsx",
+            "catalogue_path": "C:\\Users\\Andrei Bancila\\Desktop\\Folders\\SupplierListManagerProject\\Test\\BagaAici\\Catalog\\2020-4-8-guid-a975fa8a-0c58-4209-98d0-c4e8761f0ba0.csv",
             "save_path": "C:\\Users\\Andrei Bancila\\Desktop\\SupplierListManagerProject\\Test\\Void",
             "barcode_column": 15,
             "price_column": 6,
@@ -115,7 +115,7 @@
             "price_start_row": 2,
             "price_file_price_column": 1,
             "rounded_price_column": 3,
-            "save_path": "C:\\Users\\Andrei Bancila\\Desktop",
+            "save_path": "C:\\Users\\Andrei Bancila\\Desktop\\Folders\\SupplierListManagerProject",
             "barcode_column": 1,
             "quantity_column": 3,
             "new_quantity_column": 6,

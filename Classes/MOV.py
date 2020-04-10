@@ -111,8 +111,9 @@ class MOV(MainApplication):
 
         catalogExt = getExtension(file_catalog)
 
-        movCatalog = SupplierFile(file_catalog,catalogExt,start_row)
+        movCatalog = SupplierFile(file_catalog,catalogExt,separator = ';')
 
+        """
         void_workbook = openpyxlWorkbook()
         void_sheet = void_workbook.active
         void_sheet.cell(row = 1,column = 1).value = "Barcode"
@@ -172,5 +173,5 @@ class MOV(MainApplication):
 
         error.close()
         void_workbook.save(save_path+"\\" + save_name)
-
+        """
         self.master.destroy()

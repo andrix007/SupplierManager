@@ -8,7 +8,12 @@ else:
     from Classes.functions import *
 
 class SupplierFile(MainApplication):
-    def __init__(self,path=None,extension=None,start_row=None):
+    def __init__(self,path=None,extension=None,start_row=None,separator=None):
+
+        if extension == 'csv':
+            self.data = pd.read_csv(path, sep = separator)
+            print(self.data.tolist())
+            return
 
         self.formula = ""
         self.data = []
