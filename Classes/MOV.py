@@ -113,7 +113,7 @@ class MOV(MainApplication):
 
         movCatalog = SupplierFile(file_catalog,catalogExt,separator = ';')
 
-        """
+
         void_workbook = openpyxlWorkbook()
         void_sheet = void_workbook.active
         void_sheet.cell(row = 1,column = 1).value = "Barcode"
@@ -127,7 +127,7 @@ class MOV(MainApplication):
             i = i + 1
 
             barcode = str(row[barcode_column-1])
-            price = row[price_column-1]
+            price = float(row[price_column-1])
 
             barcode = normalizeBarcode(barcode)
 
@@ -173,5 +173,5 @@ class MOV(MainApplication):
 
         error.close()
         void_workbook.save(save_path+"\\" + save_name)
-        """
+
         self.master.destroy()

@@ -11,8 +11,11 @@ class SupplierFile(MainApplication):
     def __init__(self,path=None,extension=None,start_row=None,separator=None):
 
         if extension == 'csv':
-            self.data = pd.read_csv(path, sep = separator)
-            print(self.data.tolist())
+            with open(path, newline = '') as f:
+                reader = csv.reader(f, delimiter = separator)
+                data = list(reader)
+            data = data[1:]
+            self.data = data
             return
 
         self.formula = ""

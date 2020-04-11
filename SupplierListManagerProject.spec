@@ -3,7 +3,7 @@
 block_cipher = None
 
 
-a = Analysis(['SupplierListManagerProject.py'],
+a = Analysis(['SupplierListManagerProject.pyw'],
              pathex=['C:\\Users\\Andrei Bancila\\Desktop\\Folders\\SupplierListManagerProject'],
              binaries=[],
              datas=[],
@@ -30,4 +30,4 @@ exe = EXE(pyz,
           upx=True,
           upx_exclude=[],
           runtime_tmpdir=None,
-          console=True )
+          console=False )
