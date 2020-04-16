@@ -118,10 +118,22 @@ class Pias_Classical(MainApplication):
         EMPTY_QUANTITY = 898989898989
 
         folder_catalog = self.supplierInfo['catalogue_folder_path']
-        file_catalog = newest(folder_catalog)
+        if fileCount(folder_catalog) > 1:
+            logError("Too many files in \"Catalog\" folder, please only have one file!")
+            return
+        elif fileCount(folder_catalog) == 0:
+            logError("Folder \"Catalog\" is empty, please place the catalog file inside!")
+            return
+        file_catalog = getFileXFromPath(folder_catalog, 1)
 
         folder_price = self.supplierInfo['price_folder_path']
-        file_price = newest(folder_price)
+        if fileCount(folder_price) > 1:
+            logError("Too many files in \"Price\" folder, please only have one file!")
+            return
+        elif fileCount(folder_price) == 0:
+            logError("Folder \"Price\" is empty, please place the price file inside!")
+            return
+        file_price = getFileXFromPath(folder_price, 1)
 
         save_path = self.supplierInfo['save_path']
         start_row = self.supplierInfo['start_row']

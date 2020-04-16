@@ -131,6 +131,10 @@ class Kpop(MainApplication):
 
     def importFileFromWebsite(self):
 
+        if fileCount(MainApplication.univPath+"\\chromedriver") == 0:
+            logError("There are no versions of selenium chromedriver installed!\n To install them go to the official selenium page, download the last\n three versions and place them in the chromedriver directory inside the project.")
+            return
+
         chromedriverPaths = []
 
         for root, dirs, files in os.walk(MainApplication.univPath+"\\chromedriver"):
@@ -151,26 +155,40 @@ class Kpop(MainApplication):
                 continue
 
         if ok == False:
-            print("Please download the latest chromedriver from the selenium website, rename it to chromedriver\"version\".exe and place it in the chromedriver folder of the project!")
-            return False
+            logError("The versions of the selenium chromedriver are outdated!\n To install newer ones go to the official selenium page, download the last\n three versions and place them in the chromedriver directory inside the project.")
+            return
 
-        driver.get('http://btb.cnlmusic.kr/btb/bbs/login.php');
+        try:
+            driver.get('http://btb.cnlmusic.kr/btb/bbs/login.php');
+        except:
+            logError('Failed to connect to website!')
+            return
         time.sleep(0.5)
+
         user=""
         password=""
-        with open(MainApplication.univPath+'\\Resources\\login_data.txt') as f:
-            lines = f.readlines()
 
-            user = lines[0].replace('\r','').replace('\n','')
-            password = lines[1].replace('\r','').replace('\n','')
+        try:
+            with open(MainApplication.univPath+'\\Resources\\login_data.txt') as f:
+                lines = f.readlines()
 
-        driver.find_element_by_id("login_id").send_keys(user)
-        driver.find_element_by_id("login_pw").send_keys(password)
-        driver.find_element_by_xpath("//*[@id=\"mb_login\"]/div/div/div/section/form/div[3]/input").click()
-        time.sleep(0.5)
-        driver.find_element_by_xpath("//*[@id=\"sidebar-menu\"]/div/ul/li[2]/a").click()
-        time.sleep(0.5)
-        driver.find_element_by_xpath("/html/body/div[1]/div/div[3]/div/div[2]/div/div/div[1]/div[2]/a").click()
+                user = lines[0].replace('\r','').replace('\n','')
+                password = lines[1].replace('\r','').replace('\n','')
+        except:
+            logError("There is no login_data file in the \\Resources subdirectory! Please place a .txt file called login_data.txt\n with the username on the first line and the password on the second!")
+            return
+
+        try:
+            driver.find_element_by_id("login_id").send_keys(user)
+            driver.find_element_by_id("login_pw").send_keys(password)
+            driver.find_element_by_xpath("//*[@id=\"mb_login\"]/div/div/div/section/form/div[3]/input").click()
+            time.sleep(0.5)
+            driver.find_element_by_xpath("//*[@id=\"sidebar-menu\"]/div/ul/li[2]/a").click()
+            time.sleep(0.5)
+            driver.find_element_by_xpath("/html/body/div[1]/div/div[3]/div/div[2]/div/div/div[1]/div[2]/a").click()
+        except:
+            logError("The layout of the website has been changed,\n please consult your lead programmer for fix!")
+            return
 
         while getExtension(newest(self.supplierInfo['download_path'])) != "xls" and  getExtension(newest(self.supplierInfo['download_path'])) != "xlsx" and getName(newest(self.supplierInfo['download_path']))[:10] != 'new_release':
             time.sleep(1)
@@ -184,11 +202,17 @@ class Kpop(MainApplication):
         self.supplierInfo['temp_path'] = MainApplication.univPath+"\\temp\\"+getName(file)
         shutil.move(file, self.supplierInfo['temp_path'])
 
-        qualityConvertXlsToXlsx(self.supplierInfo['temp_path'])
+        try:
+            qualityConvertXlsToXlsx(self.supplierInfo['temp_path'])
+        except:
+            logError('Conversion of new_release_list from xls to xlsx failed!')
+            return
+
         self.supplierInfo['temp_path'] = self.supplierInfo['temp_path']+'x'
 
 
     def solve(self):
+
         self.initJsonStuff()
 
         self.importFileFromWebsite()
@@ -204,9 +228,21 @@ class Kpop(MainApplication):
         new_start_row = self.supplierInfo['new_start_row']
 
         folder_catalog = self.supplierInfo['catalogue_folder_path']
+        if fileCount(folder_catalog) > 1:
+            logError("Too many files in \"Catalog\" folder, please only have one file!")
+            return
+        elif fileCount(folder_catalog) == 0:
+            logError("Folder \"Catalog\" is empty, please place the catalog file inside!")
+            return
         file_catalog = getFileXFromPath(folder_catalog, 1)
 
         folder_price = self.supplierInfo['price_folder_path']
+        if fileCount(folder_price) > 1:
+            logError("Too many files in \"Price\" folder, please only have one file!")
+            return
+        elif fileCount(folder_price) == 0:
+            logError("Folder \"Price\" is empty, please place the catalog file inside!")
+            return
         file_price = getFileXFromPath(folder_price, 1)
 
         save_path = self.supplierInfo['save_path']
@@ -271,11 +307,15 @@ class Kpop(MainApplication):
 
         pureNewRelease.save(new_file)
 
-        excel = win32.gencache.EnsureDispatch('Excel.Application')
-        workbook = excel.Workbooks.Open(os.path.abspath(new_file))
-        workbook.Save()
-        workbook.Close()
-        excel.Quit()
+        try:
+            excel = win32.gencache.EnsureDispatch('Excel.Application')
+            workbook = excel.Workbooks.Open(os.path.abspath(new_file))
+            workbook.Save()
+            workbook.Close()
+            excel.Quit()
+        except:
+            logError("Problem with Microsoft Excel!\n Also, if any file that might be used by the program is open,\n please close it and try again!")
+            return
 
         #!Prima reforma in care pun numai elementele relevante in new_release
 
@@ -287,7 +327,12 @@ class Kpop(MainApplication):
         pureNewRelease = openpyxlWorkbook()
         pureNewSheet = pureNewRelease.active
 
-        wb = load_workbook(new_file)
+        try:
+            wb = load_workbook(new_file)
+        except:
+            logError("new_release list is either missing or open in another program!")
+            return
+
         ws = wb.active
 
         prow = ws.max_row+1
@@ -316,18 +361,25 @@ class Kpop(MainApplication):
 
         pureNewRelease.save(new_file)
 
-        excel = win32.gencache.EnsureDispatch('Excel.Application')
-        workbook = excel.Workbooks.Open(os.path.abspath(new_file))
-        workbook.Save()
-        workbook.Close()
-        excel.Quit()
-
+        try:
+            excel = win32.gencache.EnsureDispatch('Excel.Application')
+            workbook = excel.Workbooks.Open(os.path.abspath(new_file))
+            workbook.Save()
+            workbook.Close()
+            excel.Quit()
+        except:
+            logError("Problem with Microsoft Excel!\n Also, if any file that might be used by the program is open,\n please close it and try again!")
+            return
         #de scos kihno si book din catalog
 
         pureCatalog = openpyxlWorkbook()
         pureNewSheet = pureCatalog.active
 
-        wb = load_workbook(file_catalog)
+        try:
+            wb = load_workbook(file_catalog)
+        except:
+            logError("catalog file is either missing or open in another program!")
+            return
         ws = wb.active
 
         prow = ws.max_row+1
@@ -348,21 +400,32 @@ class Kpop(MainApplication):
 
         pureCatalog.save(file_catalog)
 
-        excel = win32.gencache.EnsureDispatch('Excel.Application')
-        workbook = excel.Workbooks.Open(os.path.abspath(file_catalog))
-        workbook.Save()
-        workbook.Close()
-        excel.Quit()
-
+        try:
+            excel = win32.gencache.EnsureDispatch('Excel.Application')
+            workbook = excel.Workbooks.Open(os.path.abspath(file_catalog))
+            workbook.Save()
+            workbook.Close()
+            excel.Quit()
+        except:
+            logError("Problem with Microsoft Excel!\n Also, if any file that might be used by the program is open,\n please close it and try again!")
+            return
 
 
 
         #de adaugat new release la catalog
-
-        catWB = load_workbook(file_catalog)
+        try:
+            catWB = load_workbook(file_catalog)
+        except:
+            logError("catalog file is either missing or open in another program!")
+            return
         catWS = catWB.active
 
-        wb = load_workbook(new_file)
+        try:
+            wb = load_workbook(new_file)
+        except:
+            logError("new_release list is either missing or open in another program!")
+            return
+
         ws = wb.active
 
         crow = catWS.max_row+1
@@ -379,11 +442,15 @@ class Kpop(MainApplication):
 
         catWB.save(file_catalog)
 
-        excel = win32.gencache.EnsureDispatch('Excel.Application')
-        workbook = excel.Workbooks.Open(os.path.abspath(file_catalog))
-        workbook.Save()
-        workbook.Close()
-        excel.Quit()
+        try:
+            excel = win32.gencache.EnsureDispatch('Excel.Application')
+            workbook = excel.Workbooks.Open(os.path.abspath(file_catalog))
+            workbook.Save()
+            workbook.Close()
+            excel.Quit()
+        except:
+            logError("Problem with Microsoft Excel!\n Also, if any file that might be used by the program is open,\n please close it and try again!")
+            return
 
         #PRELUCRARE
 

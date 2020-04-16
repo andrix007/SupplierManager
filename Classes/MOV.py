@@ -104,7 +104,13 @@ class MOV(MainApplication):
         BARCODE_ERROR = 797979797979
 
         folder = self.supplierInfo['catalogue_folder_path']
-        file_catalog = newest(folder)
+        if fileCount(folder) > 1:
+            logError("Too many files in \"Catalog\" folder, please only have one file!")
+            return
+        elif fileCount(folder) == 0:
+            logError("Folder \"Catalog\" is empty, please place the catalog file inside!")
+            return
+        file_catalog = getFileXFromPath(folder, 1)
 
         save_path = self.supplierInfo['save_path']
         start_row = self.supplierInfo['start_row']
@@ -114,7 +120,11 @@ class MOV(MainApplication):
 
         catalogExt = getExtension(file_catalog)
 
-        movCatalog = SupplierFile(file_catalog,catalogExt,separator = ';')
+        try:
+            movCatalog = SupplierFile(file_catalog,catalogExt,separator = ';')
+        except:
+            logError("Error while opening the .csv file!")
+            return
 
 
         void_workbook = openpyxlWorkbook()

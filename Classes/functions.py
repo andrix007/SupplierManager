@@ -51,7 +51,7 @@ def getFileXFromPath(path, x):
         for name in files:
             full_path = os.path.join(root, name)
             ext = getExtension(full_path)
-            if ext != "xls" and ext != "xlsx" and ext != "csv":
+            if ext != "xls" and ext != "xlsx" and ext != "csv" and ext != "xlsm":
                 return -1 #not a file type I want in the folder
             cnt += 1
             if cnt == x:
@@ -326,9 +326,17 @@ def getCorrectFormat(f):
 def logText(message, messageColor=MainApplication.univPopupColor):
 
     popup = tk.Tk()
-    popupWindow = MainApplication(popup,"Error!!!",200,40,r"Icons/nichelogo.ico",MainApplication.univBackColor)
+    popupWindow = MainApplication(popup,"Log",None,None,r"Icons/nichelogo.ico",MainApplication.univBackColor)
     popupWindow.createLabelAtPosition(0, 0, message, 10, 10, None, messageColor)
     popup.mainloop()
 
+def logError(errorMessage, errorColor=MainApplication.univErrorPopupColor):
 
+    popup = tk.Tk()
+    popupWindow = MainApplication(popup,"Log",None,None,r"Icons/nichelogo.ico",MainApplication.univBackColor)
+    popupWindow.createLabelAtPosition(0, 0, errorMessage, 10, 10, None, errorColor)
+    popup.mainloop()
+
+def fileCount(path):
+    return len(os.listdir(path))
 

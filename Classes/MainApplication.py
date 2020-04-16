@@ -24,6 +24,7 @@ class MainApplication:
     univForColor = "white"
     univActiveFgColor = "blue"
     univPopupColor = "#36D54A"
+    univErrorPopupColor = "#FE0000"
     univPath = "yello"
     jsonFilePath = "yello"
 
@@ -31,9 +32,10 @@ class MainApplication:
 
 
 
-    def __init__(self, master,title, width, height, icon=None, color=None):
+    def __init__(self, master,title, width=None, height=None, icon=None, color=None):
         self.master = master
-        self.master.geometry(str(width)+"x"+str(height))
+        if width != None and height != None:
+            self.master.geometry(str(width)+"x"+str(height))
         self.master.title(title)
         self.master.iconbitmap(icon)
         self.master.config(bg = color)
@@ -156,6 +158,9 @@ class MainApplication:
         text = self.ddmenus_clicked[index].get()
         return text
 
+    def exit(self):
+        self.master.destroy()
+
     #Widget Management Methods <------------------------------------->!
 
 
@@ -181,6 +186,11 @@ class MainApplication:
     @classmethod
     def changeUnivPopupColor(cls,color):
         cls.univPopupColor = color
+
+
+    @classmethod
+    def changeUnivErrorPopupColor(cls,color):
+        cls.univErrorPopupColor = color
 
 
     @classmethod

@@ -118,9 +118,21 @@ class Mystic(MainApplication):
         blacklisetRecords = ["AFM","PIAS","SNAPPER"]
 
         folder_catalog = self.supplierInfo['catalogue_folder_path']
+        if fileCount(folder_catalog) > 1:
+            logError("Too many files in \"Catalog\" folder, please only have one file!")
+            return
+        elif fileCount(folder_catalog) == 0:
+            logError("Folder \"Catalog\" is empty, please place the catalog file inside!")
+            return
         file_catalog = getFileXFromPath(folder_catalog, 1)
 
         folder_formula = self.supplierInfo['formula_folder_path']
+        if fileCount(folder_formula) > 1:
+            logError("Too many files in \"Formula\" folder, please only have one file!")
+            return
+        elif fileCount(folder_formula) == 0:
+            logError("Folder \"Formula\" is empty, please place the formula file inside!\n (Formula file is the file from which the formula is extracted)")
+            return
         file_formula = getFileXFromPath(folder_formula, 1)
 
         save_path = self.supplierInfo['save_path']

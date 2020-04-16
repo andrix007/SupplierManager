@@ -60,6 +60,7 @@ MainApplication.changeUnivBackColor("black")
 MainApplication.changeUnivForColor("white")
 MainApplication.changeUnivActiveForColor("green") #for ex. the dropdown menu elements
 MainApplication.changeUnivPopupColor("#36D54A")
+MainApplication.changeUnivErrorPopupColor("#FE0000")
 
 root = tk.Tk()
 

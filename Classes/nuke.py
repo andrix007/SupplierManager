@@ -118,10 +118,24 @@ class Nuke(MainApplication):
         BARCODE_ERROR = 797979797979
 
         catalog_folder = self.supplierInfo['catalogue_folder_path']
-        file_catalog = newest(catalog_folder)
+        if fileCount(catalog_folder) > 1:
+            logError("Too many files in \"Catalog\" folder, please only have one file!")
+            return
+        elif fileCount(catalog_folder) == 0:
+            logError("Folder \"Catalog\" is empty, please place the catalog file inside!")
+            return
+        file_catalog = getFileXFromPath(catalog_folder, 1)
 
         price_folder = self.supplierInfo['price_folder_path']
-        file_price = newest(price_folder)
+        if fileCount(price_folder) > 1:
+            logError("Too many files in \"Price\" folder, please only have one file!")
+            self.exit()
+            return
+        elif fileCount(price_folder) == 0:
+            logError("Folder \"Price\" is empty, please place the price file inside!")
+            self.exit()
+            return
+        file_price = getFileXFromPath(price_folder, 1)
 
         save_path = self.supplierInfo['save_path']
         start_row = self.supplierInfo['start_row']
