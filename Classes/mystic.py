@@ -51,16 +51,16 @@ class Mystic(MainApplication):
                 break
 
         self.createLabelAtPosition(0,0,"Path Catalog: ",50,20)
-        self.createLabelAtPosition(0,1,self.supplierInfo['catalogue_path'])
+        self.createLabelAtPosition(0,1,self.supplierInfo['catalogue_folder_path'])
         self.createLabelAtPosition(0,2,"         ")
         self.createButtonAtPosition(0,3,"Browse")
-        self.addNormalCommandToButton(0,self.browseCatalogFunction)
+        self.addNormalCommandToButton(0,self.browseCatalogFolderFunction)
 
-        self.createLabelAtPosition(1,0,"Path Fisier Prelucat (de aici imi iau formula): ",50,20)
-        self.createLabelAtPosition(1,1,self.supplierInfo['formula_file_path'])
+        self.createLabelAtPosition(1,0,"Path Formula: ",50,20)
+        self.createLabelAtPosition(1,1,self.supplierInfo['formula_folder_path'])
         self.createLabelAtPosition(1,2,"         ")
         self.createButtonAtPosition(1,3,"Browse")
-        self.addNormalCommandToButton(1,self.browseFormulaFileFunction)
+        self.addNormalCommandToButton(1,self.browseFormulaFolderFunction)
 
         self.createLabelAtPosition(2,0,"Path Salvare: ",50,20)
         self.createLabelAtPosition(2,1,self.supplierInfo['save_path'])
@@ -85,20 +85,20 @@ class Mystic(MainApplication):
                 self.supplierInfo = state
                 break
 
-    def browseCatalogFunction(self):
+    def browseCatalogFolderFunction(self):
 
-        self.master.filename  = filedialog.askopenfilename(initialdir=self.supplierInfo['catalogue_path'].split('\\')[:-1], title="Select File", filetypes = (("all files","*.*"),("xlsx files","*.xlsx"),("xls files","*.xls")))
+        self.master.filename  = filedialog.askdirectory(initialdir=self.supplierInfo['catalogue_folder_path'], title="Select Catalog Folder")
         if self.master.filename == "":
             return
-        modifyJson("Mystic","catalogue_path",self.master.filename.replace('/','\\'))
+        modifyJson("Mystic","catalogue_folder_path",self.master.filename.replace('/','\\'))
         self.changeLabelText(1,self.master.filename.replace('/','\\'))
 
-    def browseFormulaFileFunction(self):
+    def browseFormulaFolderFunction(self):
 
-        self.master.filename  = filedialog.askopenfilename(initialdir=self.supplierInfo['formula_file_path'].split('\\')[:-1], title="Select File", filetypes = (("all files","*.*"),("xlsx files","*.xlsx"),("xls files","*.xls")))
+        self.master.filename  = filedialog.askdirectory(initialdir=self.supplierInfo['formula_folder_path'], title="Select Formula Folder")
         if self.master.filename == "":
             return
-        modifyJson("Mystic","formula_file_path",self.master.filename.replace('/','\\'))
+        modifyJson("Mystic","formula_folder_path",self.master.filename.replace('/','\\'))
         self.changeLabelText(4,self.master.filename.replace('/','\\'))
 
     def browseFolderFunction(self):
@@ -117,8 +117,12 @@ class Mystic(MainApplication):
         BARCODE_ERROR = 797979797979
         blacklisetRecords = ["AFM","PIAS","SNAPPER"]
 
-        file_catalog = self.supplierInfo['catalogue_path']
-        file_formula = self.supplierInfo['formula_file_path']
+        folder_catalog = self.supplierInfo['catalogue_folder_path']
+        file_catalog = getFileXFromPath(folder_catalog, 1)
+
+        folder_formula = self.supplierInfo['formula_folder_path']
+        file_formula = getFileXFromPath(folder_formula, 1)
+
         save_path = self.supplierInfo['save_path']
         start_row = self.supplierInfo['start_row']
         records_column = self.supplierInfo['records_column']
@@ -223,4 +227,5 @@ class Mystic(MainApplication):
         void_workbook.save(save_path+"\\" + save_name)
 
         self.master.destroy()
+        logText("Code has executed successfully!")
 

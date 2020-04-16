@@ -51,10 +51,10 @@ class Sincron(MainApplication):
                 break
 
         self.createLabelAtPosition(0,0,"Path Catalog: ",50,20)
-        self.createLabelAtPosition(0,1,self.supplierInfo['catalogue_path'])
+        self.createLabelAtPosition(0,1,self.supplierInfo['catalogue_folder_path'])
         self.createLabelAtPosition(0,2,"         ")
         self.createButtonAtPosition(0,3,"Browse")
-        self.addNormalCommandToButton(0,self.browseFunction)
+        self.addNormalCommandToButton(0,self.browseCatalogFolder)
 
         self.createLabelAtPosition(1,0,"Path Salvare: ",50,20)
         self.createLabelAtPosition(1,1,self.supplierInfo['save_path'])
@@ -79,28 +79,30 @@ class Sincron(MainApplication):
                 self.supplierInfo = state
                 break
 
-    def browseFunction(self):
+    def browseCatalogFolder(self):
 
-        self.master.filename  = filedialog.askopenfilename(initialdir=self.supplierInfo['catalogue_path'].split('\\')[:-1], title="Select File", filetypes = (("all files","*.*"),("xlsx files","*.xlsx"),("xls files","*.xls")))
+        self.master.filename  = filedialog.askdirectory(initialdir=self.supplierInfo['catalogue_folder_path'], title="Select Catalog Folder")
         if self.master.filename == "":
             return
-        modifyJson("Sincron","catalogue_path",self.master.filename.replace('/','\\'))
+        modifyJson("Sincron","catalogue_folder_path",self.master.filename.replace('/','\\'))
         self.changeLabelText(1,self.master.filename.replace('/','\\'))
 
     def browseFolderFunction(self):
 
-        self.master.filename  = filedialog.askdirectory(initialdir=self.supplierInfo['save_path'], title="Select File")
+        self.master.filename  = filedialog.askdirectory(initialdir=self.supplierInfo['save_path'], title="Select Save Path")
         if self.master.filename == "":
             return
         modifyJson("Sincron","save_path",self.master.filename.replace('/','\\'))
         self.changeLabelText(4,self.master.filename.replace('/','\\'))
+
 
     def solve(self):
         self.initJsonStuff()
 
         error = open(MainApplication.univPath+"\\Resources"+"\\error.txt","w")
 
-        file = self.supplierInfo['catalogue_path']
+        folder = self.supplierInfo['catalogue_folder_path']
+        file = getFileXFromPath(folder, 1)
 
         save_path = self.supplierInfo['save_path']
         start_row = self.supplierInfo['start_row']
@@ -146,3 +148,4 @@ class Sincron(MainApplication):
         void_workbook.save(save_path+"\\" + save_name)
 
         self.master.destroy()
+        logText("Code has executed successfully!")

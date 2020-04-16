@@ -3,6 +3,7 @@ if __name__ == "__main__":
 else:
     from Classes.MainApplication import *
 
+import time
 #File Management Methods Methods <------------------------------------->
 
 
@@ -43,29 +44,30 @@ def isfloat(value):
 
 
 
-def getFileXFromPath(path,x):
-    files = []
-
-    orig = os.getcwd()
-
-    os.chdir(path)
-
-    for r,d,f in os.walk("."):
-        for file in f:
-            if '.xls' in file:
-                files.append(os.path.join(r, file))
-            elif '.xlsx' in file:
-                files.append(os.path.join(r, file))
-
+def getFileXFromPath(path, x):
     cnt = 0
 
-    for f in files:
-        cnt = cnt + 1
-        if cnt == x:
-            os.chdir(orig)
-            return path+'\\'+f[2:]
+    for root, dirs, files in os.walk(path):
+        for name in files:
+            full_path = os.path.join(root, name)
+            ext = getExtension(full_path)
+            if ext != "xls" and ext != "xlsx" and ext != "csv":
+                return -1 #not a file type I want in the folder
+            cnt += 1
+            if cnt == x:
+                return full_path #Successful execution
+
+    return -2 #Not enought files
 
 
+def getVersion(file):
+    s = file[-7:]
+    s = str(s)
+    string = ""
+    for i in range(len(s)):
+        if str(s[i]).isdigit():
+            string = string + str(s[i])
+    return int(string)
 
 def exist(path):
     orig = os.getcwd()
@@ -295,6 +297,10 @@ def normalizeBarcode(barcode):
 
 
 def newest(path):
+
+    if not os.listdir(path):
+        return -1
+
     files = os.listdir(path)
     paths = [os.path.join(path, basename) for basename in files]
     return max(paths, key=os.path.getctime)
@@ -315,3 +321,14 @@ def getCorrectPrice(price):
 def getCorrectFormat(f):
     f = str(f)
     return f.replace(' ','')
+
+
+def logText(message, messageColor=MainApplication.univPopupColor):
+
+    popup = tk.Tk()
+    popupWindow = MainApplication(popup,"Error!!!",200,40,r"Icons/nichelogo.ico",MainApplication.univBackColor)
+    popupWindow.createLabelAtPosition(0, 0, message, 10, 10, None, messageColor)
+    popup.mainloop()
+
+
+

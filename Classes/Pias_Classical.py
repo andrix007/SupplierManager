@@ -51,16 +51,16 @@ class Pias_Classical(MainApplication):
                 break
 
         self.createLabelAtPosition(0,0,"Path Catalog: ",50,20)
-        self.createLabelAtPosition(0,1,self.supplierInfo['catalogue_path'])
+        self.createLabelAtPosition(0,1,self.supplierInfo['catalogue_folder_path'])
         self.createLabelAtPosition(0,2,"         ")
         self.createButtonAtPosition(0,3,"Browse")
-        self.addNormalCommandToButton(0,self.browseCatalogFunction)
+        self.addNormalCommandToButton(0,self.browseCatalogFolderFunction)
 
         self.createLabelAtPosition(1,0,"Path Preturi: ",50,20)
-        self.createLabelAtPosition(1,1,self.supplierInfo['price_path'])
+        self.createLabelAtPosition(1,1,self.supplierInfo['price_folder_path'])
         self.createLabelAtPosition(1,2,"         ")
         self.createButtonAtPosition(1,3,"Browse")
-        self.addNormalCommandToButton(1,self.browsePriceFunction)
+        self.addNormalCommandToButton(1,self.browsePriceFolderFunction)
 
         self.createLabelAtPosition(2,0,"Path Salvare: ",50,20)
         self.createLabelAtPosition(2,1,self.supplierInfo['save_path'])
@@ -85,25 +85,25 @@ class Pias_Classical(MainApplication):
                 self.supplierInfo = state
                 break
 
-    def browseCatalogFunction(self):
+    def browseCatalogFolderFunction(self):
 
-        self.master.filename  = filedialog.askopenfilename(initialdir=self.supplierInfo['catalogue_path'].split('\\')[:-1], title="Select File", filetypes = (("all files","*.*"),("xlsx files","*.xlsx"),("xls files","*.xls")))
+        self.master.filename  = filedialog.askdirectory(initialdir=self.supplierInfo['catalogue_folder_path'], title="Select Catalog Folder")
         if self.master.filename == "":
             return
-        modifyJson("Pias_Classical","catalogue_path",self.master.filename.replace('/','\\'))
+        modifyJson("Pias_Classical","catalogue_folder_path",self.master.filename.replace('/','\\'))
         self.changeLabelText(1,self.master.filename.replace('/','\\'))
 
-    def browsePriceFunction(self):
+    def browsePriceFolderFunction(self):
 
-        self.master.filename  = filedialog.askopenfilename(initialdir=self.supplierInfo['price_path'].split('\\')[:-1], title="Select File", filetypes = (("all files","*.*"),("xlsx files","*.xlsx"),("xls files","*.xls")))
+        self.master.filename  = filedialog.askdirectory(initialdir=self.supplierInfo['price_folder_path'], title="Select Price Folder")
         if self.master.filename == "":
             return
-        modifyJson("Pias_Classical","price_path",self.master.filename.replace('/','\\'))
+        modifyJson("Pias_Classical","price_folder_path",self.master.filename.replace('/','\\'))
         self.changeLabelText(4,self.master.filename.replace('/','\\'))
 
     def browseFolderFunction(self):
 
-        self.master.filename  = filedialog.askdirectory(initialdir=self.supplierInfo['save_path'], title="Select File")
+        self.master.filename  = filedialog.askdirectory(initialdir=self.supplierInfo['save_path'], title="Select Save Path")
         if self.master.filename == "":
             return
         modifyJson("Pias_Classical","save_path",self.master.filename.replace('/','\\'))
@@ -117,8 +117,12 @@ class Pias_Classical(MainApplication):
         BARCODE_ERROR = 797979797979
         EMPTY_QUANTITY = 898989898989
 
-        file_catalog = self.supplierInfo['catalogue_path']
-        file_price = self.supplierInfo['price_path']
+        folder_catalog = self.supplierInfo['catalogue_folder_path']
+        file_catalog = newest(folder_catalog)
+
+        folder_price = self.supplierInfo['price_folder_path']
+        file_price = newest(folder_price)
+
         save_path = self.supplierInfo['save_path']
         start_row = self.supplierInfo['start_row']
         price_start_row = self.supplierInfo['price_start_row']
@@ -211,3 +215,4 @@ class Pias_Classical(MainApplication):
         void_workbook.save(save_path+"\\" + save_name)
 
         self.master.destroy()
+        logText("Code has executed successfully!")

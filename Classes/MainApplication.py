@@ -23,6 +23,7 @@ class MainApplication:
     univBackColor = "#012e20"
     univForColor = "white"
     univActiveFgColor = "blue"
+    univPopupColor = "#36D54A"
     univPath = "yello"
     jsonFilePath = "yello"
 
@@ -126,8 +127,6 @@ class MainApplication:
 
     #Widget Creating Methods <------------------------------------->!
 
-
-
     #Widget Management Methods <------------------------------------->
 
     def destroySelf(self):
@@ -170,17 +169,22 @@ class MainApplication:
 
 
     @classmethod
-    def changeUnivBackColor(cls,color):
+    def changeUnivBackColor(cls, color):
         cls.univBackColor = color
 
 
     @classmethod
-    def changeUnivForColor(cls,color):
+    def changeUnivForColor(cls, color):
         cls.univForColor = color
 
 
     @classmethod
-    def changeUnivActiveForColor(cls,color):
+    def changeUnivPopupColor(cls,color):
+        cls.univPopupColor = color
+
+
+    @classmethod
+    def changeUnivActiveForColor(cls, color):
         cls.univActiveFgColor = color
 
 
@@ -189,11 +193,11 @@ class MainApplication:
         print(cls.univPath)
 
     @classmethod
-    def initPath(cls,path):
+    def initPath(cls, path):
         cls.univPath = path
 
     @classmethod
-    def initJsonPath(cls,path):
+    def initJsonPath(cls, path):
         cls.jsonFilePath = path
         cls.jsonFilePath = cls.jsonFilePath + "\\Resources\\paths.json"
 

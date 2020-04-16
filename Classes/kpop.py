@@ -13,7 +13,6 @@ else:
 
 import os
 import json
-import time
 from selenium import webdriver
 
 class Kpop(MainApplication):
@@ -53,16 +52,16 @@ class Kpop(MainApplication):
                 break
 
         self.createLabelAtPosition(0,0,"Path Catalog: ",50,20)
-        self.createLabelAtPosition(0,1,self.supplierInfo['catalogue_path'])
+        self.createLabelAtPosition(0,1,self.supplierInfo['catalogue_folder_path'])
         self.createLabelAtPosition(0,2,"         ")
         self.createButtonAtPosition(0,3,"Browse")
-        self.addNormalCommandToButton(0,self.browseCatalogFunction)
+        self.addNormalCommandToButton(0,self.browseCatalogFolderFunction)
 
         self.createLabelAtPosition(1,0,"Path Preturi: ",50,20)
-        self.createLabelAtPosition(1,1,self.supplierInfo['price_path'])
+        self.createLabelAtPosition(1,1,self.supplierInfo['price_folder_path'])
         self.createLabelAtPosition(1,2,"         ")
         self.createButtonAtPosition(1,3,"Browse")
-        self.addNormalCommandToButton(1,self.browsePreturiFunction)
+        self.addNormalCommandToButton(1,self.browsePriceFolderFunction)
 
         self.createLabelAtPosition(2,0,"Path Download: ",50,20)
         self.createLabelAtPosition(2,1,self.supplierInfo['download_path'])
@@ -95,21 +94,21 @@ class Kpop(MainApplication):
                 break
 
 
-    def browseCatalogFunction(self):
+    def browseCatalogFolderFunction(self):
 
-        self.master.filename  = filedialog.askopenfilename(initialdir=self.supplierInfo['catalogue_path'].split('\\')[:-1], title="Select Catalog", filetypes = (("all files","*.*"),("xlsx files","*.xlsx"),("xls files","*.xls")))
+        self.master.filename  = filedialog.askdirectory(initialdir=self.supplierInfo['catalogue_folder_path'], title="Select Catalog Folder")
         if self.master.filename == "":
             return
-        modifyJson("Kpop","catalogue_path",self.master.filename.replace('/','\\'))
+        modifyJson("Kpop","catalogue_folder_path",self.master.filename.replace('/','\\'))
         self.changeLabelText(1,self.master.filename.replace('/','\\'))
 
 
-    def browsePreturiFunction(self):
+    def browsePriceFolderFunction(self):
 
-        self.master.filename  = filedialog.askopenfilename(initialdir=self.supplierInfo['price_path'].split('\\')[:-1], title="Select Price", filetypes = (("all files","*.*"),("xlsx files","*.xlsx"),("xls files","*.xls")))
+        self.master.filename  = filedialog.askdirectory(initialdir=self.supplierInfo['price_folder_path'], title="Select Price Folder")
         if self.master.filename == "":
             return
-        modifyJson("Kpop","price_path",self.master.filename.replace('/','\\'))
+        modifyJson("Kpop","price_folder_path",self.master.filename.replace('/','\\'))
         self.changeLabelText(4,self.master.filename.replace('/','\\'))
 
 
@@ -130,10 +129,31 @@ class Kpop(MainApplication):
         modifyJson("Kpop","download_path",self.master.filename.replace('/','\\'))
         self.changeLabelText(7,self.master.filename.replace('/','\\'))
 
-
     def importFileFromWebsite(self):
 
-        driver = webdriver.Chrome(MainApplication.univPath+'\\chromedriver\\chromedriver.exe')
+        chromedriverPaths = []
+
+        for root, dirs, files in os.walk(MainApplication.univPath+"\\chromedriver"):
+            for name in files:
+                full_path = os.path.join(root, name)
+                chromedriverPaths.append(full_path)
+
+        ok = False
+
+        for i in range(len(chromedriverPaths)):
+            try:
+                driver = webdriver.Chrome(chromedriverPaths[i])
+                ok = True
+                print("Version",getVersion(chromedriverPaths[i]),"has executed successfully!")
+                break
+            except:
+                print("Version",getVersion(chromedriverPaths[i]),"doesn't work!")
+                continue
+
+        if ok == False:
+            print("Please download the latest chromedriver from the selenium website, rename it to chromedriver\"version\".exe and place it in the chromedriver folder of the project!")
+            return False
+
         driver.get('http://btb.cnlmusic.kr/btb/bbs/login.php');
         time.sleep(0.5)
         user=""
@@ -164,15 +184,16 @@ class Kpop(MainApplication):
         self.supplierInfo['temp_path'] = MainApplication.univPath+"\\temp\\"+getName(file)
         shutil.move(file, self.supplierInfo['temp_path'])
 
-        print(self.supplierInfo['temp_path'])
-
         qualityConvertXlsToXlsx(self.supplierInfo['temp_path'])
         self.supplierInfo['temp_path'] = self.supplierInfo['temp_path']+'x'
 
 
     def solve(self):
         self.initJsonStuff()
+
         self.importFileFromWebsite()
+
+        print("File has been imported successfully!")
 
         error = open(MainApplication.univPath+"\\Resources"+"\\error.txt","w")
         PRICE_ERROR = 696969696969
@@ -181,8 +202,13 @@ class Kpop(MainApplication):
 
         new_file = self.supplierInfo['temp_path']
         new_start_row = self.supplierInfo['new_start_row']
-        file_catalog = self.supplierInfo['catalogue_path']
-        file_price = self.supplierInfo['price_path']
+
+        folder_catalog = self.supplierInfo['catalogue_folder_path']
+        file_catalog = getFileXFromPath(folder_catalog, 1)
+
+        folder_price = self.supplierInfo['price_folder_path']
+        file_price = getFileXFromPath(folder_price, 1)
+
         save_path = self.supplierInfo['save_path']
         start_row = self.supplierInfo['start_row']
         price_start_row = self.supplierInfo['price_start_row']
@@ -422,5 +448,9 @@ class Kpop(MainApplication):
         error.close()
         void_workbook.save(os.path.join(save_path, save_name))
 
+        print("Void file has been created successfully!")
+
         self.master.destroy()
+        logText("Code has executed successfully!")
+
 

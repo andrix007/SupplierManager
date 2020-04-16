@@ -21,7 +21,6 @@ supplierTitles = [
 "Mystic",
 "Sincron",
 "Kpop",
-"Noutati_Kpop"
 ]
 
 
@@ -43,7 +42,7 @@ def solve():
     elif name == "Music On Vinyl":
         supplier = MOV(root,name,1135,180,r"Icons/nichelogo.ico",MainApplication.univBackColor)
     elif name == "Speakers Corner":
-        supplier = SCR(root,name,1035,420,r"Icons/nichelogo.ico",MainApplication.univBackColor)
+        supplier = SCR(root,name,1035,300,r"Icons/nichelogo.ico",MainApplication.univBackColor)
     elif name == "Mystic":
         supplier = Mystic(root,name,1135,240,r"Icons/nichelogo.ico",MainApplication.univBackColor)
     elif name == "Sincron":
@@ -60,6 +59,7 @@ MainApplication.initJsonPath(os.getcwd())
 MainApplication.changeUnivBackColor("black")
 MainApplication.changeUnivForColor("white")
 MainApplication.changeUnivActiveForColor("green") #for ex. the dropdown menu elements
+MainApplication.changeUnivPopupColor("#36D54A")
 
 root = tk.Tk()
 
