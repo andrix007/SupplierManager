@@ -62,22 +62,16 @@ class SCR(MainApplication):
         self.createButtonAtPosition(1,3,"Browse")
         self.addNormalCommandToButton(1,self.browsePriceFolderFunction)
 
-        self.createLabelAtPosition(2,0,"Path Update: ",50,20)
-        self.createLabelAtPosition(2,1,self.supplierInfo['update_path'])
+        self.createLabelAtPosition(2,0,"Path Salvare: ",50,20)
+        self.createLabelAtPosition(2,1,self.supplierInfo['save_path'])
         self.createLabelAtPosition(2,2,"         ")
         self.createButtonAtPosition(2,3,"Browse")
-        self.addNormalCommandToButton(2,self.browseUpdateFolderFunction)
+        self.addNormalCommandToButton(2,self.browseFolderFunction)
 
-        self.createLabelAtPosition(3,0,"Path Salvare: ",50,20)
-        self.createLabelAtPosition(3,1,self.supplierInfo['save_path'])
-        self.createLabelAtPosition(3,2,"         ")
-        self.createButtonAtPosition(3,3,"Browse")
-        self.addNormalCommandToButton(3,self.browseFolderFunction)
-
-        self.createLabelAtPosition(4,0,"                    ")
-        self.createButtonAtPosition(4,1,"Solve")
-        self.addNormalCommandToButton(4,self.solve)
-        self.createLabelAtPosition(4,2,"                    ")
+        self.createLabelAtPosition(3,0,"                    ")
+        self.createButtonAtPosition(3,1,"Solve")
+        self.addNormalCommandToButton(3,self.solve)
+        self.createLabelAtPosition(3,2,"                    ")
         #print(self.supplierInfo)
 
     def initJsonStuff(self):
@@ -106,14 +100,6 @@ class SCR(MainApplication):
             return
         modifyJson("Speakers Corner","price_folder_path",self.master.filename.replace('/','\\'))
         self.changeLabelText(4,self.master.filename.replace('/','\\'))
-
-    def browseUpdateFolderFunction(self):
-
-        self.master.filename  = filedialog.askdirectory(initialdir=self.supplierInfo['update_path'], title="Select Save Path")
-        if self.master.filename == "":
-            return
-        modifyJson("Speakers Corner","update_path",self.master.filename.replace('/','\\'))
-        self.changeLabelText(7,self.master.filename.replace('/','\\'))
 
     def browseFolderFunction(self):
 
@@ -148,22 +134,6 @@ class SCR(MainApplication):
             return
         file_price = getFileXFromPath(price_folder, 1)
 
-        update_folder = self.supplierInfo['update_path']
-
-        if fileCount(update_folder) > 3:
-            logError("Too many files in \"Update\" folder, please only have the 3 files: New, Release and Repress!")
-            return
-        elif fileCount(update_folder) < 3 and fileCount(update_folder) > 0:
-            logError("Folder \"Update\" is missing some files, please place all the 3 following files inside: New, Release and Repress!")
-            return
-        elif fileCount(update_folder) == 0:
-            logError("Folder \"Update\" is empty, please place the 3 files (New, Release and Repress) inside!")
-            return
-
-        file_new = getFileXFromPath(update_folder, 1)
-        file_release = getFileXFromPath(update_folder, 2)
-        file_repress = getFileXFromPath(update_folder, 3)
-
         save_path = self.supplierInfo['save_path']
         start_row = self.supplierInfo['start_row']
         price_start_row = self.supplierInfo['price_start_row']
@@ -176,63 +146,18 @@ class SCR(MainApplication):
 
         catalogExt = getExtension(file_catalog)
         priceExt = getExtension(file_price)
-        newExt = getExtension(file_new)
-        releaseExt = getExtension(file_release)
-        repressExt = getExtension(file_repress)
 
         scrCatalog = SupplierFile(file_catalog,catalogExt,start_row)
         scrPrices = SupplierFile(file_price,priceExt,price_start_row)
-        scrNew = SupplierFile(file_new,newExt,start_row)
-        scrRelease = SupplierFile(file_release,releaseExt,start_row)
-        scrRepress = SupplierFile(file_repress,repressExt,start_row)
 
-        mergeContainerFile = SupplierFile()
-
-        scrNew.printColumn(your_reference_column)
-        scrRelease.printColumn(your_reference_column)
-        scrRepress.printColumn(your_reference_column)
-
-        if not scrNew.isColumnEmpty(your_reference_column):
-            mergeContainerFile.addOtherSupplierFile(scrNew)
-        else:
-            mergeContainerFile.addOtherSupplierFile(scrNew, your_reference_column-1)
-        if not scrRelease.isColumnEmpty(your_reference_column):
-            mergeContainerFile.addOtherSupplierFile(scrRelease)
-        else:
-            mergeContainerFile.addOtherSupplierFile(scrRelease, your_reference_column-1)
-        if not scrRepress.isColumnEmpty(your_reference_column):
-            mergeContainerFile.addOtherSupplierFile(scrRepress)
-        else:
-            mergeContainerFile.addOtherSupplierFile(scrRepress, your_reference_column-1)
-
-        dictProductCode = mergeContainerFile.getDictionary(barcode_column, price_column)
-
-        i = 0
-
-        for row in scrCatalog.data:
-
-            barcode = str(normalizeBarcode(row[barcode_column-1]))
-            pricecode = row[price_column-1]
-
-            if barcode in dictProductCode:
-                if dictProductCode[barcode] != pricecode:
-                    scrCatalog.data[i][price_column-1] = dictProductCode[barcode]
-
-            i = i + 1
-
-
-        dictBarcode = scrCatalog.getBarcodeDictionary(barcode_column)
         dictPreturi = scrPrices.getDictionary(pricecode_column, rounded_price_column)
 
-        scrCatalog.addOtherSupplierFileInRegardToDictionary(mergeContainerFile, dictBarcode, barcode_column)
-        scrCatalog.addContentToWorkbook(file_catalog, start_row)
-
+        mergeContainerFile = SupplierFile()
 
         void_workbook = openpyxlWorkbook()
         void_sheet = void_workbook.active
         void_sheet.cell(row = 1,column = 1).value = "Barcode"
         void_sheet.cell(row = 1,column = 6).value = "Price"
-
 
         currentRow = 1
         i = start_row-1

@@ -1,5 +1,5 @@
-('C:\\Users\\Andrei '
- 'Bancila\\Desktop\\Folders\\SupplierListManagerProject\\build\\SupplierListManagerProject\\PYZ-00.pyz',
+('C:\\Users\\Andrei Bancila\\Desktop\\Organized '
+ 'Folders\\SupplierListManagerProject\\build\\SupplierListManagerProject\\PYZ-00.pyz',
  [('win32com',
    'c:\\users\\andrei '
    'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\win32com\\__init__.py',
@@ -1080,30 +1080,6 @@
    'c:\\users\\andrei '
    'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\pkg_resources\\__init__.py',
    'PYMODULE'),
-  ('pkg_resources._vendor',
-   'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\pkg_resources\\_vendor\\__init__.py',
-   'PYMODULE'),
-  ('pkg_resources._vendor.packaging.utils',
-   'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\utils.py',
-   'PYMODULE'),
-  ('pkg_resources._vendor.packaging._compat',
-   'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\_compat.py',
-   'PYMODULE'),
-  ('pkg_resources._vendor.packaging.markers',
-   'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\markers.py',
-   'PYMODULE'),
-  ('pkg_resources._vendor.packaging._structures',
-   'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\_structures.py',
-   'PYMODULE'),
-  ('pkg_resources._vendor.packaging.specifiers',
-   'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\specifiers.py',
-   'PYMODULE'),
   ('pkg_resources._vendor.pyparsing',
    'c:\\users\\andrei '
    'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\pkg_resources\\_vendor\\pyparsing.py',
@@ -1140,26 +1116,6 @@
    'c:\\users\\andrei '
    'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\win32\\lib\\netbios.py',
    'PYMODULE'),
-  ('pkg_resources._vendor.packaging.__about__',
-   'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\__about__.py',
-   'PYMODULE'),
-  ('pkg_resources._vendor.packaging',
-   'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\__init__.py',
-   'PYMODULE'),
-  ('pkg_resources._vendor.six',
-   'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\pkg_resources\\_vendor\\six.py',
-   'PYMODULE'),
-  ('pkg_resources._vendor.packaging.requirements',
-   'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\requirements.py',
-   'PYMODULE'),
-  ('pkg_resources._vendor.packaging.version',
-   'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\version.py',
-   'PYMODULE'),
   ('pkg_resources._vendor.appdirs',
    'c:\\users\\andrei '
    'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\pkg_resources\\_vendor\\appdirs.py',
@@ -1171,6 +1127,50 @@
   ('win32com.shell',
    'c:\\users\\andrei '
    'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\win32comext\\shell\\__init__.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor.six',
+   'c:\\users\\andrei '
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\pkg_resources\\_vendor\\six.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor.packaging._structures',
+   'c:\\users\\andrei '
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\_structures.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor.packaging._compat',
+   'c:\\users\\andrei '
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\_compat.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor',
+   'c:\\users\\andrei '
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\pkg_resources\\_vendor\\__init__.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor.packaging.requirements',
+   'c:\\users\\andrei '
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\requirements.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor.packaging.utils',
+   'c:\\users\\andrei '
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\utils.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor.packaging.version',
+   'c:\\users\\andrei '
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\version.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor.packaging.specifiers',
+   'c:\\users\\andrei '
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\specifiers.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor.packaging.__about__',
+   'c:\\users\\andrei '
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\__about__.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor.packaging.markers',
+   'c:\\users\\andrei '
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\markers.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor.packaging',
+   'c:\\users\\andrei '
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\__init__.py',
    'PYMODULE'),
   ('sysconfig',
    'c:\\users\\andrei '
@@ -1184,13 +1184,13 @@
    'c:\\users\\andrei '
    'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\pkg_resources\\extern\\__init__.py',
    'PYMODULE'),
-  ('_py_abc',
-   'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\_py_abc.py',
-   'PYMODULE'),
   ('stringprep',
    'c:\\users\\andrei '
    'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\stringprep.py',
+   'PYMODULE'),
+  ('_py_abc',
+   'c:\\users\\andrei '
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\_py_abc.py',
    'PYMODULE'),
   ('tracemalloc',
    'c:\\users\\andrei '
@@ -1221,8 +1221,8 @@
    'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\tkinter\\constants.py',
    'PYMODULE'),
   ('Classes.kpop',
-   'C:\\Users\\Andrei '
-   'Bancila\\Desktop\\Folders\\SupplierListManagerProject\\Classes\\kpop.py',
+   'C:\\Users\\Andrei Bancila\\Desktop\\Organized '
+   'Folders\\SupplierListManagerProject\\Classes\\kpop.py',
    'PYMODULE'),
   ('Classes', '-', 'PYMODULE'),
   ('selenium.webdriver',
@@ -1718,48 +1718,48 @@
    'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\json\\scanner.py',
    'PYMODULE'),
   ('Classes.SupplierFile',
-   'C:\\Users\\Andrei '
-   'Bancila\\Desktop\\Folders\\SupplierListManagerProject\\Classes\\SupplierFile.py',
+   'C:\\Users\\Andrei Bancila\\Desktop\\Organized '
+   'Folders\\SupplierListManagerProject\\Classes\\SupplierFile.py',
    'PYMODULE'),
   ('Classes.functions',
-   'C:\\Users\\Andrei '
-   'Bancila\\Desktop\\Folders\\SupplierListManagerProject\\Classes\\functions.py',
+   'C:\\Users\\Andrei Bancila\\Desktop\\Organized '
+   'Folders\\SupplierListManagerProject\\Classes\\functions.py',
    'PYMODULE'),
   ('Classes.sincron',
-   'C:\\Users\\Andrei '
-   'Bancila\\Desktop\\Folders\\SupplierListManagerProject\\Classes\\sincron.py',
+   'C:\\Users\\Andrei Bancila\\Desktop\\Organized '
+   'Folders\\SupplierListManagerProject\\Classes\\sincron.py',
    'PYMODULE'),
   ('Classes.mystic',
-   'C:\\Users\\Andrei '
-   'Bancila\\Desktop\\Folders\\SupplierListManagerProject\\Classes\\mystic.py',
+   'C:\\Users\\Andrei Bancila\\Desktop\\Organized '
+   'Folders\\SupplierListManagerProject\\Classes\\mystic.py',
    'PYMODULE'),
   ('Classes.SCR',
-   'C:\\Users\\Andrei '
-   'Bancila\\Desktop\\Folders\\SupplierListManagerProject\\Classes\\SCR.py',
+   'C:\\Users\\Andrei Bancila\\Desktop\\Organized '
+   'Folders\\SupplierListManagerProject\\Classes\\SCR.py',
    'PYMODULE'),
   ('Classes.MOV',
-   'C:\\Users\\Andrei '
-   'Bancila\\Desktop\\Folders\\SupplierListManagerProject\\Classes\\MOV.py',
+   'C:\\Users\\Andrei Bancila\\Desktop\\Organized '
+   'Folders\\SupplierListManagerProject\\Classes\\MOV.py',
    'PYMODULE'),
   ('Classes.Pias_Classical',
-   'C:\\Users\\Andrei '
-   'Bancila\\Desktop\\Folders\\SupplierListManagerProject\\Classes\\Pias_Classical.py',
+   'C:\\Users\\Andrei Bancila\\Desktop\\Organized '
+   'Folders\\SupplierListManagerProject\\Classes\\Pias_Classical.py',
    'PYMODULE'),
   ('Classes.pias',
-   'C:\\Users\\Andrei '
-   'Bancila\\Desktop\\Folders\\SupplierListManagerProject\\Classes\\pias.py',
+   'C:\\Users\\Andrei Bancila\\Desktop\\Organized '
+   'Folders\\SupplierListManagerProject\\Classes\\pias.py',
    'PYMODULE'),
   ('Classes.nuke',
-   'C:\\Users\\Andrei '
-   'Bancila\\Desktop\\Folders\\SupplierListManagerProject\\Classes\\nuke.py',
+   'C:\\Users\\Andrei Bancila\\Desktop\\Organized '
+   'Folders\\SupplierListManagerProject\\Classes\\nuke.py',
    'PYMODULE'),
   ('Classes.sony',
-   'C:\\Users\\Andrei '
-   'Bancila\\Desktop\\Folders\\SupplierListManagerProject\\Classes\\sony.py',
+   'C:\\Users\\Andrei Bancila\\Desktop\\Organized '
+   'Folders\\SupplierListManagerProject\\Classes\\sony.py',
    'PYMODULE'),
   ('Classes.MainApplication',
-   'C:\\Users\\Andrei '
-   'Bancila\\Desktop\\Folders\\SupplierListManagerProject\\Classes\\MainApplication.py',
+   'C:\\Users\\Andrei Bancila\\Desktop\\Organized '
+   'Folders\\SupplierListManagerProject\\Classes\\MainApplication.py',
    'PYMODULE'),
   ('pandas',
    'c:\\users\\andrei '
@@ -2197,41 +2197,45 @@
    'c:\\users\\andrei '
    'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\setuptools\\__init__.py',
    'PYMODULE'),
-  ('setuptools._vendor.six',
+  ('setuptools._vendor.packaging.version',
    'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\setuptools\\_vendor\\six.py',
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\setuptools\\_vendor\\packaging\\version.py',
    'PYMODULE'),
   ('setuptools._vendor.packaging.markers',
    'c:\\users\\andrei '
    'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\setuptools\\_vendor\\packaging\\markers.py',
    'PYMODULE'),
-  ('setuptools._vendor.packaging.specifiers',
-   'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\setuptools\\_vendor\\packaging\\specifiers.py',
-   'PYMODULE'),
-  ('setuptools._vendor.packaging.version',
-   'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\setuptools\\_vendor\\packaging\\version.py',
-   'PYMODULE'),
-  ('setuptools._vendor.packaging.requirements',
-   'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\setuptools\\_vendor\\packaging\\requirements.py',
-   'PYMODULE'),
   ('setuptools._vendor.packaging.utils',
    'c:\\users\\andrei '
    'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\setuptools\\_vendor\\packaging\\utils.py',
    'PYMODULE'),
-  ('setuptools._vendor.packaging',
+  ('setuptools._vendor.packaging.specifiers',
    'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\setuptools\\_vendor\\packaging\\__init__.py',
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\setuptools\\_vendor\\packaging\\specifiers.py',
    'PYMODULE'),
   ('setuptools._vendor.packaging._structures',
    'c:\\users\\andrei '
    'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\setuptools\\_vendor\\packaging\\_structures.py',
    'PYMODULE'),
+  ('setuptools._vendor.packaging',
+   'c:\\users\\andrei '
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\setuptools\\_vendor\\packaging\\__init__.py',
+   'PYMODULE'),
   ('setuptools._vendor.packaging.__about__',
    'c:\\users\\andrei '
    'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\setuptools\\_vendor\\packaging\\__about__.py',
+   'PYMODULE'),
+  ('setuptools._vendor.packaging.requirements',
+   'c:\\users\\andrei '
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\setuptools\\_vendor\\packaging\\requirements.py',
+   'PYMODULE'),
+  ('setuptools._vendor.packaging._compat',
+   'c:\\users\\andrei '
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\setuptools\\_vendor\\packaging\\_compat.py',
+   'PYMODULE'),
+  ('setuptools._vendor.six',
+   'c:\\users\\andrei '
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\setuptools\\_vendor\\six.py',
    'PYMODULE'),
   ('setuptools._vendor',
    'c:\\users\\andrei '
@@ -2240,10 +2244,6 @@
   ('setuptools._vendor.pyparsing',
    'c:\\users\\andrei '
    'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\setuptools\\_vendor\\pyparsing.py',
-   'PYMODULE'),
-  ('setuptools._vendor.packaging._compat',
-   'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\setuptools\\_vendor\\packaging\\_compat.py',
    'PYMODULE'),
   ('setuptools.msvc',
    'c:\\users\\andrei '
@@ -3000,6 +3000,10 @@
   ('pandas.io.clipboard',
    'c:\\users\\andrei '
    'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\pandas\\io\\clipboard\\__init__.py',
+   'PYMODULE'),
+  ('PyQt5',
+   'c:\\users\\andrei '
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\PyQt5\\__init__.py',
    'PYMODULE'),
   ('pandas.io.clipboard.windows',
    'c:\\users\\andrei '
