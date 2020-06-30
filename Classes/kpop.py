@@ -222,7 +222,7 @@ class Kpop(MainApplication):
         error = open(MainApplication.univPath+"\\Resources"+"\\error.txt","w")
         PRICE_ERROR = 696969696969
         BARCODE_ERROR = 797979797979
-        blacklistFormat = ['BOOK', 'KIHNO']
+        blacklistFormat = []
 
         new_file = self.supplierInfo['temp_path']
         new_start_row = self.supplierInfo['new_start_row']
@@ -392,11 +392,10 @@ class Kpop(MainApplication):
         for i in range(start_row, prow):
             f = getCorrectFormat(ws.cell(row = i, column = format_column).value)
 
-            if f != 'KIHNO' and f != 'BOOK':
-                for j in range(1, pcol):
-                    pureNewSheet.cell(row = cnt, column = j).value = ws.cell(row = i, column = j).value
+            for j in range(1, pcol):
+                pureNewSheet.cell(row = cnt, column = j).value = ws.cell(row = i, column = j).value
 
-                cnt = cnt + 1
+            cnt = cnt + 1
 
         pureCatalog.save(file_catalog)
 
