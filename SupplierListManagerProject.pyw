@@ -24,7 +24,6 @@ supplierTitles = [
 ]
 
 
-
 def solve():
 
     root = tk.Tk()
@@ -36,7 +35,7 @@ def solve():
     elif name == "Nuclear Blast":
         supplier = Nuke(root,name,1100,240,r"Icons/nichelogo.ico",MainApplication.univBackColor)
     elif name == "Pias":
-        supplier = Pias(root,name,1035,240,r"Icons/nichelogo.ico",MainApplication.univBackColor)
+        supplier = Pias(root,name,1035,300,r"Icons/nichelogo.ico",MainApplication.univBackColor)
     elif name == "Pias_Classical":
         supplier = Pias_Classical(root,name,1035,240,r"Icons/nichelogo.ico",MainApplication.univBackColor)
     elif name == "Music On Vinyl":

@@ -68,10 +68,17 @@ class Pias(MainApplication):
         self.createButtonAtPosition(2,3,"Browse")
         self.addNormalCommandToButton(2,self.browseFolderFunction)
 
-        self.createLabelAtPosition(3,0,"                    ")
-        self.createButtonAtPosition(3,1,"Solve")
-        self.addNormalCommandToButton(3,self.solve)
-        self.createLabelAtPosition(3,2,"                    ")
+        self.createLabelAtPosition(3,0,"Tabel Update Path: ",50,20)
+        self.createLabelAtPosition(3,1,self.supplierInfo['tabel_update_path'])
+        self.createLabelAtPosition(3,2,"         ")
+        self.createButtonAtPosition(3,3,"Browse",)
+        self.addNormalCommandToButton(3,self.browseUpdateTabelFunction)
+
+        self.createLabelAtPosition(4,0,"                    ")
+        self.createButtonAtPosition(4,1,"Solve")
+        self.addNormalCommandToButton(4,self.solve)
+        self.createLabelAtPosition(4,2,"                    ")
+
         #print(self.supplierInfo)
 
     def initJsonStuff(self):
@@ -109,7 +116,16 @@ class Pias(MainApplication):
         modifyJson("Pias","save_path",self.master.filename.replace('/','\\'))
         self.changeLabelText(7,self.master.filename.replace('/','\\'))
 
+    def browseUpdateTabelFunction(self):
+
+        self.master.filename  = filedialog.askdirectory(initialdir=self.supplierInfo['tabel_update_path'], title="Select Update Table Path")
+        if self.master.filename == "":
+            return
+        modifyJson("Pias","tabel_update_path",self.master.filename.replace('/','\\'))
+        self.changeLabelText(10,self.master.filename.replace('/','\\'))
+
     def solve(self):
+
         self.initJsonStuff()
 
         error = open(MainApplication.univPath+"\\Resources"+"\\error.txt","w")
@@ -146,10 +162,101 @@ class Pias(MainApplication):
         catalogExt = getExtension(file_catalog)
         priceExt = getExtension(file_price)
 
-        piasCatalog = SupplierFile(file_catalog,catalogExt,start_row)
-        piasPrices = SupplierFile(file_price,priceExt,price_start_row)
+        piasCatalog = SupplierFile(file_catalog, catalogExt, start_row)
+        piasPrices = SupplierFile(file_price, priceExt, price_start_row)
 
         dictPreturi = piasPrices.getDictionary(pricecode_column,rounded_price_column)
+
+
+
+
+        ######################################
+
+        folder_tabel = self.supplierInfo['tabel_update_path']
+        file_count = fileCount(folder_tabel)
+
+        if file_count > 1:
+            logError("Too many files in \"Tabel\" folder, please only have one file!")
+            return
+
+        if file_count == 1:
+
+            file_tabel = getFileXFromPath(folder_tabel, 1)
+
+            noutati_start_row = self.supplierInfo['noutati_start_row']
+            tabel_barcode_column = self.supplierInfo['tabel_barcode_column']
+            tabel_artist_column = self.supplierInfo['tabel_artist_column']
+            tabel_title_column = self.supplierInfo['tabel_title_column']
+            tabel_suport_column = self.supplierInfo['tabel_suport_column']
+            tabel_unit_column = self.supplierInfo['tabel_unit_column']
+            tabel_release_date_column = self.supplierInfo['tabel_release_date_column']
+            tabel_pricecode_column = self.supplierInfo['tabel_pricecode_column']
+            tabel_start_row = self.supplierInfo['tabel_start_row']
+
+            folder_noutati = MainApplication.univPath + "\\Noutati\\Pias"
+            file_noutati = getFileXFromPath(folder_noutati, 1)
+            noutatiExt = getExtension(file_noutati)
+            piasNoutati = SupplierFile(file_noutati, noutatiExt, noutati_start_row)
+            noutatiBarcodeDict = piasNoutati.getBarcodeDictionary(tabel_barcode_column)
+
+            tabelExt = getExtension(file_tabel)
+            piasTabel = SupplierFile(file_tabel, tabelExt, tabel_start_row)
+
+            try:
+                tabel_wb = load_workbook(file_tabel)
+            except:
+                logError("catalog file is either missing or open in another program!")
+                return
+
+            tabel_ws = tabel_wb.active
+
+            tabel_prow = tabel_ws.max_row + 1
+            tabel_pcol = tabel_ws.max_column + 1
+
+
+            try:
+                noutati_wb = load_workbook(file_noutati)
+            except:
+                logError("catalog file is either missing or open in another program!")
+                return
+
+            noutati_ws = noutati_wb.active
+
+            noutati_prow  = noutati_ws.max_row + 1
+            noutati_pcol = noutati_ws.max_column + 1
+
+            cnt = noutati_prow
+
+            for i in range(tabel_start_row, tabel_prow):
+
+                if tabel_ws.cell(row = i, column = tabel_barcode_column).value not in noutatiBarcodeDict:
+                    for j in range(1, tabel_pcol):
+                        noutati_ws.cell(row = cnt, column = j).value = tabel_ws.cell(row = i, column = j).value
+                    cnt = cnt + 1
+                    noutatiBarcodeDict.update({tabel_ws.cell(row = i, column = tabel_barcode_column).value : "1"})
+
+            noutati_wb.save(file_noutati)
+
+            try:
+                excel = win32.gencache.EnsureDispatch('Excel.Application')
+                workbook = excel.Workbooks.Open(os.path.abspath(file_noutati))
+                workbook.Save()
+                workbook.Close()
+                excel.Quit()
+            except:
+                logError("Problem with Microsoft Excel!\n Also, if any file that might be used by the program is open,\n please close it and try again!")
+                return
+
+            #eraseContent(folder_tabel)
+
+
+
+            return
+
+        ######################################
+
+
+
 
         void_workbook = openpyxlWorkbook()
         void_sheet = void_workbook.active
