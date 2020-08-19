@@ -167,9 +167,10 @@ class Pias(MainApplication):
 
         dictPreturi = piasPrices.getDictionary(pricecode_column,rounded_price_column)
 
+        piasCatalogBarcodes = piasCatalog.getBarcodeDictionary(barcode_column)
 
 
-
+        ok = False
         ######################################
 
         folder_tabel = self.supplierInfo['tabel_update_path']
@@ -181,6 +182,7 @@ class Pias(MainApplication):
 
         if file_count == 1:
 
+            ok = True
             file_tabel = getFileXFromPath(folder_tabel, 1)
 
             noutati_start_row = self.supplierInfo['noutati_start_row']
@@ -229,11 +231,12 @@ class Pias(MainApplication):
 
             for i in range(tabel_start_row, tabel_prow):
 
-                if tabel_ws.cell(row = i, column = tabel_barcode_column).value not in noutatiBarcodeDict:
+                tabel_barcode = normalizeBarcode(str(tabel_ws.cell(row = i, column = tabel_barcode_column).value))
+                if tabel_barcode not in noutatiBarcodeDict:
                     for j in range(1, tabel_pcol):
                         noutati_ws.cell(row = cnt, column = j).value = tabel_ws.cell(row = i, column = j).value
                     cnt = cnt + 1
-                    noutatiBarcodeDict.update({tabel_ws.cell(row = i, column = tabel_barcode_column).value : "1"})
+                    noutatiBarcodeDict.update({tabel_barcode : "1"})
 
             noutati_wb.save(file_noutati)
 
@@ -247,16 +250,15 @@ class Pias(MainApplication):
                 logError("Problem with Microsoft Excel!\n Also, if any file that might be used by the program is open,\n please close it and try again!")
                 return
 
-            #eraseContent(folder_tabel)
+            #aici sterg din lista cu noutati ce e din pias catalog
+            deleteBarcodesFromFile(file_noutati, noutati_start_row, tabel_barcode_column, piasCatalogBarcodes)
+            #aici sterg din lista cu noutati ce e din pias catalog
+
+            eraseContent(folder_tabel)
 
 
-
-            return
 
         ######################################
-
-
-
 
         void_workbook = openpyxlWorkbook()
         void_sheet = void_workbook.active
@@ -318,9 +320,76 @@ class Pias(MainApplication):
 
                 error.write(errorText)
 
+        if ok == True:
+            #return
+            #aici bag in void tot ce erasi in lista cu noutati
+            wb = load_workbook(file_noutati)
+            ws = wb.active
+
+            prow = ws.max_row + 1
+
+            for i in range(noutati_start_row + 1, prow):
+
+                barcode = normalizeBarcode(str(ws.cell(row = i, column = tabel_barcode_column).value))
+                catalog_price = ws.cell(row = i, column = tabel_pricecode_column).value
+
+                print("Barcode: ", barcode, "Price = ", catalog_price, "Real Price = ", dictPreturi[catalog_price])
+
+                if catalog_price in dictPreturi:
+                    price = dictPreturi[catalog_price]
+                else:
+                    price = PRICE_ERROR
+
+                if barcode == None:
+                    barcode = BARCODE_ERROR
+                else:
+                    if not barcode.isdigit():
+                        barcode = BARCODE_ERROR
+
+                if str(price) == None:
+                    price = PRICE_ERROR
+                else:
+                    if not isfloat(str(price)):
+                        price = PRICE_ERROR
+
+                if barcode != BARCODE_ERROR and price != PRICE_ERROR:
+
+                    currentRow = currentRow + 1
+
+                    barcode = barcode.zfill(13)
+
+                    void_sheet.cell(row = currentRow,column = 1).value = barcode
+                    void_sheet.cell(row = currentRow,column = 6).value = round(price,2)
+
+                else:
+
+                    errorText = "Line " + str(i) + ":   "
+                    if barcode == BARCODE_ERROR:
+                        errorText = errorText + "BARCODE_ERROR "
+                    else:
+                        errorText = errorText + barcode + " "
+
+                    if price == PRICE_ERROR:
+                        errorText = errorText + "PRICE_ERROR "
+                    else:
+                        errorText = errorText + str(price)
+
+                    errorText = errorText + "\n"
+
+                    error.write(errorText)
+
 
         error.close()
         void_workbook.save(save_path+"\\" + save_name)
+        try:
+            excel = win32.gencache.EnsureDispatch('Excel.Application')
+            workbook = excel.Workbooks.Open(os.path.abspath(save_path+"\\" + save_name))
+            workbook.Save()
+            workbook.Close()
+            excel.Quit()
+        except:
+            logError("Problem with Microsoft Excel!\n Also, if any file that might be used by the program is open,\n please close it and try again!")
+            return
 
         self.master.destroy()
         logText("Code has executed successfully!")

@@ -340,3 +340,37 @@ def logError(errorMessage, errorColor=MainApplication.univErrorPopupColor):
 def fileCount(path):
     return len(os.listdir(path))
 
+def deleteBarcodesFromFile(file, start_row, barcode_column, barcodes):
+    wb = load_workbook(file)
+    ws = wb.active
+
+    new_wb = openpyxlWorkbook()
+    new_ws = new_wb.active
+
+    prow = ws.max_row+1
+    pcol = ws.max_column+1
+
+    cnt = start_row
+
+    for i in range(start_row, prow):
+        if i == start_row:
+            for j in range(1, pcol):
+                new_ws.cell(row = cnt, column = j).value = ws.cell(row = i, column = j).value
+            cnt = cnt + 1
+            continue
+        barcode = normalizeBarcode(str(ws.cell(row = i, column = barcode_column).value))
+        if barcode not in barcodes:
+            for j in range(1, pcol):
+                new_ws.cell(row = cnt, column = j).value = ws.cell(row = i, column = j).value
+            cnt = cnt + 1
+
+    new_wb.save(file)
+    try:
+        excel = win32.gencache.EnsureDispatch('Excel.Application')
+        workbook = excel.Workbooks.Open(os.path.abspath(file))
+        workbook.Save()
+        workbook.Close()
+        excel.Quit()
+    except:
+        logError("Problem with Microsoft Excel!\n Also, if any file that might be used by the program is open,\n please close it and try again!")
+        return
