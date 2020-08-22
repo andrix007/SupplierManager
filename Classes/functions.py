@@ -285,6 +285,10 @@ def normalizeBarcode(barcode):
     for i in range(len(barcode)):
         if str(barcode[i]).isdigit():
             string = string + str(barcode[i])
+    if len(string) < 13:
+        dif = 13-len(string)
+        for _ in range(dif):
+            string = "0"+string
 
     if '.' not in barcode:
         return string

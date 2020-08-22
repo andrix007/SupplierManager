@@ -61,7 +61,7 @@ class SupplierFile(MainApplication):
 
         for row in self.data:
 
-            value = row[barcodeColumn]
+            value = str(row[barcodeColumn])
             value = normalizeBarcode(value)
             if value not in dictBar:
                 dictBar.update({value:"1"})

@@ -229,7 +229,7 @@ class Pias(MainApplication):
 
             cnt = noutati_prow
 
-            for i in range(tabel_start_row, tabel_prow):
+            for i in range(tabel_start_row+1, tabel_prow):
 
                 tabel_barcode = normalizeBarcode(str(tabel_ws.cell(row = i, column = tabel_barcode_column).value))
                 if tabel_barcode not in noutatiBarcodeDict:
@@ -332,8 +332,6 @@ class Pias(MainApplication):
 
                 barcode = normalizeBarcode(str(ws.cell(row = i, column = tabel_barcode_column).value))
                 catalog_price = ws.cell(row = i, column = tabel_pricecode_column).value
-
-                print("Barcode: ", barcode, "Price = ", catalog_price, "Real Price = ", dictPreturi[catalog_price])
 
                 if catalog_price in dictPreturi:
                     price = dictPreturi[catalog_price]
