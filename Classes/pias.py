@@ -379,15 +379,6 @@ class Pias(MainApplication):
 
         error.close()
         void_workbook.save(save_path+"\\" + save_name)
-        try:
-            excel = win32.gencache.EnsureDispatch('Excel.Application')
-            workbook = excel.Workbooks.Open(os.path.abspath(save_path+"\\" + save_name))
-            workbook.Save()
-            workbook.Close()
-            excel.Quit()
-        except:
-            logError("Problem with Microsoft Excel!\n Also, if any file that might be used by the program is open,\n please close it and try again!")
-            return
 
         self.master.destroy()
         logText("Code has executed successfully!")

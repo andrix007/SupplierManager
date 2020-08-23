@@ -1,5 +1,5 @@
-('C:\\Users\\Andrei Bancila\\Desktop\\Organized '
- 'Folders\\SupplierListManagerProject\\build\\SupplierListManagerProject\\PYZ-00.pyz',
+('C:\\Users\\Andrei '
+ 'Bancila\\Desktop\\SupplierListManagerProject\\build\\SupplierListManagerProject\\PYZ-00.pyz',
  [('win32com',
    'c:\\users\\andrei '
    'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\win32com\\__init__.py',
@@ -1080,49 +1080,29 @@
    'c:\\users\\andrei '
    'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\pkg_resources\\__init__.py',
    'PYMODULE'),
-  ('pkg_resources._vendor.packaging.markers',
+  ('pkg_resources._vendor.packaging.requirements',
    'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\markers.py',
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\requirements.py',
    'PYMODULE'),
-  ('pkg_resources._vendor',
+  ('pkg_resources._vendor.packaging',
    'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\pkg_resources\\_vendor\\__init__.py',
-   'PYMODULE'),
-  ('pkg_resources._vendor.appdirs',
-   'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\pkg_resources\\_vendor\\appdirs.py',
-   'PYMODULE'),
-  ('win32com.shell.shellcon',
-   'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\win32comext\\shell\\shellcon.py',
-   'PYMODULE'),
-  ('win32com.shell',
-   'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\win32comext\\shell\\__init__.py',
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\__init__.py',
    'PYMODULE'),
   ('pkg_resources._vendor.packaging.__about__',
    'c:\\users\\andrei '
    'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\__about__.py',
    'PYMODULE'),
-  ('pkg_resources._vendor.packaging._compat',
-   'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\_compat.py',
-   'PYMODULE'),
   ('pkg_resources._vendor.packaging.utils',
    'c:\\users\\andrei '
    'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\utils.py',
    'PYMODULE'),
-  ('pkg_resources._vendor.packaging.version',
+  ('pkg_resources._vendor.packaging._structures',
    'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\version.py',
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\_structures.py',
    'PYMODULE'),
-  ('pkg_resources._vendor.packaging.specifiers',
+  ('pkg_resources._vendor.packaging.markers',
    'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\specifiers.py',
-   'PYMODULE'),
-  ('pkg_resources._vendor.packaging.requirements',
-   'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\requirements.py',
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\markers.py',
    'PYMODULE'),
   ('pkg_resources._vendor.pyparsing',
    'c:\\users\\andrei '
@@ -1160,17 +1140,37 @@
    'c:\\users\\andrei '
    'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\win32\\lib\\netbios.py',
    'PYMODULE'),
+  ('pkg_resources._vendor',
+   'c:\\users\\andrei '
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\pkg_resources\\_vendor\\__init__.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor.appdirs',
+   'c:\\users\\andrei '
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\pkg_resources\\_vendor\\appdirs.py',
+   'PYMODULE'),
+  ('win32com.shell.shellcon',
+   'c:\\users\\andrei '
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\win32comext\\shell\\shellcon.py',
+   'PYMODULE'),
+  ('win32com.shell',
+   'c:\\users\\andrei '
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\win32comext\\shell\\__init__.py',
+   'PYMODULE'),
   ('pkg_resources._vendor.six',
    'c:\\users\\andrei '
    'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\pkg_resources\\_vendor\\six.py',
    'PYMODULE'),
-  ('pkg_resources._vendor.packaging',
+  ('pkg_resources._vendor.packaging._compat',
    'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\__init__.py',
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\_compat.py',
    'PYMODULE'),
-  ('pkg_resources._vendor.packaging._structures',
+  ('pkg_resources._vendor.packaging.version',
    'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\_structures.py',
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\version.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor.packaging.specifiers',
+   'c:\\users\\andrei '
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\specifiers.py',
    'PYMODULE'),
   ('sysconfig',
    'c:\\users\\andrei '
@@ -1184,10 +1184,6 @@
    'c:\\users\\andrei '
    'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\pkg_resources\\extern\\__init__.py',
    'PYMODULE'),
-  ('stringprep',
-   'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\stringprep.py',
-   'PYMODULE'),
   ('_py_abc',
    'c:\\users\\andrei '
    'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\_py_abc.py',
@@ -1195,6 +1191,10 @@
   ('tracemalloc',
    'c:\\users\\andrei '
    'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\tracemalloc.py',
+   'PYMODULE'),
+  ('stringprep',
+   'c:\\users\\andrei '
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\stringprep.py',
    'PYMODULE'),
   ('os',
    'c:\\users\\andrei '
@@ -1221,8 +1221,8 @@
    'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\tkinter\\constants.py',
    'PYMODULE'),
   ('Classes.kpop',
-   'C:\\Users\\Andrei Bancila\\Desktop\\Organized '
-   'Folders\\SupplierListManagerProject\\Classes\\kpop.py',
+   'C:\\Users\\Andrei '
+   'Bancila\\Desktop\\SupplierListManagerProject\\Classes\\kpop.py',
    'PYMODULE'),
   ('Classes', '-', 'PYMODULE'),
   ('selenium.webdriver',
@@ -1718,48 +1718,48 @@
    'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\json\\scanner.py',
    'PYMODULE'),
   ('Classes.SupplierFile',
-   'C:\\Users\\Andrei Bancila\\Desktop\\Organized '
-   'Folders\\SupplierListManagerProject\\Classes\\SupplierFile.py',
+   'C:\\Users\\Andrei '
+   'Bancila\\Desktop\\SupplierListManagerProject\\Classes\\SupplierFile.py',
    'PYMODULE'),
   ('Classes.functions',
-   'C:\\Users\\Andrei Bancila\\Desktop\\Organized '
-   'Folders\\SupplierListManagerProject\\Classes\\functions.py',
+   'C:\\Users\\Andrei '
+   'Bancila\\Desktop\\SupplierListManagerProject\\Classes\\functions.py',
    'PYMODULE'),
   ('Classes.sincron',
-   'C:\\Users\\Andrei Bancila\\Desktop\\Organized '
-   'Folders\\SupplierListManagerProject\\Classes\\sincron.py',
+   'C:\\Users\\Andrei '
+   'Bancila\\Desktop\\SupplierListManagerProject\\Classes\\sincron.py',
    'PYMODULE'),
   ('Classes.mystic',
-   'C:\\Users\\Andrei Bancila\\Desktop\\Organized '
-   'Folders\\SupplierListManagerProject\\Classes\\mystic.py',
+   'C:\\Users\\Andrei '
+   'Bancila\\Desktop\\SupplierListManagerProject\\Classes\\mystic.py',
    'PYMODULE'),
   ('Classes.SCR',
-   'C:\\Users\\Andrei Bancila\\Desktop\\Organized '
-   'Folders\\SupplierListManagerProject\\Classes\\SCR.py',
+   'C:\\Users\\Andrei '
+   'Bancila\\Desktop\\SupplierListManagerProject\\Classes\\SCR.py',
    'PYMODULE'),
   ('Classes.MOV',
-   'C:\\Users\\Andrei Bancila\\Desktop\\Organized '
-   'Folders\\SupplierListManagerProject\\Classes\\MOV.py',
+   'C:\\Users\\Andrei '
+   'Bancila\\Desktop\\SupplierListManagerProject\\Classes\\MOV.py',
    'PYMODULE'),
   ('Classes.Pias_Classical',
-   'C:\\Users\\Andrei Bancila\\Desktop\\Organized '
-   'Folders\\SupplierListManagerProject\\Classes\\Pias_Classical.py',
+   'C:\\Users\\Andrei '
+   'Bancila\\Desktop\\SupplierListManagerProject\\Classes\\Pias_Classical.py',
    'PYMODULE'),
   ('Classes.pias',
-   'C:\\Users\\Andrei Bancila\\Desktop\\Organized '
-   'Folders\\SupplierListManagerProject\\Classes\\pias.py',
+   'C:\\Users\\Andrei '
+   'Bancila\\Desktop\\SupplierListManagerProject\\Classes\\pias.py',
    'PYMODULE'),
   ('Classes.nuke',
-   'C:\\Users\\Andrei Bancila\\Desktop\\Organized '
-   'Folders\\SupplierListManagerProject\\Classes\\nuke.py',
+   'C:\\Users\\Andrei '
+   'Bancila\\Desktop\\SupplierListManagerProject\\Classes\\nuke.py',
    'PYMODULE'),
   ('Classes.sony',
-   'C:\\Users\\Andrei Bancila\\Desktop\\Organized '
-   'Folders\\SupplierListManagerProject\\Classes\\sony.py',
+   'C:\\Users\\Andrei '
+   'Bancila\\Desktop\\SupplierListManagerProject\\Classes\\sony.py',
    'PYMODULE'),
   ('Classes.MainApplication',
-   'C:\\Users\\Andrei Bancila\\Desktop\\Organized '
-   'Folders\\SupplierListManagerProject\\Classes\\MainApplication.py',
+   'C:\\Users\\Andrei '
+   'Bancila\\Desktop\\SupplierListManagerProject\\Classes\\MainApplication.py',
    'PYMODULE'),
   ('pandas',
    'c:\\users\\andrei '
@@ -2197,17 +2197,37 @@
    'c:\\users\\andrei '
    'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\setuptools\\__init__.py',
    'PYMODULE'),
-  ('setuptools._vendor.packaging.__about__',
+  ('setuptools._vendor.packaging',
    'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\setuptools\\_vendor\\packaging\\__about__.py',
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\setuptools\\_vendor\\packaging\\__init__.py',
    'PYMODULE'),
   ('setuptools._vendor.six',
    'c:\\users\\andrei '
    'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\setuptools\\_vendor\\six.py',
    'PYMODULE'),
-  ('setuptools._vendor.packaging',
+  ('setuptools._vendor.packaging.utils',
    'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\setuptools\\_vendor\\packaging\\__init__.py',
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\setuptools\\_vendor\\packaging\\utils.py',
+   'PYMODULE'),
+  ('setuptools._vendor',
+   'c:\\users\\andrei '
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\setuptools\\_vendor\\__init__.py',
+   'PYMODULE'),
+  ('setuptools._vendor.packaging.version',
+   'c:\\users\\andrei '
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\setuptools\\_vendor\\packaging\\version.py',
+   'PYMODULE'),
+  ('setuptools._vendor.packaging._structures',
+   'c:\\users\\andrei '
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\setuptools\\_vendor\\packaging\\_structures.py',
+   'PYMODULE'),
+  ('setuptools._vendor.pyparsing',
+   'c:\\users\\andrei '
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\setuptools\\_vendor\\pyparsing.py',
+   'PYMODULE'),
+  ('setuptools._vendor.packaging.specifiers',
+   'c:\\users\\andrei '
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\setuptools\\_vendor\\packaging\\specifiers.py',
    'PYMODULE'),
   ('setuptools._vendor.packaging.requirements',
    'c:\\users\\andrei '
@@ -2217,33 +2237,13 @@
    'c:\\users\\andrei '
    'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\setuptools\\_vendor\\packaging\\markers.py',
    'PYMODULE'),
-  ('setuptools._vendor.pyparsing',
-   'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\setuptools\\_vendor\\pyparsing.py',
-   'PYMODULE'),
-  ('setuptools._vendor.packaging.utils',
-   'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\setuptools\\_vendor\\packaging\\utils.py',
-   'PYMODULE'),
-  ('setuptools._vendor.packaging._structures',
-   'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\setuptools\\_vendor\\packaging\\_structures.py',
-   'PYMODULE'),
   ('setuptools._vendor.packaging._compat',
    'c:\\users\\andrei '
    'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\setuptools\\_vendor\\packaging\\_compat.py',
    'PYMODULE'),
-  ('setuptools._vendor',
+  ('setuptools._vendor.packaging.__about__',
    'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\setuptools\\_vendor\\__init__.py',
-   'PYMODULE'),
-  ('setuptools._vendor.packaging.specifiers',
-   'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\setuptools\\_vendor\\packaging\\specifiers.py',
-   'PYMODULE'),
-  ('setuptools._vendor.packaging.version',
-   'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\setuptools\\_vendor\\packaging\\version.py',
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\setuptools\\_vendor\\packaging\\__about__.py',
    'PYMODULE'),
   ('setuptools.msvc',
    'c:\\users\\andrei '
@@ -4153,73 +4153,49 @@
    'c:\\users\\andrei '
    'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\PIL\\Image.py',
    'PYMODULE'),
-  ('PIL.GribStubImagePlugin',
+  ('PIL.Hdf5StubImagePlugin',
    'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\PIL\\GribStubImagePlugin.py',
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\PIL\\Hdf5StubImagePlugin.py',
    'PYMODULE'),
   ('PIL.ImageFile',
    'c:\\users\\andrei '
    'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\PIL\\ImageFile.py',
    'PYMODULE'),
-  ('PIL.MpegImagePlugin',
+  ('PIL.GribStubImagePlugin',
    'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\PIL\\MpegImagePlugin.py',
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\PIL\\GribStubImagePlugin.py',
    'PYMODULE'),
-  ('PIL.BufrStubImagePlugin',
+  ('PIL.FpxImagePlugin',
    'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\PIL\\BufrStubImagePlugin.py',
-   'PYMODULE'),
-  ('PIL.XpmImagePlugin',
-   'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\PIL\\XpmImagePlugin.py',
-   'PYMODULE'),
-  ('PIL.FliImagePlugin',
-   'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\PIL\\FliImagePlugin.py',
-   'PYMODULE'),
-  ('PIL.McIdasImagePlugin',
-   'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\PIL\\McIdasImagePlugin.py',
-   'PYMODULE'),
-  ('PIL.XbmImagePlugin',
-   'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\PIL\\XbmImagePlugin.py',
-   'PYMODULE'),
-  ('PIL.ImtImagePlugin',
-   'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\PIL\\ImtImagePlugin.py',
-   'PYMODULE'),
-  ('PIL.ImImagePlugin',
-   'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\PIL\\ImImagePlugin.py',
-   'PYMODULE'),
-  ('PIL.IptcImagePlugin',
-   'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\PIL\\IptcImagePlugin.py',
-   'PYMODULE'),
-  ('PIL.XVThumbImagePlugin',
-   'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\PIL\\XVThumbImagePlugin.py',
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\PIL\\FpxImagePlugin.py',
    'PYMODULE'),
   ('PIL.CurImagePlugin',
    'c:\\users\\andrei '
    'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\PIL\\CurImagePlugin.py',
    'PYMODULE'),
-  ('PIL.IcnsImagePlugin',
+  ('PIL.PcdImagePlugin',
    'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\PIL\\IcnsImagePlugin.py',
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\PIL\\PcdImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.SunImagePlugin',
+   'c:\\users\\andrei '
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\PIL\\SunImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.PixarImagePlugin',
+   'c:\\users\\andrei '
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\PIL\\PixarImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.McIdasImagePlugin',
+   'c:\\users\\andrei '
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\PIL\\McIdasImagePlugin.py',
    'PYMODULE'),
   ('PIL.Jpeg2KImagePlugin',
    'c:\\users\\andrei '
    'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\PIL\\Jpeg2KImagePlugin.py',
    'PYMODULE'),
-  ('PIL.WebPImagePlugin',
+  ('PIL.DdsImagePlugin',
    'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\PIL\\WebPImagePlugin.py',
-   'PYMODULE'),
-  ('PIL.Hdf5StubImagePlugin',
-   'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\PIL\\Hdf5StubImagePlugin.py',
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\PIL\\DdsImagePlugin.py',
    'PYMODULE'),
   ('PIL.PdfImagePlugin',
    'c:\\users\\andrei '
@@ -4233,17 +4209,109 @@
    'c:\\users\\andrei '
    'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\PIL\\ImageSequence.py',
    'PYMODULE'),
-  ('PIL.SgiImagePlugin',
+  ('PIL.PsdImagePlugin',
    'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\PIL\\SgiImagePlugin.py',
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\PIL\\PsdImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.GbrImagePlugin',
+   'c:\\users\\andrei '
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\PIL\\GbrImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.FtexImagePlugin',
+   'c:\\users\\andrei '
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\PIL\\FtexImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.MpegImagePlugin',
+   'c:\\users\\andrei '
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\PIL\\MpegImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.TgaImagePlugin',
+   'c:\\users\\andrei '
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\PIL\\TgaImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.EpsImagePlugin',
+   'c:\\users\\andrei '
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\PIL\\EpsImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.FliImagePlugin',
+   'c:\\users\\andrei '
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\PIL\\FliImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.IcoImagePlugin',
+   'c:\\users\\andrei '
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\PIL\\IcoImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.IcnsImagePlugin',
+   'c:\\users\\andrei '
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\PIL\\IcnsImagePlugin.py',
    'PYMODULE'),
   ('PIL.PcxImagePlugin',
    'c:\\users\\andrei '
    'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\PIL\\PcxImagePlugin.py',
    'PYMODULE'),
-  ('PIL.GbrImagePlugin',
+  ('PIL.XVThumbImagePlugin',
    'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\PIL\\GbrImagePlugin.py',
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\PIL\\XVThumbImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.XpmImagePlugin',
+   'c:\\users\\andrei '
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\PIL\\XpmImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.WmfImagePlugin',
+   'c:\\users\\andrei '
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\PIL\\WmfImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.BlpImagePlugin',
+   'c:\\users\\andrei '
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\PIL\\BlpImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.IptcImagePlugin',
+   'c:\\users\\andrei '
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\PIL\\IptcImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.SgiImagePlugin',
+   'c:\\users\\andrei '
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\PIL\\SgiImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.WebPImagePlugin',
+   'c:\\users\\andrei '
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\PIL\\WebPImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.PalmImagePlugin',
+   'c:\\users\\andrei '
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\PIL\\PalmImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.ImImagePlugin',
+   'c:\\users\\andrei '
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\PIL\\ImImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.MpoImagePlugin',
+   'c:\\users\\andrei '
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\PIL\\MpoImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.BufrStubImagePlugin',
+   'c:\\users\\andrei '
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\PIL\\BufrStubImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.MicImagePlugin',
+   'c:\\users\\andrei '
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\PIL\\MicImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.ImtImagePlugin',
+   'c:\\users\\andrei '
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\PIL\\ImtImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.XbmImagePlugin',
+   'c:\\users\\andrei '
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\PIL\\XbmImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.MspImagePlugin',
+   'c:\\users\\andrei '
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\PIL\\MspImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.FitsStubImagePlugin',
+   'c:\\users\\andrei '
+   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\PIL\\FitsStubImagePlugin.py',
    'PYMODULE'),
   ('PIL.SpiderImagePlugin',
    'c:\\users\\andrei '
@@ -4253,77 +4321,9 @@
    'c:\\users\\andrei '
    'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\PIL\\ImageTk.py',
    'PYMODULE'),
-  ('PIL.FtexImagePlugin',
-   'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\PIL\\FtexImagePlugin.py',
-   'PYMODULE'),
-  ('PIL.IcoImagePlugin',
-   'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\PIL\\IcoImagePlugin.py',
-   'PYMODULE'),
-  ('PIL.PsdImagePlugin',
-   'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\PIL\\PsdImagePlugin.py',
-   'PYMODULE'),
-  ('PIL.PcdImagePlugin',
-   'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\PIL\\PcdImagePlugin.py',
-   'PYMODULE'),
-  ('PIL.MpoImagePlugin',
-   'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\PIL\\MpoImagePlugin.py',
-   'PYMODULE'),
-  ('PIL.EpsImagePlugin',
-   'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\PIL\\EpsImagePlugin.py',
-   'PYMODULE'),
-  ('PIL.SunImagePlugin',
-   'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\PIL\\SunImagePlugin.py',
-   'PYMODULE'),
-  ('PIL.TgaImagePlugin',
-   'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\PIL\\TgaImagePlugin.py',
-   'PYMODULE'),
-  ('PIL.MspImagePlugin',
-   'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\PIL\\MspImagePlugin.py',
-   'PYMODULE'),
-  ('PIL.MicImagePlugin',
-   'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\PIL\\MicImagePlugin.py',
-   'PYMODULE'),
-  ('PIL.DdsImagePlugin',
-   'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\PIL\\DdsImagePlugin.py',
-   'PYMODULE'),
-  ('PIL.WmfImagePlugin',
-   'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\PIL\\WmfImagePlugin.py',
-   'PYMODULE'),
   ('PIL.DcxImagePlugin',
    'c:\\users\\andrei '
    'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\PIL\\DcxImagePlugin.py',
-   'PYMODULE'),
-  ('PIL.PixarImagePlugin',
-   'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\PIL\\PixarImagePlugin.py',
-   'PYMODULE'),
-  ('PIL.FpxImagePlugin',
-   'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\PIL\\FpxImagePlugin.py',
-   'PYMODULE'),
-  ('PIL.FitsStubImagePlugin',
-   'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\PIL\\FitsStubImagePlugin.py',
-   'PYMODULE'),
-  ('PIL.PalmImagePlugin',
-   'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\PIL\\PalmImagePlugin.py',
-   'PYMODULE'),
-  ('PIL.BlpImagePlugin',
-   'c:\\users\\andrei '
-   'bancila\\appdata\\local\\programs\\python\\python38-32\\lib\\site-packages\\PIL\\BlpImagePlugin.py',
    'PYMODULE'),
   ('PIL.TiffImagePlugin',
    'c:\\users\\andrei '

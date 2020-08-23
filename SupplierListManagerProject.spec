@@ -4,7 +4,7 @@ block_cipher = None
 
 
 a = Analysis(['SupplierListManagerProject.pyw'],
-             pathex=['C:\\Users\\Andrei Bancila\\Desktop\\Organized Folders\\SupplierListManagerProject'],
+             pathex=['C:\\Users\\Andrei Bancila\\Desktop\\SupplierListManagerProject'],
              binaries=[],
              datas=[],
              hiddenimports=[],
