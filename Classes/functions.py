@@ -276,6 +276,9 @@ def getFormulaForRowX(formula, formula_row, x):
     new_formula = formula.replace("F"+str(formula_row),"F"+str(x)).replace("E"+str(formula_row),"E"+str(x))
     return new_formula
 
+def getMysticFormulaForRowX(formula, formula_row, x):
+    new_formula = formula.replace("F"+str(formula_row),"B"+str(x)).replace("E"+str(formula_row),"G"+str(x))
+    return new_formula
 
 def normalizeBarcode(barcode):
 
