@@ -173,6 +173,23 @@ class Pias_Classical(MainApplication):
         ok = False
 
         folder_tabel = self.supplierInfo['tabel_update_path']
+
+        noutati_start_row = self.supplierInfo['noutati_start_row']
+        tabel_barcode_column = self.supplierInfo['tabel_barcode_column']
+        tabel_artist_column = self.supplierInfo['tabel_artist_column']
+        tabel_title_column = self.supplierInfo['tabel_title_column']
+        tabel_suport_column = self.supplierInfo['tabel_suport_column']
+        tabel_unit_column = self.supplierInfo['tabel_unit_column']
+        tabel_release_date_column = self.supplierInfo['tabel_release_date_column']
+        tabel_pricecode_column = self.supplierInfo['tabel_pricecode_column']
+        tabel_start_row = self.supplierInfo['tabel_start_row']
+
+        folder_noutati = MainApplication.univPath + "\\Noutati\\Pias_Classical"
+        file_noutati = getFileXFromPath(folder_noutati, 1)
+        noutatiExt = getExtension(file_noutati)
+        piasNoutati = SupplierFile(file_noutati, noutatiExt, noutati_start_row)
+        noutatiBarcodeDict = piasNoutati.getBarcodeDictionary(tabel_barcode_column)
+
         file_count = fileCount(folder_tabel)
 
         if file_count > 1:
@@ -184,21 +201,6 @@ class Pias_Classical(MainApplication):
             ok = True
             file_tabel = getFileXFromPath(folder_tabel, 1)
 
-            noutati_start_row = self.supplierInfo['noutati_start_row']
-            tabel_barcode_column = self.supplierInfo['tabel_barcode_column']
-            tabel_artist_column = self.supplierInfo['tabel_artist_column']
-            tabel_title_column = self.supplierInfo['tabel_title_column']
-            tabel_suport_column = self.supplierInfo['tabel_suport_column']
-            tabel_unit_column = self.supplierInfo['tabel_unit_column']
-            tabel_release_date_column = self.supplierInfo['tabel_release_date_column']
-            tabel_pricecode_column = self.supplierInfo['tabel_pricecode_column']
-            tabel_start_row = self.supplierInfo['tabel_start_row']
-
-            folder_noutati = MainApplication.univPath + "\\Noutati\\Pias_Classical"
-            file_noutati = getFileXFromPath(folder_noutati, 1)
-            noutatiExt = getExtension(file_noutati)
-            piasNoutati = SupplierFile(file_noutati, noutatiExt, noutati_start_row)
-            noutatiBarcodeDict = piasNoutati.getBarcodeDictionary(tabel_barcode_column)
 
             tabelExt = getExtension(file_tabel)
             piasTabel = SupplierFile(file_tabel, tabelExt, tabel_start_row)
@@ -250,12 +252,11 @@ class Pias_Classical(MainApplication):
                 return
 
             #aici sterg din lista cu noutati ce e din pias catalog
-            deleteBarcodesFromFile(file_noutati, noutati_start_row, tabel_barcode_column, piasCatalogBarcodes)
             #aici sterg din lista cu noutati ce e din pias catalog
 
             eraseContent(folder_tabel)
 
-
+        deleteBarcodesFromFile(file_noutati, noutati_start_row, tabel_barcode_column, piasCatalogBarcodes)
 
 
 
@@ -328,7 +329,7 @@ class Pias_Classical(MainApplication):
 
                 error.write(errorText)
 
-        if ok == True:
+        if True == True:
             #return
             #aici bag in void tot ce erasi in lista cu noutati
             wb = load_workbook(file_noutati)
