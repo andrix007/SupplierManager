@@ -160,6 +160,9 @@ class Pias_Classical(MainApplication):
         save_name = self.supplierInfo['save_name']
 
         catalogExt = getExtension(file_catalog)
+
+        deleteNullQuantityFromFile(file_catalog, start_row, quantity_column)
+
         priceExt = getExtension(file_price)
 
         piasCatalog = SupplierFile(file_catalog,catalogExt,start_row)

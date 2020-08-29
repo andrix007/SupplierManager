@@ -55,7 +55,7 @@ def solve():
 
 MainApplication.initPath(os.getcwd())
 MainApplication.initJsonPath(os.getcwd())
-MainApplication.changeUnivBackColor("black")
+MainApplication.changeUnivBackColor("#202020")
 MainApplication.changeUnivForColor("white")
 MainApplication.changeUnivActiveForColor("green") #for ex. the dropdown menu elements
 MainApplication.changeUnivPopupColor("#36D54A")

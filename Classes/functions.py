@@ -4,6 +4,7 @@ else:
     from Classes.MainApplication import *
 
 import time
+
 #File Management Methods Methods <------------------------------------->
 
 
@@ -277,7 +278,7 @@ def getFormulaForRowX(formula, formula_row, x):
     return new_formula
 
 def getMysticFormulaForRowX(formula, formula_row, x):
-    new_formula = formula.replace("F"+str(formula_row),"B"+str(x)).replace("E"+str(formula_row),"G"+str(x))
+    new_formula = formula.replace("F"+str(formula_row),"H"+str(x)).replace("E"+str(formula_row),"G"+str(x))
     return new_formula
 
 def normalizeBarcode(barcode):
@@ -367,6 +368,60 @@ def deleteBarcodesFromFile(file, start_row, barcode_column, barcodes):
             continue
         barcode = normalizeBarcode(str(ws.cell(row = i, column = barcode_column).value))
         if barcode not in barcodes:
+            for j in range(1, pcol):
+                new_ws.cell(row = cnt, column = j).value = ws.cell(row = i, column = j).value
+            cnt = cnt + 1
+
+    new_wb.save(file)
+    try:
+        excel = win32.gencache.EnsureDispatch('Excel.Application')
+        workbook = excel.Workbooks.Open(os.path.abspath(file))
+        workbook.Save()
+        workbook.Close()
+        excel.Quit()
+    except:
+        logError("Problem with Microsoft Excel!\n Also, if any file that might be used by the program is open,\n please close it and try again!")
+        return
+
+
+def isNullQuantity(quantity):
+    if quantity == 0:
+        return True
+    quantity = str(quantity)
+    if quantity == "0":
+        return True
+    try:
+        a,b = quantity.split('.')
+        for i in range(len(a)):
+            if a[i] != '0':
+                return False
+        return True
+    except:
+        for ch in quantity:
+            if ch != '0':
+                return False
+            return True
+
+def deleteNullQuantityFromFile(file, start_row, quantity_column):
+    wb = load_workbook(file)
+    ws = wb.active
+
+    new_wb = openpyxlWorkbook()
+    new_ws = new_wb.active
+
+    prow = ws.max_row+1
+    pcol = ws.max_column+1
+
+    cnt = start_row
+
+    for i in range(start_row, prow):
+        if i == start_row:
+            for j in range(1, pcol):
+                new_ws.cell(row = cnt, column = j).value = ws.cell(row = i, column = j).value
+            cnt = cnt + 1
+            continue
+        quantity = ws.cell(row = i, column = quantity_column).value
+        if not isNullQuantity(quantity):
             for j in range(1, pcol):
                 new_ws.cell(row = cnt, column = j).value = ws.cell(row = i, column = j).value
             cnt = cnt + 1

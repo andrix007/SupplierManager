@@ -208,6 +208,7 @@ class Mystic(MainApplication):
         tabel_release_date_column = self.supplierInfo['tabel_release_date_column']
         tabel_pricecode_column = self.supplierInfo['tabel_pricecode_column']
         tabel_start_row = self.supplierInfo['tabel_start_row']
+        tabel_label_column = self.supplierInfo['tabel_label_column']
 
         folder_noutati = MainApplication.univPath + "\\Noutati\\Mystic"
         file_noutati = getFileXFromPath(folder_noutati, 1)
