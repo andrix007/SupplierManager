@@ -215,6 +215,7 @@ class Mystic(MainApplication):
         noutatiExt = getExtension(file_noutati)
         mysticNoutati = SupplierFile(file_noutati, noutatiExt, noutati_start_row)
         noutatiBarcodeDict = mysticNoutati.getBarcodeDictionary(tabel_barcode_column)
+        startNoutatiBarcodeDict = mysticNoutati.getBarcodeDictionary(tabel_barcode_column)
 
         file_count = fileCount(folder_tabel)
 
@@ -277,6 +278,8 @@ class Mystic(MainApplication):
                 logError("Problem with Microsoft Excel!\n Also, if any file that might be used by the program is open,\n please close it and try again!")
                 return
 
+            deleteBarcodesFromFile(file_tabel, tabel_start_row, tabel_barcode_column, startNoutatiBarcodeDict)
+
             pureCatalog = openpyxlWorkbook()
             pureCatalogSheet = pureCatalog.active
 
@@ -311,13 +314,76 @@ class Mystic(MainApplication):
             workbook.Close()
             excel.Quit()
 
-            #aici sterg din lista cu noutati ce e din pias catalog
-            #aici sterg din lista cu noutati ce e din pias catalog
 
-            eraseContent(folder_tabel)
+
+            #aici sterg din lista cu noutati ce e din pias catalog
+            pureCatalog = openpyxlWorkbook()
+            pureCatalogSheet = pureCatalog.active
+
+            wb = load_workbook(file_tabel)
+            ws = wb.active
+
+            prow = ws.max_row+1
+            pcol = ws.max_column+1
+            cnt = tabel_start_row
+
+            barcodeD = {}
+
+            for i in range(tabel_start_row, prow):
+                if i == tabel_start_row:
+                    for j in range(1, pcol):
+                        pureCatalogSheet.cell(row = cnt, column = j).value = ws.cell(row = i, column = j).value
+                    cnt = cnt + 1
+                    continue
+                barcode = normalizeBarcode(str(ws.cell(row = i, column = tabel_barcode_column).value))
+                if barcode not in barcodeD:
+                    for j in range(1, pcol):
+                        pureCatalogSheet.cell(row = cnt, column = j).value = ws.cell(row = i, column = j).value
+                    pureCatalogSheet.cell(row = cnt, column = noutati_formula_column).value = getMysticFormulaForRowX(mysticFormula.formula, 2, cnt)
+                    cnt = cnt + 1
+                    barcodeD.update({barcode:"1"})
+
+            pureCatalog.save(file_tabel)
+
+            excel = win32.gencache.EnsureDispatch('Excel.Application')
+            workbook = excel.Workbooks.Open(os.path.abspath(file_tabel))
+            workbook.Save()
+            workbook.Close()
+            excel.Quit()
+            #aici sterg din lista cu noutati ce e din pias catalog
+            #raft
+            if getExtension(file_tabel) == "xls":
+                shutil.copy2(file_tabel, save_path+"\\" + "MysticListareNoutati.xls")
+                noutati_listare = save_path+"\\" + "MysticListareNoutati.xls"
+            elif getExtension(file_tabel) == "xlsx":
+                shutil.copy2(file_tabel, save_path+"\\" + "MysticListareNoutati.xlsx")
+                noutati_listare = save_path+"\\" + "MysticListareNoutati.xlsx"
+            else:
+                logError("Failed to copy tabel file")
+            #raft
+            #eraseContent(folder_tabel)
 
         deleteBarcodesFromFile(file_noutati, noutati_start_row, tabel_barcode_column, mysticCatalogBarcodes)
 
+###################################
+
+        if getExtension(file_catalog) == "xls":
+            shutil.copy2(file_catalog, save_path+"\\" + "MysticListare.xls")
+            file_listare = save_path+"\\" + "MysticListare.xls"
+        elif getExtension(file_catalog) == "xlsx":
+            shutil.copy2(file_catalog, save_path+"\\" + "MysticListare.xlsx")
+            file_listare = save_path+"\\" + "MysticListare.xlsx"
+        else:
+            logError("Failed to copy catalog file")
+
+        try:
+            qualityConvertXlsToXlsx(file_listare)
+        except:
+            logError("Conversion did not happen on file_listare")
+        if getExtension(file_listare) == 'xls':
+            file_listare+='x'
+
+        ##############################
 
         void_workbook = openpyxlWorkbook()
         void_sheet = void_workbook.active

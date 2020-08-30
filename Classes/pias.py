@@ -195,6 +195,7 @@ class Pias(MainApplication):
         tabel_release_date_column = self.supplierInfo['tabel_release_date_column']
         tabel_pricecode_column = self.supplierInfo['tabel_pricecode_column']
         tabel_start_row = self.supplierInfo['tabel_start_row']
+
         folder_noutati = MainApplication.univPath + "\\Noutati\\Pias"
         file_noutati = getFileXFromPath(folder_noutati, 1)
         noutatiExt = getExtension(file_noutati)
@@ -295,7 +296,7 @@ class Pias(MainApplication):
 
             if getExtension(file_tabel) == "xls":
                 shutil.copy2(file_tabel, save_path+"\\" + "PiasListareNoutati.xls")
-                noutati_listare = save_path+"\\" + "NuclearBlastListareNoutati.xls"
+                noutati_listare = save_path+"\\" + "PiasListareNoutati.xls"
             elif getExtension(file_tabel) == "xlsx":
                 shutil.copy2(file_tabel, save_path+"\\" + "PiasListareNoutati.xlsx")
                 noutati_listare = save_path+"\\" + "PiasListareNoutati.xlsx"

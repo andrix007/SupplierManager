@@ -186,12 +186,15 @@ class Pias_Classical(MainApplication):
         tabel_release_date_column = self.supplierInfo['tabel_release_date_column']
         tabel_pricecode_column = self.supplierInfo['tabel_pricecode_column']
         tabel_start_row = self.supplierInfo['tabel_start_row']
+        raft_price_column = self.supplierInfo['raft_price_column']
+        noutati_raft_price_column = self.supplierInfo['noutati_raft_price_column']
 
         folder_noutati = MainApplication.univPath + "\\Noutati\\Pias_Classical"
         file_noutati = getFileXFromPath(folder_noutati, 1)
         noutatiExt = getExtension(file_noutati)
         piasNoutati = SupplierFile(file_noutati, noutatiExt, noutati_start_row)
         noutatiBarcodeDict = piasNoutati.getBarcodeDictionary(tabel_barcode_column)
+        startNoutatiBarcodeDict = piasNoutati.getBarcodeDictionary(tabel_barcode_column)
 
         file_count = fileCount(folder_tabel)
 
@@ -251,16 +254,112 @@ class Pias_Classical(MainApplication):
                 workbook.Close()
                 excel.Quit()
             except:
-                logError("Problem with Microsoft Excel!\n Also, if any file that might be used by the program is open,\n please close it and try again!")
+                logError("1Problem with Microsoft Excel!\n Also, if any file that might be used by the program is open,\n please close it and try again!")
                 return
 
-            #aici sterg din lista cu noutati ce e din pias catalog
-            #aici sterg din lista cu noutati ce e din pias catalog
+
+            #raft listare
+            deleteBarcodesFromFile(file_tabel, tabel_start_row, tabel_barcode_column, startNoutatiBarcodeDict)
+
+            wb = load_workbook(file_tabel)
+            ws = wb.active
+
+            prow = ws.max_row+1
+            pcol = ws.max_column+1
+
+            for i in range(tabel_start_row+1, prow):
+                correct_price_name = (ws.cell(row = i, column = tabel_pricecode_column).value)
+
+                if correct_price_name in dictPreturi:
+                    price = dictPreturi[correct_price_name]
+                else:
+                    price = PRICE_ERROR
+
+                if str(price) == None:
+                    price = PRICE_ERROR
+                else:
+                    if not isfloat(str(price)):
+                        price = PRICE_ERROR
+
+                if price != PRICE_ERROR:
+                    ws.cell(row = i, column = noutati_raft_price_column).value = price
+
+            wb.save(file_tabel)
+
+            try:
+                excel = win32.gencache.EnsureDispatch('Excel.Application')
+                workbook = excel.Workbooks.Open(os.path.abspath(file_tabel))
+                workbook.Save()
+                workbook.Close()
+                excel.Quit()
+            except:
+                logError("2Problem with Microsoft Excel!\n Also, if any file that might be used by the program is open,\n please close it and try again!")
+                return
+
+            if getExtension(file_tabel) == "xls":
+                shutil.copy2(file_tabel, save_path+"\\" + "PiasClassicalListareNoutati.xls")
+                noutati_listare = save_path+"\\" + "PiasClassicalListareNoutati.xls"
+            elif getExtension(file_tabel) == "xlsx":
+                shutil.copy2(file_tabel, save_path+"\\" + "PiasListareNoutati.xlsx")
+                noutati_listare = save_path+"\\" + "PiasListareNoutati.xlsx"
+            else:
+                logError("Failed to copy tabel file")
+            #raft listare
 
             eraseContent(folder_tabel)
 
         deleteBarcodesFromFile(file_noutati, noutati_start_row, tabel_barcode_column, piasCatalogBarcodes)
 
+        #raft listare
+        if getExtension(file_catalog) == "xls":
+            shutil.copy2(file_catalog, save_path+"\\" + "PiasClassicalListare.xls")
+            file_listare = save_path+"\\" + "PiasClassicalListare.xls"
+        elif getExtension(file_catalog) == "xlsx":
+            shutil.copy2(file_catalog, save_path+"\\" + "PiasClassicalListare.xlsx")
+            file_listare = save_path+"\\" + "PiasClassicalListare.xlsx"
+        else:
+            logError("Failed to copy catalog file")
+
+        try:
+            qualityConvertXlsToXlsx(file_listare)
+        except:
+            logError("Conversion did not happen on file_listare")
+        if getExtension(file_listare) == 'xls':
+            file_listare+='x'
+        wb = load_workbook(file_listare)
+        ws = wb.active
+
+        prow = ws.max_row+1
+        pcol = ws.max_column+1
+
+        for i in range(start_row, prow):
+            correct_price_name = (ws.cell(row = i, column = price_column).value)
+            if correct_price_name in dictPreturi:
+                price = dictPreturi[correct_price_name]
+            else:
+                price = PRICE_ERROR
+
+            if str(price) == None:
+                price = PRICE_ERROR
+            else:
+                if not isfloat(str(price)):
+                    price = PRICE_ERROR
+
+            if price != PRICE_ERROR:
+                ws.cell(row = i, column = raft_price_column).value = price
+
+        wb.save(file_listare)
+
+        try:
+            excel = win32.gencache.EnsureDispatch('Excel.Application')
+            workbook = excel.Workbooks.Open(os.path.abspath(file_listare))
+            workbook.Save()
+            workbook.Close()
+            excel.Quit()
+        except:
+            logError("3Problem with Microsoft Excel!\n Also, if any file that might be used by the program is open,\n please close it and try again!")
+            return
+        #raft listare
 
 
         void_workbook = openpyxlWorkbook()

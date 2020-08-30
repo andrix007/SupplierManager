@@ -75,11 +75,13 @@
             "noutati_start_row": 1,
             "catalogue_folder_path": "C:\\Users\\Andrei Bancila\\Desktop\\SupplierListManagerProject\\Test\\Catalog\\Pias_Classical\\Catalog",
             "price_folder_path": "C:\\Users\\Andrei Bancila\\Desktop\\SupplierListManagerProject\\Test\\Catalog\\Pias_Classical\\Preturi",
+            "raft_price_column": 10,
+            "noutati_raft_price_column": 8,
             "pricecode_column": 1,
             "quantity_column": 3,
             "rounded_price_column": 5,
             "price_start_row": 2,
-            "save_path": "C:\\Users\\Andrei Bancila\\Desktop",
+            "save_path": "C:\\Users\\Andrei Bancila\\Desktop\\void",
             "barcode_column": 4,
             "price_column": 6,
             "start_row": 1
@@ -127,7 +129,7 @@
             "formula_column": 8,
             "noutati_formula_column": 9,
             "formula_file_start_row": 2,
-            "save_path": "C:\\Users\\Andrei Bancila\\Desktop",
+            "save_path": "C:\\Users\\Andrei Bancila\\Desktop\\void",
             "barcode_column": 3,
             "price_column": 8,
             "start_row": 3
