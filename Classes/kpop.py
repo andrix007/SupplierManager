@@ -451,6 +451,24 @@ class Kpop(MainApplication):
             logError("Problem with Microsoft Excel!\n Also, if any file that might be used by the program is open,\n please close it and try again!")
             return
 
+        if getExtension(new_file) == "xls":
+            shutil.copy2(new_file, save_path+"\\" + "KpopListareNoutati.xls")
+            noutati_listare = save_path+"\\" + "KpopListareNoutati.xls"
+        elif getExtension(new_file) == "xlsx":
+            shutil.copy2(new_file, save_path+"\\" + "KpopListareNoutati.xlsx")
+            noutati_listare = save_path+"\\" + "KpopListareNoutati.xlsx"
+        else:
+            logError("Failed to copy tabel file")
+
+        if getExtension(file_catalog) == "xls":
+            shutil.copy2(file_catalog, save_path+"\\" + "KpopListare.xls")
+            file_listare = save_path+"\\" + "KpopListare.xls"
+        elif getExtension(file_catalog) == "xlsx":
+            shutil.copy2(file_catalog, save_path+"\\" + "KpopListare.xlsx")
+            file_listare = save_path+"\\" + "KpopListare.xlsx"
+        else:
+            logError("Failed to copy catalog file")
+
         #PRELUCRARE
 
         catalogExt = getExtension(file_catalog)

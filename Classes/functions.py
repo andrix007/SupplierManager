@@ -436,3 +436,4 @@ def deleteNullQuantityFromFile(file, start_row, quantity_column):
     except:
         logError("Problem with Microsoft Excel!\n Also, if any file that might be used by the program is open,\n please close it and try again!")
         return
+
