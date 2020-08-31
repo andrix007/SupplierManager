@@ -151,6 +151,8 @@ class SCR(MainApplication):
         rounded_price_column = self.supplierInfo['rounded_price_column']
         save_name = self.supplierInfo['save_name']
         your_reference_column = self.supplierInfo['your_reference_column']
+        raft_listare_price_column = self.supplierInfo['raft_listare_price_column']
+        noutati_raft_price_column = self.supplierInfo['noutati_raft_price_column']
         catalogExt = getExtension(file_catalog)
         priceExt = getExtension(file_price)
         newExt = getExtension(file_new)
@@ -201,8 +203,63 @@ class SCR(MainApplication):
         dictBarcode = scrCatalog.getBarcodeDictionary(barcode_column)
         dictPreturi = scrPrices.getDictionary(pricecode_column, rounded_price_column)
 
-        scrCatalog.addOtherSupplierFileInRegardToDictionary(mergeContainerFile, dictBarcode, barcode_column)
+        file_noutati = save_path+"\\SpeakersCornerNoutati.xlsx"
+        scrCatalog.addOtherSupplierFileInRegardToDictionarySCR(mergeContainerFile, dictBarcode, barcode_column, file_noutati)
         scrCatalog.addContentToWorkbook(file_catalog, start_row)
+        #raft file catalog
+
+        if getExtension(file_catalog) == "xls":
+            shutil.copy2(file_catalog, save_path+"\\" + "SpeakersCornerListare.xls")
+            file_listare = save_path+"\\" + "SpeakersCornerListare.xls"
+        elif getExtension(file_catalog) == "xlsx":
+            shutil.copy2(file_catalog, save_path+"\\" + "SpeakersCornerListare.xlsx")
+            file_listare = save_path+"\\" + "SpeakersCornerListare.xlsx"
+        else:
+            logError("Failed to copy catalog file")
+
+        try:
+            qualityConvertXlsToXlsx(file_listare)
+        except:
+            logError("Conversion did not happen on file_listare")
+        if getExtension(file_listare) == 'xls':
+            file_listare+='x'
+
+        wb = load_workbook(file_listare)
+        ws = wb.active
+
+        prow = ws.max_row+1
+        pcol = ws.max_column+1
+
+        for i in range(start_row, prow):
+            catalog_price = ws.cell(row = i, column = price_column).value
+            if catalog_price in dictPreturi:
+                price = dictPreturi[catalog_price]
+            else:
+                price = PRICE_ERROR
+            if price != PRICE_ERROR:
+                ws.cell(row = i, column = raft_listare_price_column).value = price
+
+        wb.save(file_listare)
+        #raft file catalog
+        #raft file noutati
+        wb = load_workbook(file_noutati)
+        ws = wb.active
+
+        prow = ws.max_row+1
+        pcol = ws.max_column+1
+
+        for i in range(start_row, prow):
+            catalog_price = ws.cell(row = i, column = price_column).value
+            if catalog_price in dictPreturi:
+                price = dictPreturi[catalog_price]
+            else:
+                price = PRICE_ERROR
+            if price != PRICE_ERROR:
+                ws.cell(row = i, column = noutati_raft_price_column).value = price
+
+        wb.save(file_noutati)
+        #raft file noutati
+
 
         void_workbook = openpyxlWorkbook()
         void_sheet = void_workbook.active
