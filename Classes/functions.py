@@ -326,6 +326,7 @@ def getCorrectPrice(price):
             string = string + str(price[i])
     return int(string)
 
+
 def getCorrectFormat(f):
     f = str(f)
     return f.replace(' ','')

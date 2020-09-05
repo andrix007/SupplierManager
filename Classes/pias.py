@@ -267,18 +267,19 @@ class Pias(MainApplication):
 
             for i in range(tabel_start_row+1, prow):
                 correct_price_name = (ws.cell(row = i, column = tabel_pricecode_column).value)
-
+                if ',' in str(correct_price_name):
+                    correct_price_name = str(correct_price_name).replace(',','.')
+                    correct_price_name = float(correct_price_name)
                 if correct_price_name in dictPreturi:
                     price = dictPreturi[correct_price_name]
                 else:
                     price = PRICE_ERROR
-
                 if str(price) == None:
                     price = PRICE_ERROR
                 else:
                     if not isfloat(str(price)):
                         price = PRICE_ERROR
-
+                print(price)
                 if price != PRICE_ERROR:
                     ws.cell(row = i, column = noutati_raft_price_column).value = price
 
@@ -331,6 +332,10 @@ class Pias(MainApplication):
 
         for i in range(start_row, prow):
             correct_price_name = (ws.cell(row = i, column = price_column).value)
+
+            if ',' in str(correct_price_name):
+                correct_price_name = str(correct_price_name).replace(',','.')
+                correct_price_name = float(correct_price_name)
             if correct_price_name in dictPreturi:
                 price = dictPreturi[correct_price_name]
             else:
@@ -372,6 +377,11 @@ class Pias(MainApplication):
 
             barcode = str(row[barcode_column-1])
             catalog_price = row[price_column-1]
+
+
+            if ',' in str(catalog_price):
+                catalog_price = str(catalog_price).replace(',','.')
+                catalog_price = float(catalog_price)
 
             if catalog_price in dictPreturi:
                 price = dictPreturi[catalog_price]
@@ -430,6 +440,10 @@ class Pias(MainApplication):
 
                 barcode = normalizeBarcode(str(ws.cell(row = i, column = tabel_barcode_column).value))
                 catalog_price = ws.cell(row = i, column = tabel_pricecode_column).value
+
+                if ',' in str(catalog_price):
+                    catalog_price = str(catalog_price).replace(',','.')
+                    catalog_price = float(catalog_price)
 
                 if catalog_price in dictPreturi:
                     price = dictPreturi[catalog_price]
