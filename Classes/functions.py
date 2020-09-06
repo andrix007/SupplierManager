@@ -326,6 +326,8 @@ def getCorrectPrice(price):
             string = string + str(price[i])
     return int(string)
 
+def myround(x, base=5):
+    return base * round(x/base)
 
 def getCorrectFormat(f):
     f = str(f)

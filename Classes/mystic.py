@@ -315,7 +315,6 @@ class Mystic(MainApplication):
             excel.Quit()
 
 
-
             #aici sterg din lista cu noutati ce e din pias catalog
             pureCatalog = openpyxlWorkbook()
             pureCatalogSheet = pureCatalog.active
@@ -350,6 +349,37 @@ class Mystic(MainApplication):
             workbook.Save()
             workbook.Close()
             excel.Quit()
+
+            pureCatalog = openpyxlWorkbook()
+            pureCatalogSheet = pureCatalog.active
+
+            wb = load_workbook(file_tabel, data_only = True)
+            ws = wb.active
+
+            prow = ws.max_row+1
+            pcol = ws.max_column+1
+            cnt = noutati_start_row
+
+            barcodeD = {}
+
+            for i in range(noutati_start_row, prow):
+                if i == noutati_start_row:
+                    cnt = cnt + 1
+                    continue
+                for j in range(1, pcol):
+                    pureCatalogSheet.cell(row = cnt, column = j).value = ws.cell(row = i, column = j).value
+                pureCatalogSheet.cell(row = cnt, column = noutati_formula_column+1).value = myround(float(str(pureCatalogSheet.cell(row = cnt, column = noutati_formula_column).value)) * 1.666 * 1.19, 5)
+                cnt = cnt + 1
+
+            pureCatalog.save(file_tabel)
+
+            excel = win32.gencache.EnsureDispatch('Excel.Application')
+            workbook = excel.Workbooks.Open(os.path.abspath(file_tabel))
+            workbook.Save()
+            workbook.Close()
+            excel.Quit()
+
+            #############################################
             #aici sterg din lista cu noutati ce e din pias catalog
             #raft
             if getExtension(file_tabel) == "xls":
@@ -361,7 +391,7 @@ class Mystic(MainApplication):
             else:
                 logError("Failed to copy tabel file")
             #raft
-            #eraseContent(folder_tabel)
+            eraseContent(folder_tabel)
 
         deleteBarcodesFromFile(file_noutati, noutati_start_row, tabel_barcode_column, mysticCatalogBarcodes)
 

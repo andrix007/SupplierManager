@@ -37,7 +37,7 @@ def solve():
     elif name == "Pias":
         supplier = Pias(root,name,1035,300,r"Icons/nichelogo.ico",MainApplication.univBackColor)
     elif name == "Pias_Classical":
-        supplier = Pias_Classical(root,name,1035,360,r"Icons/nichelogo.ico",MainApplication.univBackColor)
+        supplier = Pias_Classical(root,name,1035,300,r"Icons/nichelogo.ico",MainApplication.univBackColor)
     elif name == "Music On Vinyl":
         supplier = MOV(root,name,1135,180,r"Icons/nichelogo.ico",MainApplication.univBackColor)
     elif name == "Speakers Corner":
