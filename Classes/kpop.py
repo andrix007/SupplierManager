@@ -14,6 +14,7 @@ else:
 import os
 import json
 from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 
 class Kpop(MainApplication):
 
@@ -144,9 +145,12 @@ class Kpop(MainApplication):
 
         ok = False
 
+        options = Options()
+        options.add_argument("window-size=1920,1080")
+
         for i in range(len(chromedriverPaths)):
             try:
-                driver = webdriver.Chrome(chromedriverPaths[i])
+                driver = webdriver.Chrome(executable_path = chromedriverPaths[i], chrome_options=options)
                 ok = True
                 print("Version",getVersion(chromedriverPaths[i]),"has executed successfully!")
                 break
