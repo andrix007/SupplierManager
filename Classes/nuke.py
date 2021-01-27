@@ -159,11 +159,8 @@ class Nuke(MainApplication):
         price_column = self.supplierInfo['price_column']
         pricecode_column = self.supplierInfo['pricecode_column']
         rounded_price_column = self.supplierInfo['rounded_price_column']
-<<<<<<< HEAD
         save_name1 = self.supplierInfo['save_name1']
-=======
         raft_price_column = self.supplierInfo['raft_price_column']
->>>>>>> 15b89f049af001062626f79c23a8dde749b3e834
         save_name = self.supplierInfo['save_name']
 
         catalogExt = getExtension(file_catalog)

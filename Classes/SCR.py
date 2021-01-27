@@ -300,12 +300,8 @@ class SCR(MainApplication):
                 currentRow = currentRow + 1
                 barcode = barcode.zfill(13)
                 void_sheet.cell(row = currentRow,column = 1).value = barcode
-<<<<<<< HEAD
                 void_sheet.cell(row = currentRow,column = 2).value = round(price,2)
-
-=======
                 void_sheet.cell(row = currentRow,column = 6).value = round(price,2)
->>>>>>> 15b89f049af001062626f79c23a8dde749b3e834
             else:
                 errorText = "Line " + str(i) + ":   "
                 if barcode == BARCODE_ERROR:
