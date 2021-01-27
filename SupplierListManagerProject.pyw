@@ -24,7 +24,6 @@ supplierTitles = [
 ]
 
 
-
 def solve():
 
     root = tk.Tk()
@@ -34,17 +33,17 @@ def solve():
     if name == "Sony":
         supplier = Sony(root,name,1035,180,r"Icons/nichelogo.ico",MainApplication.univBackColor)
     elif name == "Nuclear Blast":
-        supplier = Nuke(root,name,1100,240,r"Icons/nichelogo.ico",MainApplication.univBackColor)
+        supplier = Nuke(root,name,1100,300,r"Icons/nichelogo.ico",MainApplication.univBackColor)
     elif name == "Pias":
-        supplier = Pias(root,name,1035,240,r"Icons/nichelogo.ico",MainApplication.univBackColor)
+        supplier = Pias(root,name,1035,300,r"Icons/nichelogo.ico",MainApplication.univBackColor)
     elif name == "Pias_Classical":
-        supplier = Pias_Classical(root,name,1035,240,r"Icons/nichelogo.ico",MainApplication.univBackColor)
+        supplier = Pias_Classical(root,name,1035,300,r"Icons/nichelogo.ico",MainApplication.univBackColor)
     elif name == "Music On Vinyl":
         supplier = MOV(root,name,1135,180,r"Icons/nichelogo.ico",MainApplication.univBackColor)
     elif name == "Speakers Corner":
-        supplier = SCR(root,name,1035,240,r"Icons/nichelogo.ico",MainApplication.univBackColor)
+        supplier = SCR(root,name,1035,300,r"Icons/nichelogo.ico",MainApplication.univBackColor)
     elif name == "Mystic":
-        supplier = Mystic(root,name,1135,240,r"Icons/nichelogo.ico",MainApplication.univBackColor)
+        supplier = Mystic(root,name,1135,300,r"Icons/nichelogo.ico",MainApplication.univBackColor)
     elif name == "Sincron":
         supplier = Sincron(root,name,1055,180,r"Icons/nichelogo.ico",MainApplication.univBackColor)
     elif name == "Kpop":
@@ -56,7 +55,7 @@ def solve():
 
 MainApplication.initPath(os.getcwd())
 MainApplication.initJsonPath(os.getcwd())
-MainApplication.changeUnivBackColor("black")
+MainApplication.changeUnivBackColor("#202020")
 MainApplication.changeUnivForColor("white")
 MainApplication.changeUnivActiveForColor("green") #for ex. the dropdown menu elements
 MainApplication.changeUnivPopupColor("#36D54A")

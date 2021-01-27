@@ -122,6 +122,14 @@ class Sony(MainApplication):
         barcode_column = self.supplierInfo['barcode_column']
         price_column = self.supplierInfo['price_column']
 
+        try:
+            shutil.copy2(file, save_path+"\\" + "SonyCatalogListare.xls")
+        except:
+            try:
+                shutil.copy2(file, save_path+"\\" + "SonyCatalogListare.xlsx")
+            except:
+                logError("Failed to copy catalog file")
+
         void_workbook = openpyxlWorkbook()
         void_sheet = void_workbook.active
         void_sheet.cell(row = 1,column = 1).value = "Barcode"

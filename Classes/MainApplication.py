@@ -7,6 +7,7 @@ import xlrd
 from openpyxl.workbook import Workbook as openpyxlWorkbook
 from openpyxl.reader.excel import load_workbook, InvalidFileException
 import shutil
+from shutil import copyfile
 import time
 import win32com.client as win32
 import pandas as pd
@@ -86,7 +87,7 @@ class MainApplication:
 
 
 
-    def createButtonAtPosition(self,x=0,y=0,text="ok",paddingX=10,paddingY=5,border="3",backgroundColor=None,foregroundColor=None):
+    def createButtonAtPosition(self,x=0,y=0,text="ok",paddingX=10,paddingY=5,border="3",backgroundColor="black",foregroundColor=None):
         button = Button(self.master,text = text,bg=self.universalBackgroundColor,fg=self.universalForegroundColor,padx=paddingX,pady=paddingY,bd=border)
         if backgroundColor != None:
             button.config(bg = backgroundColor)
@@ -98,7 +99,7 @@ class MainApplication:
 
 
 
-    def createDropdownMenuAtPosition(self,options,x=0,y=0,backgroundColor=None,foregroundColor=None):
+    def createDropdownMenuAtPosition(self,options,x=0,y=0,backgroundColor="black",foregroundColor=None):
 
         clicked = StringVar()
         clicked.set(options[0])

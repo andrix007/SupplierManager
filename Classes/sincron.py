@@ -121,6 +121,15 @@ class Sincron(MainApplication):
         barcode_column = self.supplierInfo['barcode_column']
         price_column = self.supplierInfo['price_column']
 
+        if getExtension(file) == "xls":
+            shutil.copy2(file, save_path+"\\" + "SincronListare.xls")
+            file_listare = save_path+"\\" + "SincronListare.xls"
+        elif getExtension(file) == "xlsx":
+            shutil.copy2(file, save_path+"\\" + "SincronListare.xlsx")
+            file_listare = save_path+"\\" + "SincronListare.xlsx"
+        else:
+            logError("Failed to copy catalog file")
+
         void_workbook = openpyxlWorkbook()
         void_sheet = void_workbook.active
         void_sheet.cell(row = 1,column = 1).value = "Barcode"

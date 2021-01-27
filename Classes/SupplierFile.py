@@ -9,13 +9,20 @@ else:
 
 class SupplierFile(MainApplication):
     def __init__(self,path=None,extension=None,start_row=None,separator=None):
-
         if extension == 'csv':
+            self.excelConverted = openpyxlWorkbook()
+            self.ews = self.excelConverted.active
             with open(path, newline = '') as f:
                 reader = csv.reader(f, delimiter = separator)
                 data = list(reader)
+            self.copy_data = data
             data = data[1:]
             self.data = data
+            cnt = 1
+            for row in (self.copy_data):
+                for j in range(len(row)):
+                    self.ews.cell(row = cnt, column = j+1).value = row[j]
+                cnt = cnt + 1
             return
 
         self.formula = ""
@@ -61,7 +68,7 @@ class SupplierFile(MainApplication):
 
         for row in self.data:
 
-            value = row[barcodeColumn]
+            value = str(row[barcodeColumn])
             value = normalizeBarcode(value)
             if value not in dictBar:
                 dictBar.update({value:"1"})
@@ -91,6 +98,27 @@ class SupplierFile(MainApplication):
             if value not in dictionary:
                 self.data.append(row)
                 dictionary.update({value:"1"})
+
+    def addOtherSupplierFileInRegardToDictionarySCR(self,otherFile,dictionary,column,noutatiSavePath):
+
+        wb = openpyxlWorkbook() #noutati
+        ws = wb.active
+
+        cnt = 1
+
+        for row in otherFile.data:
+
+            value = row[column-1]
+            if value not in dictionary:
+                print(row)
+                self.data.append(row)
+                for j in range(0,len(row)):
+                    jj = j + 1
+                    ws.cell(row = cnt, column = jj).value = row[j]
+                dictionary.update({value:"1"})
+                cnt = cnt + 1
+
+        wb.save(noutatiSavePath)
 
     def addOtherSupplierFile(self,otherFile,*ignoreColumns):
 

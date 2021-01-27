@@ -126,6 +126,8 @@ class MOV(MainApplication):
             logError("Error while opening the .csv file!")
             return
 
+        excel_file_catalog = save_path + "\\MOVListare.xlsx"
+        movCatalog.excelConverted.save(excel_file_catalog)
 
         void_workbook = openpyxlWorkbook()
         void_sheet = void_workbook.active

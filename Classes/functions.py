@@ -4,6 +4,7 @@ else:
     from Classes.MainApplication import *
 
 import time
+
 #File Management Methods Methods <------------------------------------->
 
 
@@ -276,6 +277,9 @@ def getFormulaForRowX(formula, formula_row, x):
     new_formula = formula.replace("F"+str(formula_row),"F"+str(x)).replace("E"+str(formula_row),"E"+str(x))
     return new_formula
 
+def getMysticFormulaForRowX(formula, formula_row, x):
+    new_formula = formula.replace("F"+str(formula_row),"H"+str(x)).replace("E"+str(formula_row),"G"+str(x))
+    return new_formula
 
 def normalizeBarcode(barcode):
 
@@ -285,6 +289,10 @@ def normalizeBarcode(barcode):
     for i in range(len(barcode)):
         if str(barcode[i]).isdigit():
             string = string + str(barcode[i])
+    if len(string) < 13:
+        dif = 13-len(string)
+        for _ in range(dif):
+            string = "0"+string
 
     if '.' not in barcode:
         return string
@@ -318,6 +326,9 @@ def getCorrectPrice(price):
             string = string + str(price[i])
     return int(string)
 
+def myround(x, base=5):
+    return base * round(x/base)
+
 def getCorrectFormat(f):
     f = str(f)
     return f.replace(' ','')
@@ -339,4 +350,93 @@ def logError(errorMessage, errorColor=MainApplication.univErrorPopupColor):
 
 def fileCount(path):
     return len(os.listdir(path))
+
+def deleteBarcodesFromFile(file, start_row, barcode_column, barcodes):
+    wb = load_workbook(file)
+    ws = wb.active
+
+    new_wb = openpyxlWorkbook()
+    new_ws = new_wb.active
+
+    prow = ws.max_row+1
+    pcol = ws.max_column+1
+
+    cnt = start_row
+
+    for i in range(start_row, prow):
+        if i == start_row:
+            for j in range(1, pcol):
+                new_ws.cell(row = cnt, column = j).value = ws.cell(row = i, column = j).value
+            cnt = cnt + 1
+            continue
+        barcode = normalizeBarcode(str(ws.cell(row = i, column = barcode_column).value))
+        if barcode not in barcodes:
+            for j in range(1, pcol):
+                new_ws.cell(row = cnt, column = j).value = ws.cell(row = i, column = j).value
+            cnt = cnt + 1
+
+    new_wb.save(file)
+    try:
+        excel = win32.gencache.EnsureDispatch('Excel.Application')
+        workbook = excel.Workbooks.Open(os.path.abspath(file))
+        workbook.Save()
+        workbook.Close()
+        excel.Quit()
+    except:
+        logError("Problem with Microsoft Excel!\n Also, if any file that might be used by the program is open,\n please close it and try again!")
+        return
+
+
+def isNullQuantity(quantity):
+    if quantity == 0:
+        return True
+    quantity = str(quantity)
+    if quantity == "0":
+        return True
+    try:
+        a,b = quantity.split('.')
+        for i in range(len(a)):
+            if a[i] != '0':
+                return False
+        return True
+    except:
+        for ch in quantity:
+            if ch != '0':
+                return False
+            return True
+
+def deleteNullQuantityFromFile(file, start_row, quantity_column):
+    wb = load_workbook(file)
+    ws = wb.active
+
+    new_wb = openpyxlWorkbook()
+    new_ws = new_wb.active
+
+    prow = ws.max_row+1
+    pcol = ws.max_column+1
+
+    cnt = start_row
+
+    for i in range(start_row, prow):
+        if i == start_row:
+            for j in range(1, pcol):
+                new_ws.cell(row = cnt, column = j).value = ws.cell(row = i, column = j).value
+            cnt = cnt + 1
+            continue
+        quantity = ws.cell(row = i, column = quantity_column).value
+        if not isNullQuantity(quantity):
+            for j in range(1, pcol):
+                new_ws.cell(row = cnt, column = j).value = ws.cell(row = i, column = j).value
+            cnt = cnt + 1
+
+    new_wb.save(file)
+    try:
+        excel = win32.gencache.EnsureDispatch('Excel.Application')
+        workbook = excel.Workbooks.Open(os.path.abspath(file))
+        workbook.Save()
+        workbook.Close()
+        excel.Quit()
+    except:
+        logError("Problem with Microsoft Excel!\n Also, if any file that might be used by the program is open,\n please close it and try again!")
+        return
 

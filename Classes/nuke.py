@@ -68,10 +68,17 @@ class Nuke(MainApplication):
         self.createButtonAtPosition(2,3,"Browse")
         self.addNormalCommandToButton(2,self.browseFolderFunction)
 
-        self.createLabelAtPosition(3,0,"                    ")
-        self.createButtonAtPosition(3,1,"Solve")
-        self.addNormalCommandToButton(3,self.solve)
-        self.createLabelAtPosition(3,2,"                    ")
+        self.createLabelAtPosition(3,0,"Tabel Update Path: ",50,20)
+        self.createLabelAtPosition(3,1,self.supplierInfo['tabel_update_path'])
+        self.createLabelAtPosition(3,2,"         ")
+        self.createButtonAtPosition(3,3,"Browse",)
+        self.addNormalCommandToButton(3,self.browseUpdateTabelFunction)
+
+        self.createLabelAtPosition(4,0,"                    ")
+        self.createButtonAtPosition(4,1,"Solve")
+        self.addNormalCommandToButton(4,self.solve)
+        self.createLabelAtPosition(4,2,"                    ")
+
         #print(self.supplierInfo)
 
     def initJsonStuff(self):
@@ -110,6 +117,14 @@ class Nuke(MainApplication):
         modifyJson("Nuclear Blast","save_path",self.master.filename.replace('/','\\'))
         self.changeLabelText(7,self.master.filename.replace('/','\\'))
 
+    def browseUpdateTabelFunction(self):
+
+        self.master.filename  = filedialog.askdirectory(initialdir=self.supplierInfo['tabel_update_path'], title="Select Update Table Path")
+        if self.master.filename == "":
+            return
+        modifyJson("Nuclear Blast","tabel_update_path",self.master.filename.replace('/','\\'))
+        self.changeLabelText(10,self.master.filename.replace('/','\\'))
+
     def solve(self):
         self.initJsonStuff()
 
@@ -144,7 +159,11 @@ class Nuke(MainApplication):
         price_column = self.supplierInfo['price_column']
         pricecode_column = self.supplierInfo['pricecode_column']
         rounded_price_column = self.supplierInfo['rounded_price_column']
+<<<<<<< HEAD
         save_name1 = self.supplierInfo['save_name1']
+=======
+        raft_price_column = self.supplierInfo['raft_price_column']
+>>>>>>> 15b89f049af001062626f79c23a8dde749b3e834
         save_name = self.supplierInfo['save_name']
 
         catalogExt = getExtension(file_catalog)
@@ -156,12 +175,202 @@ class Nuke(MainApplication):
 
         dictPreturi = nbPrices.getDictionary(pricecode_column,rounded_price_column)
 
+        nbCatalogBarcodes = nbCatalog.getBarcodeDictionary(barcode_column)
+
+
+        noutati_start_row = self.supplierInfo['noutati_start_row']
+        tabel_barcode_column = self.supplierInfo['tabel_barcode_column']
+        tabel_artist_column = self.supplierInfo['tabel_artist_column']
+        tabel_title_column = self.supplierInfo['tabel_title_column']
+        tabel_suport_column = self.supplierInfo['tabel_suport_column']
+        tabel_unit_column = self.supplierInfo['tabel_unit_column']
+        tabel_release_date_column = self.supplierInfo['tabel_release_date_column']
+        tabel_pricecode_column = self.supplierInfo['tabel_pricecode_column']
+        tabel_start_row = self.supplierInfo['tabel_start_row']
+        folder_tabel = self.supplierInfo['tabel_update_path']
+        noutati_raft_price_column = self.supplierInfo['noutati_raft_price_column']
+        raft_price_column = self.supplierInfo['raft_price_column']
+        file_tabel = getFileXFromPath(folder_tabel, 1)
+
+        folder_noutati = MainApplication.univPath + "\\Noutati\\Nuclear Blast"
+        file_noutati = getFileXFromPath(folder_noutati, 1)
+        noutatiExt = getExtension(file_noutati)
+        nbNoutati = SupplierFile(file_noutati, noutatiExt, noutati_start_row)
+        noutatiBarcodeDict = nbNoutati.getBarcodeDictionary(tabel_barcode_column)
+        startNoutatiBarcodeDict = nbNoutati.getBarcodeDictionary(tabel_barcode_column)
+
+        ok = False
+        ######################################
+
+        file_count = fileCount(folder_tabel)
+
+        if file_count > 1:
+            logError("Too many files in \"Tabel\" folder, please only have one file!")
+            return
+
+        if file_count == 1:
+
+            ok = True
+
+            tabelExt = getExtension(file_tabel)
+            piasTabel = SupplierFile(file_tabel, tabelExt, tabel_start_row)
+
+            try:
+                tabel_wb = load_workbook(file_tabel)
+            except:
+                logError("catalog file is either missing or open in another program!")
+                return
+
+            tabel_ws = tabel_wb.active
+
+            tabel_prow = tabel_ws.max_row + 1
+            tabel_pcol = tabel_ws.max_column + 1
+
+
+            try:
+                noutati_wb = load_workbook(file_noutati)
+            except:
+                logError("catalog file is either missing or open in another program!")
+                return
+
+            noutati_ws = noutati_wb.active
+
+            noutati_prow  = noutati_ws.max_row + 1
+            noutati_pcol = noutati_ws.max_column + 1
+
+            cnt = noutati_prow
+
+            for i in range(tabel_start_row+1, tabel_prow):
+
+                tabel_barcode = normalizeBarcode(str(tabel_ws.cell(row = i, column = tabel_barcode_column).value))
+                if tabel_barcode not in noutatiBarcodeDict:
+                    for j in range(1, tabel_pcol):
+                        noutati_ws.cell(row = cnt, column = j).value = tabel_ws.cell(row = i, column = j).value
+
+                    cnt = cnt + 1
+                    noutatiBarcodeDict.update({tabel_barcode : "1"})
+
+            noutati_wb.save(file_noutati)
+
+            try:
+                excel = win32.gencache.EnsureDispatch('Excel.Application')
+                workbook = excel.Workbooks.Open(os.path.abspath(file_noutati))
+                workbook.Save()
+                workbook.Close()
+                excel.Quit()
+            except:
+                logError("Problem with Microsoft Excel!\n Also, if any file that might be used by the program is open,\n please close it and try again!")
+                return
+            #raft listare
+
+            deleteBarcodesFromFile(file_tabel, tabel_start_row, tabel_barcode_column, startNoutatiBarcodeDict)
+
+            wb = load_workbook(file_tabel)
+            ws = wb.active
+
+            prow = ws.max_row+1
+            pcol = ws.max_column+1
+
+            for i in range(tabel_start_row+1, prow):
+                correct_price_name = correctName(str(ws.cell(row = i, column = tabel_pricecode_column).value))
+
+                if correct_price_name in dictPreturi:
+                    price = dictPreturi[correct_price_name]
+                else:
+                    price = PRICE_ERROR
+
+                if str(price) == None:
+                    price = PRICE_ERROR
+                else:
+                    if not isfloat(str(price)):
+                        price = PRICE_ERROR
+
+                if price != PRICE_ERROR:
+                    ws.cell(row = i, column = noutati_raft_price_column).value = price
+
+            wb.save(file_tabel)
+
+            try:
+                excel = win32.gencache.EnsureDispatch('Excel.Application')
+                workbook = excel.Workbooks.Open(os.path.abspath(file_tabel))
+                workbook.Save()
+                workbook.Close()
+                excel.Quit()
+            except:
+                logError("Problem with Microsoft Excel!\n Also, if any file that might be used by the program is open,\n please close it and try again!")
+                return
+
+            if getExtension(file_tabel) == "xls":
+                shutil.copy2(file_tabel, save_path+"\\" + "NuclearBlastListareNoutati.xls")
+                noutati_listare = save_path+"\\" + "NuclearBlastListareNoutati.xls"
+            elif getExtension(file_tabel) == "xlsx":
+                shutil.copy2(file_tabel, save_path+"\\" + "NuclearBlastListareNoutati.xlsx")
+                noutati_listare = save_path+"\\" + "NuclearBlastListareNoutati.xlsx"
+            else:
+                logError("Failed to copy tabel file")
+                return
+            #raft listare
+            eraseContent(folder_tabel)
+
+        deleteBarcodesFromFile(file_noutati, noutati_start_row, tabel_barcode_column, nbCatalogBarcodes)
+
+        #raft listare
+        if getExtension(file_catalog) == "xls":
+            shutil.copy2(file_catalog, save_path+"\\" + "NuclearBlastListare.xls")
+            file_listare = save_path+"\\" + "NuclearBlastListare.xls"
+        elif getExtension(file_catalog) == "xlsx":
+            shutil.copy2(file_catalog, save_path+"\\" + "NuclearBlastListare.xlsx")
+            file_listare = save_path+"\\" + "NuclearBlastListare.xlsx"
+        else:
+            logError("Failed to copy catalog file")
+
+        try:
+            qualityConvertXlsToXlsx(file_listare)
+        except:
+            logError("Conversion did not happen on file_listare")
+
+        if getExtension(file_listare) == 'xls':
+            file_listare+='x'
+        wb = load_workbook(file_listare)
+        ws = wb.active
+
+        prow = ws.max_row+1
+        pcol = ws.max_column+1
+
+        for i in range(start_row, prow):
+            correct_price_name = correctName(str(ws.cell(row = i, column = price_column).value))
+            if correct_price_name in dictPreturi:
+                price = dictPreturi[correct_price_name]
+            else:
+                price = PRICE_ERROR
+
+            if str(price) == None:
+                price = PRICE_ERROR
+            else:
+                if not isfloat(str(price)):
+                    price = PRICE_ERROR
+
+            if price != PRICE_ERROR:
+                ws.cell(row = i, column = raft_price_column).value = price
+
+        wb.save(file_listare)
+
+        try:
+            excel = win32.gencache.EnsureDispatch('Excel.Application')
+            workbook = excel.Workbooks.Open(os.path.abspath(file_listare))
+            workbook.Save()
+            workbook.Close()
+            excel.Quit()
+        except:
+            logError("Problem with Microsoft Excel!\n Also, if any file that might be used by the program is open,\n please close it and try again!")
+            return
+        #raft listare
         void_workbook = openpyxlWorkbook()
         void_sheet = void_workbook.active
         void_sheet.cell(row = 1,column = 1).value = "Barcode"
         void_sheet.cell(row = 1,column = 2).value = "Price"
 
-
+        #void start
         currentRow = 1
         i = start_row-1
 
@@ -216,6 +425,63 @@ class Nuke(MainApplication):
                 errorText = errorText + "\n"
 
                 error.write(errorText)
+
+
+        if True == True:
+            #return
+            #aici bag in void tot ce erasi in lista cu noutati
+            wb = load_workbook(file_noutati)
+            ws = wb.active
+
+            prow = ws.max_row + 1
+
+            for i in range(noutati_start_row + 1, prow):
+
+                barcode = normalizeBarcode(str(ws.cell(row = i, column = tabel_barcode_column).value))
+                catalog_price = ws.cell(row = i, column = tabel_pricecode_column).value
+
+                if catalog_price in dictPreturi:
+                    price = dictPreturi[catalog_price]
+                else:
+                    price = PRICE_ERROR
+
+                if barcode == None:
+                    barcode = BARCODE_ERROR
+                else:
+                    if not barcode.isdigit():
+                        barcode = BARCODE_ERROR
+
+                if str(price) == None:
+                    price = PRICE_ERROR
+                else:
+                    if not isfloat(str(price)):
+                        price = PRICE_ERROR
+
+                if barcode != BARCODE_ERROR and price != PRICE_ERROR:
+
+                    currentRow = currentRow + 1
+
+                    barcode = barcode.zfill(13)
+
+                    void_sheet.cell(row = currentRow,column = 1).value = barcode
+                    void_sheet.cell(row = currentRow,column = 6).value = round(price,2)
+
+                else:
+
+                    errorText = "Line " + str(i) + ":   "
+                    if barcode == BARCODE_ERROR:
+                        errorText = errorText + "BARCODE_ERROR "
+                    else:
+                        errorText = errorText + barcode + " "
+
+                    if price == PRICE_ERROR:
+                        errorText = errorText + "PRICE_ERROR "
+                    else:
+                        errorText = errorText + str(price)
+
+                    errorText = errorText + "\n"
+
+                    error.write(errorText)
 
 
         error.close()
