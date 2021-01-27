@@ -124,7 +124,7 @@ class Sincron(MainApplication):
         void_workbook = openpyxlWorkbook()
         void_sheet = void_workbook.active
         void_sheet.cell(row = 1,column = 1).value = "Barcode"
-        void_sheet.cell(row = 1,column = 6).value = "Price"
+        void_sheet.cell(row = 1,column = 2).value = "Price"
 
         currentRow = 1
         i = start_row-1
@@ -143,7 +143,7 @@ class Sincron(MainApplication):
                 newPrice = price*0.85
 
                 void_sheet.cell(row = currentRow,column = 1).value = barcode
-                void_sheet.cell(row = currentRow,column = 6).value = round(newPrice,2)
+                void_sheet.cell(row = currentRow,column = 2).value = round(newPrice,2)
 
             else:
 

@@ -144,6 +144,7 @@ class Nuke(MainApplication):
         price_column = self.supplierInfo['price_column']
         pricecode_column = self.supplierInfo['pricecode_column']
         rounded_price_column = self.supplierInfo['rounded_price_column']
+        save_name1 = self.supplierInfo['save_name1']
         save_name = self.supplierInfo['save_name']
 
         catalogExt = getExtension(file_catalog)
@@ -158,7 +159,7 @@ class Nuke(MainApplication):
         void_workbook = openpyxlWorkbook()
         void_sheet = void_workbook.active
         void_sheet.cell(row = 1,column = 1).value = "Barcode"
-        void_sheet.cell(row = 1,column = 6).value = "Price"
+        void_sheet.cell(row = 1,column = 2).value = "Price"
 
 
         currentRow = 1
@@ -197,7 +198,7 @@ class Nuke(MainApplication):
                 newPrice = price
 
                 void_sheet.cell(row = currentRow,column = 1).value = barcode
-                void_sheet.cell(row = currentRow,column = 6).value = round(newPrice,2)
+                void_sheet.cell(row = currentRow,column = 2).value = round(newPrice,2)
 
             else:
 
@@ -219,6 +220,7 @@ class Nuke(MainApplication):
 
         error.close()
         void_workbook.save(save_path+"\\" + save_name)
+        void_workbook.save(save_path+"\\" + save_name1)
 
         self.master.destroy()
         logText("Code has executed successfully!")

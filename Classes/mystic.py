@@ -180,7 +180,7 @@ class Mystic(MainApplication):
         void_workbook = openpyxlWorkbook()
         void_sheet = void_workbook.active
         void_sheet.cell(row = 1,column = 1).value = "Barcode"
-        void_sheet.cell(row = 1,column = 6).value = "Price"
+        void_sheet.cell(row = 1,column = 2).value = "Price"
 
 
         m_catalog = SupplierFile(file_catalog, catalogExt, start_row)
@@ -215,7 +215,7 @@ class Mystic(MainApplication):
                 barcode = barcode.zfill(13)
 
                 void_sheet.cell(row = currentRow,column = 1).value = barcode
-                void_sheet.cell(row = currentRow,column = 6).value = round(price,2)
+                void_sheet.cell(row = currentRow,column = 2).value = round(price,2)
 
             else:
 

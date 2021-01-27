@@ -130,7 +130,7 @@ class MOV(MainApplication):
         void_workbook = openpyxlWorkbook()
         void_sheet = void_workbook.active
         void_sheet.cell(row = 1,column = 1).value = "Barcode"
-        void_sheet.cell(row = 1,column = 6).value = "Price"
+        void_sheet.cell(row = 1,column = 2).value = "Price"
 
 
         currentRow = 1
@@ -164,7 +164,7 @@ class MOV(MainApplication):
                 newPrice = price*4.455
 
                 void_sheet.cell(row = currentRow,column = 1).value = barcode
-                void_sheet.cell(row = currentRow,column = 6).value = round(newPrice,2)
+                void_sheet.cell(row = currentRow,column = 2).value = round(newPrice,2)
 
             else:
 
